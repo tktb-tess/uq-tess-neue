@@ -11,5 +11,12 @@
   },
   "devDependencies": {
     "astro": "^7.4.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.15.0",
+      "onFail": "download"
+    }
   }
 }
