@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /api/
 
 Sitemap: https://www.tktb-tess.dev/sitemap.xml
