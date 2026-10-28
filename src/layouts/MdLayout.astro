@@ -1,5 +1,5 @@
 ---
-import Layout from './Layout.astro';
+import ArticleLayout from './ArticleLayout.astro';
 import type { MarkdownLayoutProps } from 'astro';
 
 type Props = MarkdownLayoutProps<{
@@ -10,6 +10,6 @@ type Props = MarkdownLayoutProps<{
 const { title, description } = Astro.props.frontmatter;
 ---
 
-<Layout {title} {description}>
+<ArticleLayout {title} {description}>
   <slot />
-</Layout>
+</ArticleLayout>
