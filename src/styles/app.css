@@ -342,3 +342,8 @@
     }
   }
 }
+
+.katex-display .katex-html {
+  @apply my-figure overflow-x-auto py-2;
+  scrollbar-width: thin;
+}

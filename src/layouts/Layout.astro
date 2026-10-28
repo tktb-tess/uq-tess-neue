@@ -1,3 +1,29 @@
 ---
+import '../styles/app.css';
+import type { PageData } from '../modules/typedef';
+import { SITE_NAME } from '../modules/consts';
+import OGP from '../components/OGP.astro';
+import Preloads from '../components/Preloads.astro';
 
+type Props = PageData;
+
+const { title, description = title } = Astro.props;
+const pathname = Astro.originPathname;
+const fullTitle = pathname === '/' ? SITE_NAME : `${title} | ${SITE_NAME}`;
 ---
+
+<!doctype html>
+<html lang='ja'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/icon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <Preloads />
+    <OGP title={fullTitle} {description} path={pathname} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
