@@ -4,10 +4,10 @@ import { BASE_URL, SITE_NAME } from '../modules/consts';
 interface Props {
   readonly title: string;
   readonly path: string;
-  readonly description: string;
+  readonly description?: string;
 }
 
-const { title, description, path } = Astro.props;
+const { title, description = title, path } = Astro.props;
 const pageURL = new URL(path, BASE_URL).href;
 const linkCardURL = new URL('/link_card.png', BASE_URL).href;
 ---
