@@ -1,10 +1,3 @@
-export interface PageData {
-  readonly title: string;
-  readonly description?: string;
-}
-
-export type PageDataMap = ReadonlyMap<string, PageData>;
-
 interface Success<T> {
   readonly status: 'success';
   value: T;

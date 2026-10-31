@@ -1,13 +1,15 @@
 ---
-import type { PageData } from '../modules/typedef';
+import type { PageData } from '../modules/data';
 import BaseLayout from './BaseLayout.astro';
 
-type Props = PageData;
+interface Props {
+  readonly pageData?: PageData;
+}
 
-const { title, description } = Astro.props;
+const { pageData } = Astro.props;
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {pageData}>
   <div class='__container'>
     <header></header>
     <aside></aside>
@@ -22,7 +24,7 @@ const { title, description } = Astro.props;
 </BaseLayout>
 
 <style lang="postcss">
-  @import '../styles/app.css';
+  @reference '../styles/app.css';
 
   @layer components {
     .__container {

@@ -1,0 +1,21 @@
+---
+import { getPageData, type PageData, type PageDataMap } from '../modules/data';
+import type { MarkdownLayoutProps } from 'astro';
+
+interface Props {
+  readonly path: string;
+}
+
+type MdProps = MarkdownLayoutProps<PageData>;
+
+const values = Object.values(
+  import.meta.glob<MdProps>('../pages/**/*.md', { eager: true }),
+);
+
+const mdPageData: PageDataMap = new Map(
+  values.map((md) => {
+    const { title, description } = md.frontmatter;
+    return [`${md.url}/`, { title, description }];
+  }),
+);
+---

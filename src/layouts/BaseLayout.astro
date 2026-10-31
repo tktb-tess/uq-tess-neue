@@ -1,15 +1,19 @@
 ---
 import '../styles/app.css';
-import type { PageData } from '../modules/typedef';
+import { getPageData, type PageData } from '../modules/data';
 import { SITE_NAME } from '../modules/consts';
 import OGP from '../components/OGP.astro';
 import Preloads from '../components/Preloads.astro';
 
-type Props = PageData;
+interface Props {
+  readonly pageData?: PageData;
+}
 
-const { title, description } = Astro.props;
 const pathname = Astro.originPathname;
-const fullTitle = pathname === '/' ? SITE_NAME : `${title} | ${SITE_NAME}`;
+const { title, description } = Astro.props.pageData ?? getPageData(pathname);
+const isHome = pathname === '/';
+const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
+const h1Title = isHome ? SITE_NAME : title;
 ---
 
 <!doctype html>
