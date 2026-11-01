@@ -48,19 +48,19 @@ description: 'ホームページ'
 
 ### 各種SNS
 
-- [𝕏witter](https://x.com/triethylamineq)
-- [Bluesky](https://bsky.app/profile/tktb-tess.dev)
-- [Misskey.io](https://misskey.io/@tessy_tktb)
+- :exl[𝕏witter]{h=https://x.com/triethylamineq}
+- :exl[Bluesky]{h=https://bsky.app/profile/tktb-tess.dev}
+- :exl[Misskey.io]{h=https://misskey.io/@tessy_tktb}
 
 ### その他
 
-- [Youtube](https://www.youtube.com/@tessyrrhaqt)
-- [rechord]
-- [Migdal](https://migdal.jp/tessyrrhaqt)
-- [GitHub](https://github.com/tktb-tess)
-- [tktb-tess.github.io](https://tktb-tess.github.io)
-- [τὰ συστήματα (作ったアプリたち)](https://apps.tktb-tess.dev/)
-- [Xenharmonic_calc](https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=drive_link)
+- :exl[Youtube]{h=https://www.youtube.com/@tessyrrhaqt}
+- :exl[rechord]{h=https://rechord.cc/users/triethylamineq}
+- :exl[Migdal]{h=https://migdal.jp/tessyrrhaqt}
+- :exl[GitHub]{h=https://github.com/tktb-tess}
+- :exl[tktb-tess.github.io]{h=https://tktb-tess.github.io}
+- :exl[τὰ συστήματα (作ったアプリたち)]{h=https://apps.tktb-tess.dev}
+- :exl[Xenharmonic_calc]{h=https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit}
 
   …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
 

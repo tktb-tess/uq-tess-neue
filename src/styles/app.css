@@ -342,6 +342,10 @@
       @apply inline-4 block-auto fill-current;
     }
   }
+
+  .ext-link-icon {
+    @apply inline-block inline-3 block-auto fill-current ms-0.5;
+  }
 }
 
 .katex-display .katex-html {
