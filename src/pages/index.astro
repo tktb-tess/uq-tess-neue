@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TitleHeader from '../components/TitleHeader.astro';
 import Footer from '../components/Footer.astro';
+import ExtLink from '../components/ExtLink.astro';
 import type { PageData } from '../modules/data';
 
 interface Props {
@@ -17,7 +18,110 @@ const { pageData } = Astro.props;
       <TitleHeader />
     </header>
     <main>
-      <slot />
+      <h2>〜ようこそ〜</h2>
+      <p>
+        ※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
+      </p>
+      <p>
+        わたし、斗琴庭 暁響 (とことば あかね)
+        が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
+      </p>
+      <h2>メニュー</h2>
+
+      <h2>頂いた名前</h2>
+
+      <h2>相互リンク</h2>
+
+      <p>
+        敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。
+      </p>
+
+      <div class='flex my-figure'>
+        <a href='https://kaeru2193.net' target='_blank' class='block'>
+          <img
+            src='https://kaeru2193.net/banner.png'
+            width='200'
+            height='40'
+            alt='之機堂'
+          />
+        </a>
+      </div>
+
+      <h2>外部リンク</h2>
+
+      <h3>各種SNS</h3>
+
+      <ul>
+        <li>
+          <p>
+            <ExtLink href='https://x.com/triethylamineq'>𝕏witter</ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://bsky.app/profile/tktb-tess.dev'>
+              Bluesky
+            </ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://misskey.io/@tessy_tktb'>Misskey.io</ExtLink>
+          </p>
+        </li>
+      </ul>
+
+      <h3>その他</h3>
+
+      <ul>
+        <li>
+          <p>
+            <ExtLink href='https://www.youtube.com/@tessyrrhaqt'>
+              Youtube
+            </ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://rechord.cc/users/triethylamineq'>
+              rechord
+            </ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://migdal.jp/tessyrrhaqt'>Migdal</ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://github.com/tktb-tess'>GitHub</ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://tktb-tess.github.io'>
+              tktb-tess.github.io
+            </ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink href='https://apps.tktb-tess.dev'>
+              τὰ συστήματα (作ったアプリたち)
+            </ExtLink>
+          </p>
+        </li>
+        <li>
+          <p>
+            <ExtLink
+              href='https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit'
+            >
+              Xenharmonic_calc
+            </ExtLink>
+          </p>
+        </li>
+      </ul>
     </main>
     <footer>
       <Footer />
