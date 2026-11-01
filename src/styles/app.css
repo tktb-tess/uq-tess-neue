@@ -82,6 +82,7 @@
   --spacing-title-mb: 3rem;
   --spacing-min-side: 14rem;
   --spacing-max-main: 72rem;
+  --spacing-gutter: 1rem;
 }
 
 /* utilities */

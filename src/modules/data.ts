@@ -8,5 +8,11 @@ export type PageDataMap = ReadonlyMap<string, PageData>;
 const pageDataMap: PageDataMap = new Map([]);
 
 export function getPageData(path: string): PageData {
-  return pageDataMap.get(path) ?? { title: '[NODATA]' };
+  const pageData = pageDataMap.get(path);
+
+  if (pageData == null) {
+    throw Error(`Pagedata for ${path} is not found`);
+  }
+
+  return pageData;
 }

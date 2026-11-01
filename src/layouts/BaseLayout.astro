@@ -13,7 +13,6 @@ const pathname = Astro.originPathname;
 const { title, description } = Astro.props.pageData ?? getPageData(pathname);
 const isHome = pathname === '/';
 const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
-const h1Title = isHome ? SITE_NAME : title;
 ---
 
 <!doctype html>

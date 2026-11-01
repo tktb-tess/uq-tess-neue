@@ -1,24 +1,31 @@
 ---
-import type { PageData } from '../modules/data';
+import { getPageData, type PageData } from '../modules/data';
 import BaseLayout from './BaseLayout.astro';
+import { SITE_NAME } from '../modules/consts';
 
 interface Props {
   readonly pageData?: PageData;
 }
 
 const { pageData } = Astro.props;
+
+const pathname = Astro.originPathname;
+const { title } = pageData ?? getPageData(pathname);
+const isHome = pathname === '/';
+const h1Title = isHome ? SITE_NAME : title;
 ---
 
 <BaseLayout {pageData}>
   <div class='__container'>
     <header></header>
-    <aside></aside>
+    <aside class='__lside'></aside>
     <main>
+      <h1>{h1Title}</h1>
       <div class='__main-contents'>
         <slot />
       </div>
     </main>
-    <aside></aside>
+    <aside class='__rside'></aside>
     <footer></footer>
   </div>
 </BaseLayout>
@@ -44,7 +51,8 @@ const { pageData } = Astro.props;
 
       header,
       main,
-      footer {
+      footer,
+      aside {
         @apply flow-root;
       }
 
@@ -59,6 +67,14 @@ const { pageData } = Astro.props;
 
       footer {
         grid-area: f;
+      }
+
+      .__lside {
+        grid-area: l;
+      }
+
+      .__rside {
+        grid-area: r;
       }
     }
   }

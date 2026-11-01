@@ -1,6 +1,7 @@
 ---
 import { getPageData, type PageData, type PageDataMap } from '../modules/data';
 import type { MarkdownLayoutProps } from 'astro';
+import HomeIcon from '../assets/HomeIcon.svg';
 
 interface Props {
   readonly path: string;
@@ -18,4 +19,78 @@ const mdPageData: PageDataMap = new Map(
     return [`${md.url}/`, { title, description }];
   }),
 );
+
+function getTitle(path: string) {
+  if (path === '/') {
+    return 'Home';
+  }
+
+  return mdPageData.get(path)?.title ?? getPageData(path).title;
+}
+
+const { path } = Astro.props;
+const dirs = path.split('/').filter((s) => s !== '');
+
+const ancestorPages = dirs.map((_, i) => {
+  const h_ = dirs.slice(0, i).join('/');
+  const href = h_ === '' ? '/' : `/${h_}/`;
+  const title = getTitle(href);
+  return { href, title } as const;
+});
+
+const currentTitle = getTitle(path);
 ---
+
+<nav class='__breadcrumb' aria-label='パンくずリスト'>
+  <ol>
+    {
+      ancestorPages.map(({ href, title }) => {
+        return (
+          <li>
+            <a {href} {title}>
+              {title !== 'Home' ? (
+                title
+              ) : (
+                <HomeIcon class='inline-4 block-auto' />
+              )}
+            </a>
+          </li>
+        );
+      })
+    }
+    <li>
+      <a href='./' aria-current='page' tabindex='-1'>{currentTitle}</a>
+    </li>
+  </ol>
+</nav>
+
+<style lang="postcss">
+  @reference '../styles/global.css';
+
+  @layer components {
+    .__breadcrumb {
+      @apply my-4 block;
+    }
+
+    ol {
+      @apply list-none flex flex-wrap gap-2 ps-0 m-0;
+    }
+
+    li {
+      @apply contents;
+    }
+
+    a,
+    li:not(:first-child)::before {
+      @apply flex-[unset] inline-max min-inline-0 leading-none;
+    }
+
+    a[aria-current="page"] {
+      @apply font-semibold pointer-events-none text-text;
+    }
+
+    li:not(:first-child)::before {
+      content: '>';
+    }
+  }
+</style>
