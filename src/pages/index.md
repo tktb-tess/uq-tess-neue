@@ -1,6 +1,5 @@
 ---
 layout: '../layouts/MdLayout.astro'
-title: ''
 description: 'ホームページ'
 ---
 

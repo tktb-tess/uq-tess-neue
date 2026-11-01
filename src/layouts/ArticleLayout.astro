@@ -1,6 +1,8 @@
 ---
-import { getPageData, type PageData } from '../modules/data';
 import BaseLayout from './BaseLayout.astro';
+import BreadCrumb from '../components/BreadCrumb.astro';
+import Footer from '../components/Footer.astro';
+import { getPageData, type PageData } from '../modules/data';
 import { SITE_NAME } from '../modules/consts';
 
 interface Props {
@@ -21,12 +23,15 @@ const h1Title = isHome ? SITE_NAME : title;
     <aside class='__lside'></aside>
     <main>
       <h1>{h1Title}</h1>
+      <BreadCrumb path={pathname} />
       <div class='__main-contents'>
         <slot />
       </div>
     </main>
     <aside class='__rside'></aside>
-    <footer></footer>
+    <footer>
+      <Footer />
+    </footer>
   </div>
 </BaseLayout>
 
@@ -35,7 +40,7 @@ const h1Title = isHome ? SITE_NAME : title;
 
   @layer components {
     .__container {
-      @apply max-xl:flow-root xl:grid bg-side text-text;
+      @apply max-xl:flow-root xl:grid;
 
       grid-template-areas:
         'h h h'
@@ -54,6 +59,12 @@ const h1Title = isHome ? SITE_NAME : title;
       footer,
       aside {
         @apply flow-root;
+      }
+
+      header,
+      footer,
+      aside {
+        @apply bg-side;
       }
 
       header {

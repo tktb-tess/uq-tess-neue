@@ -356,7 +356,7 @@
   }
 
   .ext-link-icon {
-    @apply inline-block inline-3 block-auto fill-current ms-0.5;
+    @apply inline-block inline-3 block-auto ms-0.5;
   }
 }
 

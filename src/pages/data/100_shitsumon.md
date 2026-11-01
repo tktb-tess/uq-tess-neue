@@ -1,4 +1,4 @@
 ---
 layout: ../../layouts/MdLayout.astro
-title:
+title: 人工言語作者に100の質問
 ---

@@ -1,4 +1,4 @@
 ---
 layout: ../../../layouts/MdLayout.astro
-title:
+title: ヴェンズラン語 形容詞
 ---

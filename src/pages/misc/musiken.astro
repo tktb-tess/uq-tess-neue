@@ -1,0 +1,34 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ExtLink from '../../components/ExtLink.astro';
+---
+
+<ArticleLayout>
+  <p>
+    作った曲です。特別な追加の記載がない限り、これらの Tessyrrhaqt による曲は
+    <ExtLink href='https://creativecommons.org/licenses/by/4.0/'>
+      CC BY 4.0
+    </ExtLink>
+    <img
+      src='https://mirrors.creativecommons.org/presskit/icons/cc.svg'
+      alt='Creative Commons License Mark'
+      class='cc-icons'
+    />
+    <img
+      src='https://mirrors.creativecommons.org/presskit/icons/by.svg'
+      alt='Creative Commons License BY Mark'
+      class='cc-icons'
+    />
+    ライセンスの下公開されます。
+  </p>
+</ArticleLayout>
+
+<style lang="postcss">
+  @reference '../../styles/app.css';
+
+  @layer components {
+    .cc-icons {
+      @apply inline-block inline-4 block-auto mx-0.5;
+    }
+  }
+</style>

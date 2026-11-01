@@ -20,7 +20,7 @@ const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/uq-tess-neue/icon.svg' />
+    <link rel='icon' type='image/svg+xml' href='/icon.svg' />
     <meta name='generator' content={Astro.generator} />
     <Preloads />
     <OGP title={fullTitle} {description} path={pathname} />
@@ -30,3 +30,13 @@ const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
     <slot />
   </body>
 </html>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    body {
+      @apply flow-root bg-main text-text;
+    }
+  }
+</style>

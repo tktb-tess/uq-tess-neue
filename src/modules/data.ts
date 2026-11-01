@@ -5,7 +5,9 @@ export interface PageData {
 
 export type PageDataMap = ReadonlyMap<string, PageData>;
 
-const pageDataMap: PageDataMap = new Map([]);
+const pageDataMap: PageDataMap = new Map([
+  ['/misc/musiken/', { title: '音楽', description: '作曲は楽しいぞ' }],
+]);
 
 export function getPageData(path: string): PageData {
   const pageData = pageDataMap.get(path);

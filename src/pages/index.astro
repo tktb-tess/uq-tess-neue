@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TitleHeader from '../components/TitleHeader.astro';
+import Footer from '../components/Footer.astro';
+import type { PageData } from '../modules/data';
+
+interface Props {
+  readonly pageData?: PageData;
+}
+
+const { pageData } = Astro.props;
+---
+
+<BaseLayout {pageData}>
+  <div>
+    <header>
+      <TitleHeader />
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <Footer />
+    </footer>
+  </div>
+</BaseLayout>
