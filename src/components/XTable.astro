@@ -1,3 +1,118 @@
 ---
+interface DataOptions {
+  readonly cSpan?: number;
+  readonly rSpan?: number;
+  readonly class?: string;
+  readonly rawHTML?: boolean;
+}
 
+type CellData = string | readonly [text: string, options: DataOptions];
+
+interface Props {
+  readonly data: CellData[][];
+  readonly caption?: string;
+  readonly headRowNum?: number;
+  readonly headColNum?: number | number[];
+  readonly class?: string;
+}
+
+const {
+  data,
+  caption,
+  headRowNum = 1,
+  headColNum: h_ = 1,
+  class: cName,
+} = Astro.props;
+
+const rowNum = data.length;
+const headData = data.slice(0, headRowNum);
+const bodyData = data.slice(headRowNum);
+const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
 ---
+
+<table class={cName}>
+  {caption && <caption>{caption}</caption>}
+
+  {
+    headData.length > 0 && (
+      <thead>
+        {headData.map((row) => {
+          return (
+            <tr>
+              {row.map((cell) => {
+                if (typeof cell === 'string') {
+                  return <th>{cell}</th>;
+                } else {
+                  const [text, opt] = cell;
+                  const {
+                    rSpan: rowspan,
+                    rawHTML = false,
+                    cSpan: colspan,
+                    class: cName,
+                  } = opt;
+
+                  return (
+                    <th {colspan} {rowspan} class={cName}>
+                      {rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+                    </th>
+                  );
+                }
+              })}
+            </tr>
+          );
+        })}
+      </thead>
+    )
+  }
+  <tbody>
+    {
+      bodyData.map((row, i) => {
+        const cols = headCols.at(i) ?? 0;
+        const ths = row.slice(0, cols);
+        const tds = row.slice(cols);
+        return (
+          <tr>
+            {ths.map((cell) => {
+              if (typeof cell === 'string') {
+                return <th>{cell}</th>;
+              } else {
+                const [text, opt] = cell;
+                const {
+                  rSpan: rowspan,
+                  rawHTML = false,
+                  cSpan: colspan,
+                  class: cName,
+                } = opt;
+
+                return (
+                  <td {colspan} {rowspan} class={cName}>
+                    {rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+                  </td>
+                );
+              }
+            })}
+            {tds.map((cell) => {
+              if (typeof cell === 'string') {
+                return <th>{cell}</th>;
+              } else {
+                const [text, opt] = cell;
+                const {
+                  rSpan: rowspan,
+                  rawHTML = false,
+                  cSpan: colspan,
+                  class: cName,
+                } = opt;
+
+                return (
+                  <td {colspan} {rowspan} class={cName}>
+                    {rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+                  </td>
+                );
+              }
+            })}
+          </tr>
+        );
+      })
+    }
+  </tbody>
+</table>

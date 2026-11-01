@@ -91,11 +91,6 @@ export const tdHandler: Handler = (_, node: TextDirective) => {
 };
 
 function tcHandler(tc: Mdast.TableCell, tag: 'td' | 'th') {
-  // 子要素は1個だけを想定
-  if (tc.children.length !== 1) {
-    return h(tag, tc.children.map(phrasingToHast));
-  }
-
   const ph = tc.children[0];
 
   // TextDirective以外は除外

@@ -1,0 +1,36 @@
+---
+interface DataOptions {
+  readonly rawHTML?: boolean;
+  readonly class?: string;
+}
+
+type ItemData = string | readonly [text: string, options: DataOptions];
+
+interface Props {
+  readonly data: ItemData[];
+  readonly class?: string;
+}
+
+const { data, class: cName } = Astro.props;
+---
+
+<ul class={cName}>
+  {
+    data.map((datum) => {
+      if (typeof datum === 'string') {
+        return (
+          <li>
+            <p>{datum}</p>
+          </li>
+        );
+      } else {
+        const [text, opt] = datum;
+        return (
+          <li class={opt.class}>
+            {opt.rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+          </li>
+        );
+      }
+    })
+  }
+</ul>
