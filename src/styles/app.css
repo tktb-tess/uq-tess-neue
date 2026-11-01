@@ -15,7 +15,8 @@
 @font-face {
   font-family: 'PhunDot';
   font-display: swap;
-  src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
+  src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff')
+    format('woff');
 }
 
 /* theme variables */
@@ -173,6 +174,10 @@
         text-align: justify;
       }
     }
+  }
+
+  [lang='x-v3-karphnpn'] {
+    @apply font-phun-dot;
   }
 
   :where(:disabled, [aria-disabled='true'], [inert]) {
