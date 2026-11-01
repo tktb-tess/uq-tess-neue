@@ -12,6 +12,12 @@
   src: local('Noto Sans JP');
 }
 
+@font-face {
+  font-family: 'PhunDot';
+  font-display: swap;
+  src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
+}
+
 /* theme variables */
 
 @theme {
@@ -26,6 +32,7 @@
     'Charis-Web', 'Times New Roman', 'Noto Serif JP', 'Noto Serif CJK JP',
     'BIZ UDPMincho', 'Hiragino Mincho ProN', 'Hiragino Serif', serif, 'Segoe UI';
   --font-ipa: var(--font-serif);
+  --font-phun-dot: 'PhunDot', var(--font-sans);
 
   --color-vivid-5: oklch(5% 0.0352 263.14);
   --color-vivid-10: oklch(10% 0.0689 264.19);

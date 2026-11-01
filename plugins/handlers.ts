@@ -76,6 +76,10 @@ function _tdHandler(node: TextDirective): Hast.ElementContent {
         [...node.children.map(phrasingToHast), extLinkIconElem],
       );
     }
+    case 'lng': {
+      const lang = node.attributes?.l || undefined;
+      return h('span', { lang }, node.children.map(phrasingToHast));
+    }
     default: {
       return safeToHast(node);
     }
