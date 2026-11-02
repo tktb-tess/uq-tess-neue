@@ -1,3 +1,26 @@
 ---
+interface Props {
+  readonly data: {
+    readonly title: string;
+    readonly desc: string;
+    readonly href: string;
+  }[];
+}
 
+const { data } = Astro.props;
 ---
+
+<ul class='__card-list'>
+  {
+    data.map(({ title, desc, href }) => {
+      return (
+        <li>
+          <a {href}>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

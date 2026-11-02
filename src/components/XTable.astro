@@ -53,7 +53,7 @@ const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
 
                   return (
                     <th {colspan} {rowspan} class={cName}>
-                      {rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+                      {rawHTML ? <Fragment set:html={text} /> : text}
                     </th>
                   );
                 }
@@ -86,7 +86,7 @@ const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
 
                 return (
                   <td {colspan} {rowspan} class={cName}>
-                    {rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+                    {rawHTML ? <Fragment set:html={text} /> : text}
                   </td>
                 );
               }
@@ -105,7 +105,7 @@ const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
 
                 return (
                   <td {colspan} {rowspan} class={cName}>
-                    {rawHTML ? <p set:html={text} /> : <p>{text}</p>}
+                    {rawHTML ? <Fragment set:html={text} /> : text}
                   </td>
                 );
               }
