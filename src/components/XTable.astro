@@ -30,16 +30,50 @@ const bodyData = data.slice(headRowNum);
 const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
 ---
 
-<table class={cName}>
-  {caption && <caption>{caption}</caption>}
+<div class='table-container'>
+  <table class={cName}>
+    {caption && <caption>{caption}</caption>}
 
-  {
-    headData.length > 0 && (
-      <thead>
-        {headData.map((row) => {
+    {
+      headData.length > 0 && (
+        <thead>
+          {headData.map((row) => {
+            return (
+              <tr>
+                {row.map((cell) => {
+                  if (typeof cell === 'string') {
+                    return <th>{cell}</th>;
+                  } else {
+                    const [text, opt] = cell;
+                    const {
+                      rSpan: rowspan,
+                      rawHTML = false,
+                      cSpan: colspan,
+                      class: cName,
+                    } = opt;
+
+                    return (
+                      <th {colspan} {rowspan} class={cName}>
+                        {rawHTML ? <Fragment set:html={text} /> : text}
+                      </th>
+                    );
+                  }
+                })}
+              </tr>
+            );
+          })}
+        </thead>
+      )
+    }
+    <tbody>
+      {
+        bodyData.map((row, i) => {
+          const cols = headCols.at(i) ?? 0;
+          const ths = row.slice(0, cols);
+          const tds = row.slice(cols);
           return (
             <tr>
-              {row.map((cell) => {
+              {ths.map((cell) => {
                 if (typeof cell === 'string') {
                   return <th>{cell}</th>;
                 } else {
@@ -52,67 +86,35 @@ const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
                   } = opt;
 
                   return (
-                    <th {colspan} {rowspan} class={cName}>
+                    <td {colspan} {rowspan} class={cName}>
                       {rawHTML ? <Fragment set:html={text} /> : text}
-                    </th>
+                    </td>
+                  );
+                }
+              })}
+              {tds.map((cell) => {
+                if (typeof cell === 'string') {
+                  return <th>{cell}</th>;
+                } else {
+                  const [text, opt] = cell;
+                  const {
+                    rSpan: rowspan,
+                    rawHTML = false,
+                    cSpan: colspan,
+                    class: cName,
+                  } = opt;
+
+                  return (
+                    <td {colspan} {rowspan} class={cName}>
+                      {rawHTML ? <Fragment set:html={text} /> : text}
+                    </td>
                   );
                 }
               })}
             </tr>
           );
-        })}
-      </thead>
-    )
-  }
-  <tbody>
-    {
-      bodyData.map((row, i) => {
-        const cols = headCols.at(i) ?? 0;
-        const ths = row.slice(0, cols);
-        const tds = row.slice(cols);
-        return (
-          <tr>
-            {ths.map((cell) => {
-              if (typeof cell === 'string') {
-                return <th>{cell}</th>;
-              } else {
-                const [text, opt] = cell;
-                const {
-                  rSpan: rowspan,
-                  rawHTML = false,
-                  cSpan: colspan,
-                  class: cName,
-                } = opt;
-
-                return (
-                  <td {colspan} {rowspan} class={cName}>
-                    {rawHTML ? <Fragment set:html={text} /> : text}
-                  </td>
-                );
-              }
-            })}
-            {tds.map((cell) => {
-              if (typeof cell === 'string') {
-                return <th>{cell}</th>;
-              } else {
-                const [text, opt] = cell;
-                const {
-                  rSpan: rowspan,
-                  rawHTML = false,
-                  cSpan: colspan,
-                  class: cName,
-                } = opt;
-
-                return (
-                  <td {colspan} {rowspan} class={cName}>
-                    {rawHTML ? <Fragment set:html={text} /> : text}
-                  </td>
-                );
-              }
-            })}
-          </tr>
-        );
-      })
-    }
-  </tbody>
-</table>
+        })
+      }
+    </tbody>
+  </table>
+</div>

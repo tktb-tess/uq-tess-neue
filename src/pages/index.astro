@@ -3,12 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TitleHeader from '../components/TitleHeader.astro';
 import Footer from '../components/Footer.astro';
 import ExtLink from '../components/ExtLink.astro';
+import CardList from '../components/CardList.astro';
+import XTable from '../components/XTable.astro';
 
 interface Props {}
 ---
 
 <BaseLayout pageData={{ title: '' }}>
-  <div class="__container">
+  <div class='__container'>
     <header>
       <TitleHeader />
     </header>
@@ -24,8 +26,37 @@ interface Props {}
       </p>
       <h2>メニュー</h2>
 
+      <CardList
+        data={[
+          {
+            title: '人工言語',
+            desc: '制作中の人工言語について。',
+            href: '/conlang/',
+          },
+          { title: 'データ', desc: '各種データ。', href: '/data/' },
+          { title: 'その他', desc: 'その他の雑多な話題。', href: '/misc/' },
+        ]}
+      />
+
       <h2>頂いた名前</h2>
 
+      <XTable
+        data={[
+          ['種類', '作者', '名'],
+          [
+            [
+              '<a href="https://kaeru2193.net/phunlang/name/" target="_blank">雰名</a>',
+              { rawHTML: true },
+            ],
+            'かえる',
+            [
+              '<span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)',
+              { rawHTML: true },
+            ],
+          ],
+        ]}
+        headColNum={0}
+      />
       <h2>相互リンク</h2>
 
       <p>
