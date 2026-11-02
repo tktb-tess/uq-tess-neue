@@ -4,13 +4,12 @@ import { SITE_NAME } from '../modules/consts';
 interface Props {}
 ---
 
-<div>
-  <h1>{SITE_NAME}</h1>
-
+<div class="__title">
   <svg
     viewBox='0 0 720 720'
     version='1.1'
-    id='uq-tess-logo-2'
+    id='site-logo'
+    class='__site-logo'
     xml:space='preserve'
     xmlns:xlink='http://www.w3.org/1999/xlink'
     xmlns='http://www.w3.org/2000/svg'
@@ -21,4 +20,25 @@ interface Props {}
     >
     </path>
   </svg>
+  <h1 class="__name">{SITE_NAME}</h1>
 </div>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    .__title {
+      @apply grid block-lvh grid-rows-[1fr_auto] py-8 gap-8;
+    }
+    
+    .__site-logo {
+      @apply block-[90%];
+    }
+
+    .__name {
+      @apply text-7xl font-extralight mx-auto;
+      text-align-last: justify;
+      inline-size: min(1200px, 100%);
+    }
+  }
+</style>

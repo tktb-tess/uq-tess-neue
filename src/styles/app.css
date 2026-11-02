@@ -237,7 +237,7 @@
   }
 
   ul {
-    @apply list-disc;
+    @apply list-["\25b8__"];
   }
 
   ol {

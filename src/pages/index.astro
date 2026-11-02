@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TitleHeader from '../components/TitleHeader.astro';
 import Footer from '../components/Footer.astro';
 import ExtLink from '../components/ExtLink.astro';
-import CardList from '../components/CardList.astro';
+import CardList from './_components/CardList.astro';
 import XTable from '../components/XTable.astro';
-import XList from '../components/XList.astro';
+import ExtLinkList from './_components/ExtLinkList.astro';
 
 interface Props {}
 ---
@@ -17,7 +17,7 @@ interface Props {}
     </header>
     <aside class='__lside'></aside>
     <main>
-      <h2>〜ようこそ〜</h2>
+      <h2 class='__youkoso'>〜ようこそ〜</h2>
       <p>
         ※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
       </p>
@@ -25,6 +25,7 @@ interface Props {}
         わたし、斗琴庭 暁響 (とことば あかね)
         が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
       </p>
+
       <h2>メニュー</h2>
 
       <CardList
@@ -79,77 +80,34 @@ interface Props {}
 
       <h3>各種SNS</h3>
 
-      <ul>
-        <li>
-          <p>
-            <ExtLink href='https://x.com/triethylamineq'>𝕏witter</ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://bsky.app/profile/tktb-tess.dev'>
-              Bluesky
-            </ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://misskey.io/@tessy_tktb'>Misskey.io</ExtLink>
-          </p>
-        </li>
-      </ul>
+      <ExtLinkList
+        links={[
+          { text: '𝕏witter', href: 'https://x.com/triethylamineq' },
+          { text: 'Bluesky', href: 'https://bsky.app/profile/tktb-tess.dev' },
+          { text: 'Misskey.io', href: 'https://misskey.io/@tessy_tktb' },
+        ]}
+      />
 
       <h3>その他</h3>
 
-      <ul>
-        <li>
-          <p>
-            <ExtLink href='https://www.youtube.com/@tessyrrhaqt'>
-              Youtube
-            </ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://rechord.cc/users/triethylamineq'>
-              rechord
-            </ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://migdal.jp/tessyrrhaqt'>Migdal</ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://github.com/tktb-tess'>GitHub</ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://tktb-tess.github.io'>
-              tktb-tess.github.io
-            </ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink href='https://apps.tktb-tess.dev'>
-              τὰ συστήματα (作ったアプリたち)
-            </ExtLink>
-          </p>
-        </li>
-        <li>
-          <p>
-            <ExtLink
-              href='https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit'
-            >
-              Xenharmonic_calc
-            </ExtLink>
-          </p>
-        </li>
-      </ul>
+      <ExtLinkList
+        links={[
+          { text: 'Youtube', href: 'https://www.youtube.com/@tessyrrhaqt' },
+          { text: 'rechord', href: 'https://rechord.cc/users/triethylamineq' },
+          { text: 'Migdal', href: 'https://migdal.jp/tessyrrhaqt' },
+          { text: 'GitHub', href: 'https://github.com/tktb-tess' },
+          { text: 'tktb-tess.github.io', href: 'https://tktb-tess.github.io' },
+          {
+            text: 'τὰ συστήματα (作ったアプリたち)',
+            href: 'https://apps.tktb-tess.dev',
+          },
+          {
+            text: 'Xenharmonic_calc',
+            href: 'https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit',
+            desc: '…各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。',
+          },
+        ]}
+      />
     </main>
     <aside class='__rside'></aside>
     <footer>
@@ -217,6 +175,14 @@ interface Props {}
         > a {
           @apply block;
         }
+      }
+
+      .__youkoso {
+        @apply my-figure text-center;
+      }
+
+      h2:not(.__youkoso) {
+        @apply border-b pb-1 ps-1;
       }
     }
   }

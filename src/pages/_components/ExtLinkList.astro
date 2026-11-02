@@ -5,7 +5,7 @@ interface Props {
   links: readonly {
     readonly href: string;
     readonly text: string;
-    readonly desc: string;
+    readonly desc?: string;
   }[];
 }
 
@@ -20,7 +20,7 @@ const { links } = Astro.props;
           <p>
             <ExtLink {href}>{text}</ExtLink>
           </p>
-          <p>{desc}</p>
+          {desc && <p>{desc}</p>}
         </li>
       );
     })

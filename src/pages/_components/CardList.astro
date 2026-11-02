@@ -26,22 +26,27 @@ const { data } = Astro.props;
 </ul>
 
 <style lang="postcss">
-  @reference '../styles/app.css';
+  @reference '../../styles/app.css';
 
   @layer components {
-    h3, p {
-      @apply m-0 text-text;
-    }
-
     .__card-list {
-      @apply grid grid-cols-[auto_1fr];
+      @apply grid grid-cols-[auto_1fr] gap-4 place-content-center max-inline-180 mx-auto;
 
       > li {
         @apply contents;
       }
 
-      > * > a {
-        @apply grid grid-cols-subgrid col-span-full;
+      a {
+        @apply grid grid-cols-subgrid col-span-full no-underline bg-accent px-4 py-2
+          rounded-sm hover-focus:bg-accent/80 transition-colors;
+      }
+
+      h3, p {
+        @apply text-textinv m-0 self-center-safe;
+      }
+
+      h3 {
+        @apply justify-self-end-safe font-sans font-extralight;
       }
     }
   }

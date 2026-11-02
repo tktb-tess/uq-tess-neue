@@ -86,15 +86,15 @@ const headCols = typeof h_ === 'number' ? [...Array(rowNum)].map(() => h_) : h_;
                   } = opt;
 
                   return (
-                    <td {colspan} {rowspan} class={cName}>
+                    <th {colspan} {rowspan} class={cName}>
                       {rawHTML ? <Fragment set:html={text} /> : text}
-                    </td>
+                    </th>
                   );
                 }
               })}
               {tds.map((cell) => {
                 if (typeof cell === 'string') {
-                  return <th>{cell}</th>;
+                  return <td>{cell}</td>;
                 } else {
                   const [text, opt] = cell;
                   const {
