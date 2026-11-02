@@ -1,0 +1,28 @@
+---
+import ExtLink from '../../components/ExtLink.astro';
+
+interface Props {
+  links: readonly {
+    readonly href: string;
+    readonly text: string;
+    readonly desc: string;
+  }[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul>
+  {
+    links.map(({ href, text, desc }) => {
+      return (
+        <li>
+          <p>
+            <ExtLink {href}>{text}</ExtLink>
+          </p>
+          <p>{desc}</p>
+        </li>
+      );
+    })
+  }
+</ul>

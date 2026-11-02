@@ -24,3 +24,25 @@ const { data } = Astro.props;
     })
   }
 </ul>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    h3, p {
+      @apply m-0 text-text;
+    }
+
+    .__card-list {
+      @apply grid grid-cols-[auto_1fr];
+
+      > li {
+        @apply contents;
+      }
+
+      > * > a {
+        @apply grid grid-cols-subgrid col-span-full;
+      }
+    }
+  }
+</style>

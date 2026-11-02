@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import ExtLink from '../components/ExtLink.astro';
 import CardList from '../components/CardList.astro';
 import XTable from '../components/XTable.astro';
+import XList from '../components/XList.astro';
 
 interface Props {}
 ---
@@ -41,6 +42,7 @@ interface Props {}
       <h2>頂いた名前</h2>
 
       <XTable
+        headColNum={0}
         data={[
           ['種類', '作者', '名'],
           [
@@ -55,7 +57,6 @@ interface Props {}
             ],
           ],
         ]}
-        headColNum={0}
       />
       <h2>相互リンク</h2>
 
@@ -63,8 +64,8 @@ interface Props {}
         敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。
       </p>
 
-      <div class='flex my-figure'>
-        <a href='https://kaeru2193.net' target='_blank' class='block'>
+      <div class='__banners'>
+        <a href='https://kaeru2193.net' target='_blank'>
           <img
             src='https://kaeru2193.net/banner.png'
             width='200'
@@ -208,6 +209,14 @@ interface Props {}
 
       .__rside {
         grid-area: r;
+      }
+
+      .__banners {
+        @apply flex my-figure gap-4;
+
+        > a {
+          @apply block;
+        }
       }
     }
   }
