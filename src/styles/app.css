@@ -57,7 +57,7 @@
 
   --color-violet-dark: oklch(from var(--color-violet-950) 20% 0.06 h);
 
-  --color-side: light-dark(var(--color-violet-100), var(--color-violet-950));
+  --color-side: light-dark(var(--color-violet-100), var(--color-violet-dark));
   --color-main: canvas;
   --color-text: canvasText;
   --color-textpale: oklch(from canvasText l c h / 60%);

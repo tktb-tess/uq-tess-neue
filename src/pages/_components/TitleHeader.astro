@@ -1,15 +1,16 @@
 ---
-import { SITE_NAME } from '../modules/consts';
+import { SITE_NAME } from '../../modules/consts';
 
 interface Props {}
 ---
 
-<div class="__title">
+<div class='__title'>
   <svg
     viewBox='0 0 720 720'
     version='1.1'
     id='site-logo'
     class='__site-logo'
+    fill='currentColor'
     xml:space='preserve'
     xmlns:xlink='http://www.w3.org/1999/xlink'
     xmlns='http://www.w3.org/2000/svg'
@@ -20,25 +21,27 @@ interface Props {}
     >
     </path>
   </svg>
-  <h1 class="__name">{SITE_NAME}</h1>
+  <h1 class='__name'>{SITE_NAME}</h1>
 </div>
 
 <style lang="postcss">
-  @reference '../styles/app.css';
+  @reference '../../styles/app.css';
 
   @layer components {
     .__title {
-      @apply grid block-lvh grid-rows-[1fr_auto] py-8 gap-8;
+      @apply grid block-lvh grid-rows-[2fr_1fr] place-items-center-safe py-12 overflow-clip bg-black text-white;
+      --start: hsl(270 100 40 / 40%);
+      background-image: linear-gradient(to bottom right in oklch, var(--start), transparent 80%);
     }
     
     .__site-logo {
-      @apply block-[90%];
+      @apply block-full;
     }
 
     .__name {
-      @apply text-7xl font-extralight mx-auto;
+      @apply mx-auto px-4 text-7xl xl:text-8xl font-extralight italic -skew-4;
       text-align-last: justify;
-      inline-size: min(1200px, 100%);
+      inline-size: min(960px, 100%);
     }
   }
 </style>
