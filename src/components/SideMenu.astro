@@ -16,15 +16,15 @@ const conlangs: readonly Item[] = [
 <nav aria-label='サイドメニュー'>
   <details name='side-menu-drawers'>
     <summary>CONLANGS</summary>
-    <ul class='__drawer-list'></ul>
+    <ul></ul>
   </details>
   <details name='side-menu-drawers'>
     <summary>DATA</summary>
-    <ul class='__drawer-list'></ul>
+    <ul></ul>
   </details>
   <details name='side-menu-drawers'>
     <summary>MISCELLANEOUS</summary>
-    <ul class='__drawer-list'></ul>
+    <ul></ul>
   </details>
 </nav>
 
@@ -38,6 +38,15 @@ const conlangs: readonly Item[] = [
 
     details {
       @apply block;
+    }
+
+    summary {
+      @apply grid;
+    }
+
+    /** for Safari */
+    summary::-webkit-details-marker {
+      @apply hidden;
     }
   }
 </style>
