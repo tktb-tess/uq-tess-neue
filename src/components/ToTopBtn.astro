@@ -1,0 +1,55 @@
+---
+interface Props {}
+---
+
+<button id='to-top-btn' aria-label='ページトップに戻る'>
+  <div class='arrow'></div>
+</button>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    #to-top-btn {
+      @apply hidden data-visible:grid fixed inset-e-6 inset-be-6 bg-accent p-4 rounded-sm
+        hover-focus:[&_.arrow]:-translate-y-0.5 hover-focus:bg-accent/70
+        opacity-0 data-visible:opacity-100
+        transition-[background-color,opacity,display] transition-discrete data-visible:starting:opacity-0;
+    }
+
+    .arrow {
+      @apply size-2 border-l-2 border-t-2 border-textinv translate-y-0.5 rotate-45
+        transition-transform;
+    }
+  }
+</style>
+
+<script>
+  const toTopBtn = document.getElementById('to-top-btn');
+  const getTag = (o: unknown) => Object.prototype.toString.call(o);
+  let id: number | undefined;
+
+  if (!(toTopBtn instanceof HTMLButtonElement)) {
+    throw TypeError(`toTopBtn is not HTMLButtonElement\n${getTag(toTopBtn)}`);
+  }
+
+  toTopBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    window.scroll({ top: 0, behavior: 'smooth' });
+  });
+
+  document.addEventListener('scroll', () => {
+    if (id != null) {
+      clearTimeout(id);
+    }
+
+    id = setTimeout(() => {
+      if (scrollY > 400) {
+        toTopBtn.setAttribute('data-visible', '');
+      } else {
+        toTopBtn.removeAttribute('data-visible');
+      }
+      id = undefined;
+    }, 100);
+  });
+</script>

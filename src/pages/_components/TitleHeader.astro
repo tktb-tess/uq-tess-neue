@@ -4,12 +4,12 @@ import { SITE_NAME } from '../../modules/consts';
 interface Props {}
 ---
 
-<div class='__title'>
+<div class='__title-header-root'>
   <svg
     viewBox='0 0 720 720'
     version='1.1'
     id='site-logo'
-    class='__site-logo'
+    class='__logo'
     fill='currentColor'
     xml:space='preserve'
     xmlns:xlink='http://www.w3.org/1999/xlink'
@@ -28,18 +28,18 @@ interface Props {}
   @reference '../../styles/app.css';
 
   @layer components {
-    .__title {
+    .__title-header-root {
       @apply grid block-lvh grid-rows-[2fr_1fr] place-items-center-safe py-12 overflow-clip bg-black text-white;
       --start: hsl(270 100 40 / 40%);
       background-image: linear-gradient(to bottom right in oklch, var(--start), transparent 80%);
     }
     
-    .__site-logo {
+    .__logo {
       @apply block-full;
     }
 
     .__name {
-      @apply mx-auto px-4 text-7xl xl:text-8xl font-extralight italic -skew-4;
+      @apply mx-auto px-4 text-7xl 2xl:text-8xl font-extralight italic -skew-4;
       text-align-last: justify;
       inline-size: min(960px, 100%);
     }
