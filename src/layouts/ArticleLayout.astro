@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import BreadCrumb from '../components/BreadCrumb.astro';
 import XFooter from '../components/XFooter.astro';
 import XHeader from '../components/XHeader.astro';
+import SideMenu from '../components/SideMenu.astro';
 import { getPageData, type PageData } from '../modules/data';
 import { SITE_NAME } from '../modules/consts';
 
@@ -23,7 +24,9 @@ const h1Title = isHome ? SITE_NAME : title;
     <header>
       <XHeader title={h1Title} />
     </header>
-    <aside class='__lside'></aside>
+    <aside class='__lside'>
+      <SideMenu />
+    </aside>
     <main>
       <BreadCrumb path={pathname} />
       <div class='__main-contents'>
@@ -74,7 +77,7 @@ const h1Title = isHome ? SITE_NAME : title;
       }
 
       main {
-        @apply px-4 pbe-36 bg-main min-block-lvh;
+        @apply px-gutter pbe-36 bg-main min-block-lvh;
         grid-area: m;
       }
 

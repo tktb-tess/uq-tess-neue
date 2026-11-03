@@ -1,3 +1,43 @@
 ---
 interface Props {}
+
+interface Item {
+  readonly text: string;
+  readonly href: string;
+}
+
+const conlangs: readonly Item[] = [
+  { text: 'Venzlendisç', href: '/venz/' },
+  { text: 'Venzlendisç 音韻論', href: '/venz/phonology/' },
+  { text: 'Venzlendisç 正書法', href: '/venz/orthography/' },
+];
 ---
+
+<nav aria-label='サイドメニュー'>
+  <details name='side-menu-drawers'>
+    <summary>CONLANGS</summary>
+    <ul class='__drawer-list'></ul>
+  </details>
+  <details name='side-menu-drawers'>
+    <summary>DATA</summary>
+    <ul class='__drawer-list'></ul>
+  </details>
+  <details name='side-menu-drawers'>
+    <summary>MISCELLANEOUS</summary>
+    <ul class='__drawer-list'></ul>
+  </details>
+</nav>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    nav {
+      @apply flex flex-col;
+    }
+
+    details {
+      @apply block;
+    }
+  }
+</style>
