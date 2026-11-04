@@ -7,24 +7,85 @@ interface Item {
 }
 
 const conlangs: readonly Item[] = [
+  { text: '概要', href: '/' },
   { text: 'Venzlendisç', href: '/venz/' },
-  { text: 'Venzlendisç 音韻論', href: '/venz/phonology/' },
-  { text: 'Venzlendisç 正書法', href: '/venz/orthography/' },
+  { text: 'Jasunielu', href: '/jasu/' },
 ];
+
+const data: readonly Item[] = [
+  { text: '概要', href: '/' },
+  { text: '100の質問', href: '/100_shitsumon/' },
+  { text: 'Ænglisċ', href: '/aenglisc/' },
+  { text: 'Proto-Germanic', href: '/pgmc/' },
+  { text: 'Suomi', href: '/suomi/' },
+  { text: 'Türkçe', href: '/turkce/' },
+];
+const miscs: readonly Item[] = [
+  { text: '概要', href: '/' },
+  { text: 'グレゴリオ聖歌について', href: '/gregorian_chants/' },
+  { text: '音楽', href: '/musiken/' },
+];
+
+const name = 'sm-accordions';
 ---
 
-<nav aria-label='サイドメニュー'>
-  <details name='side-menu-drawers'>
-    <summary>CONLANGS</summary>
-    <ul></ul>
+<nav class='__sidemenu-root' aria-label='サイドメニュー'>
+  <details {name}>
+    <summary>
+      <p>CONLANG</p>
+    </summary>
+    <div class='__content'>
+      <ul>
+        {
+          conlangs.map(({ text, href: h_ }) => {
+            const href = `/conlang${h_}`;
+            return (
+              <li>
+                <a {href}>{text}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
   </details>
-  <details name='side-menu-drawers'>
-    <summary>DATA</summary>
-    <ul></ul>
+  <details {name}>
+    <summary>
+      <p>DATA</p>
+    </summary>
+    <div class='__content'>
+      <ul>
+        {
+          data.map(({ text, href: h_ }) => {
+            const href = `/data${h_}`;
+            return (
+              <li>
+                <a {href}>{text}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
   </details>
-  <details name='side-menu-drawers'>
-    <summary>MISCELLANEOUS</summary>
-    <ul></ul>
+  <details {name}>
+    <summary>
+      <p>MISC</p>
+    </summary>
+    <div class='__content'>
+      <ul>
+        {
+          miscs.map(({ text, href: h_ }) => {
+            const href = `/misc${h_}`;
+            return (
+              <li>
+                <a {href}>{text}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
   </details>
 </nav>
 
@@ -32,21 +93,73 @@ const conlangs: readonly Item[] = [
   @reference '../styles/app.css';
 
   @layer components {
-    nav {
-      @apply flex flex-col;
-    }
+    .__sidemenu-root {
+      @apply flex flex-col mx-4 my-2;
 
-    details {
-      @apply block;
-    }
+      details {
+        @apply block;
 
-    summary {
-      @apply grid;
-    }
+        summary {
+          @apply block cursor-pointer px-1
+            text-3xl font-extralight rounded
+            hover-focus:bg-accent hover-focus:text-textinv
+            transition-colors;
+        }
 
-    /** for Safari */
-    summary::-webkit-details-marker {
-      @apply hidden;
+        &::details-content {
+          @apply transition-[height,content-visibility] transition-discrete
+            duration-260 overflow-y-clip;
+        }
+
+        &:not([open])::details-content {
+          @apply block-0;
+        }
+
+        &[open]::details-content {
+          @apply block-(--open-height);
+        }
+      }
+
+      ul {
+        @apply flex flex-col list-none m-0
+          transition-[height];
+
+        li {
+          @apply block m-0;
+        }
+
+        a {
+          @apply block px-2 py-1 rounded
+            no-underline text-text
+            hover-focus:bg-accent hover-focus:text-textinv
+            transition-colors;
+        }
+      }
+
+      /** for Safari */
+      summary::-webkit-details-marker {
+        @apply hidden;
+      }
     }
   }
 </style>
+
+<script>
+  const f = (o: unknown) => Object.prototype.toString.call(o);
+  const details = document.querySelectorAll('.__sidemenu-root > details');
+
+  for (const d of details) {
+    if (!(d instanceof HTMLDetailsElement)) {
+      throw TypeError(`'d' is not HTMLDetailsElement\n${f(d)}`);
+    }
+
+    const c = d.querySelector('.__content');
+
+    if (!(c instanceof HTMLDivElement)) {
+      throw TypeError(`'c' is not HTMLDivElement\n${f(d)}`);
+    }
+
+    const openHeight = `${c.scrollHeight + 4}px`;
+    d.style.setProperty('--open-height', openHeight);
+  }
+</script>

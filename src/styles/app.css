@@ -124,12 +124,6 @@
   grid-template-columns: repeat(auto-fit, minmax(min(--value([*]), 100%), 1fr));
 }
 
-@utility allow-discrete {
-  @supports (transition-behavior: allow-discrete) {
-    transition-behavior: allow-discrete;
-  }
-}
-
 @custom-variant any-hover {
   @media (any-hover: hover) {
     &:hover {

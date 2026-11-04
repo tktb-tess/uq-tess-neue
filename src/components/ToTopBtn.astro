@@ -3,7 +3,7 @@ interface Props {}
 ---
 
 <button id='to-top-btn' aria-label='ページトップに戻る'>
-  <div class='arrow'></div>
+  <div></div>
 </button>
 
 <style lang="postcss">
@@ -11,15 +11,19 @@ interface Props {}
 
   @layer components {
     #to-top-btn {
-      @apply hidden data-visible:grid fixed inset-e-6 inset-be-6 bg-accent p-4 rounded-sm
-        hover-focus:[&_.arrow]:-translate-y-0.5 hover-focus:bg-accent/70
-        opacity-0 data-visible:opacity-100
-        transition-[background-color,opacity,display] transition-discrete data-visible:starting:opacity-0;
+      @apply hidden fixed inset-e-6 inset-be-6 p-4 rounded-sm
+        hover-focus:[&>div]:-translate-y-0.5
+        bg-accent hover-focus:bg-accent/70 opacity-0
+        transition-[background-color,opacity,display] transition-discrete;
+
+      &[data-visible] {
+        @apply grid opacity-100 starting:opacity-0;
+      }
     }
 
-    .arrow {
-      @apply size-2 border-l-2 border-t-2 border-textinv translate-y-0.5 rotate-45
-        transition-transform;
+    #to-top-btn > :where(div) {
+      @apply size-2 border-l-2 border-t-2 border-textinv
+        translate-y-0.5 rotate-45 transition-transform;
     }
   }
 </style>
