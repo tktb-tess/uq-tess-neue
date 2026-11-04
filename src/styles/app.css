@@ -74,6 +74,7 @@
   --color-link-disabled: light-dark(hsl(0 0 0 / 60%), hsl(0 0 100 / 40%));
   --color-caution: light-dark(var(--color-red-600), var(--color-yellow-300));
   --color-code-bg: light-dark(hsl(210 10 90), hsl(210 10 20));
+
   --default-transition-duration: 120ms;
   --default-transition-timing-function: cubic-bezier(0.25, 0, 0.1, 1);
 

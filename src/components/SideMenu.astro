@@ -95,20 +95,25 @@ const name = 'sm-accordions';
   @layer components {
     .__sidemenu-root {
       @apply flex flex-col mx-4 my-2;
+      --sidemenu-dur: 260ms;
 
       details {
-        @apply block;
+        @apply block rounded-sm transition-colors duration-(--sidemenu-dur);
 
         summary {
-          @apply block cursor-pointer px-1
-            text-3xl font-extralight rounded
+          @apply block cursor-pointer px-2 py-1
+            text-3xl font-extralight
             hover-focus:bg-accent hover-focus:text-textinv
-            transition-colors;
+            transition-colors rounded-sm;
+        }
+
+        &[open] {
+          @apply bg-accent text-textinv;
         }
 
         &::details-content {
           @apply transition-[height,content-visibility] transition-discrete
-            duration-260 overflow-y-clip;
+            duration-(--sidemenu-dur) overflow-y-clip;
         }
 
         &:not([open])::details-content {
@@ -121,18 +126,15 @@ const name = 'sm-accordions';
       }
 
       ul {
-        @apply flex flex-col list-none m-0
-          transition-[height];
+        @apply flex flex-col list-none m-0;
 
         li {
           @apply block m-0;
         }
 
         a {
-          @apply block px-2 py-1 rounded
-            no-underline text-text
-            hover-focus:bg-accent hover-focus:text-textinv
-            transition-colors;
+          @apply block px-3 py-1 no-underline bg-accent text-textinv
+            hover-focus:bg-accent-lighter transition-colors;
         }
       }
 
@@ -159,7 +161,7 @@ const name = 'sm-accordions';
       throw TypeError(`'c' is not HTMLDivElement\n${f(d)}`);
     }
 
-    const openHeight = `${c.scrollHeight + 4}px`;
+    const openHeight = `${c.scrollHeight + 2}px`;
     d.style.setProperty('--open-height', openHeight);
   }
 </script>
