@@ -61,9 +61,12 @@ const h1Title = isHome ? SITE_NAME : title;
 
       header,
       main,
-      footer,
-      aside {
+      footer {
         @apply flow-root;
+      }
+
+      aside {
+        @apply max-xl:hidden xl:flow-root;
       }
 
       header,
