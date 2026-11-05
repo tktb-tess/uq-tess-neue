@@ -94,21 +94,32 @@ const name = 'sm-accordions';
 
   @layer components {
     .__sidemenu-root {
-      @apply flex flex-col mx-4 my-2;
+      @apply flex flex-col mx-4 my-2 gap-4;
       --sidemenu-dur: 260ms;
 
       details {
-        @apply block rounded-sm transition-colors duration-(--sidemenu-dur);
+        @apply flow-root;
 
         summary {
           @apply block cursor-pointer px-2 py-1
             text-3xl font-extralight
             hover-focus:bg-accent hover-focus:text-textinv
-            transition-colors rounded-sm;
+            select-none;
         }
 
-        &[open] {
-          @apply bg-accent text-textinv;
+        summary,
+        a {
+          @apply transition-colors;
+        }
+
+        /* for Safari */
+        summary::-webkit-details-marker {
+          @apply hidden;
+        }
+
+        &[open] :where(summary),
+        a {
+          @apply bg-accent text-textinv hover-focus:bg-accent-lighter;
         }
 
         &::details-content {
@@ -121,47 +132,46 @@ const name = 'sm-accordions';
         }
 
         &[open]::details-content {
-          @apply block-(--open-height);
+          @apply block-(--open-height,max-content);
         }
-      }
 
-      ul {
-        @apply flex flex-col list-none m-0;
+        ul {
+          @apply flex flex-col list-none m-0;
+        }
 
         li {
           @apply block m-0;
         }
 
         a {
-          @apply block px-3 py-1 no-underline bg-accent text-textinv
-            hover-focus:bg-accent-lighter transition-colors;
+          @apply block px-3 py-1 no-underline;
         }
-      }
-
-      /** for Safari */
-      summary::-webkit-details-marker {
-        @apply hidden;
       }
     }
   }
 </style>
 
 <script>
-  const f = (o: unknown) => Object.prototype.toString.call(o);
-  const details = document.querySelectorAll('.__sidemenu-root > details');
+  const getTag = (o: unknown) => Object.prototype.toString.call(o);
+  const detailsSet = document.querySelectorAll('.__sidemenu-root > details');
 
-  for (const d of details) {
-    if (!(d instanceof HTMLDetailsElement)) {
-      throw TypeError(`'d' is not HTMLDetailsElement\n${f(d)}`);
+  for (const details of detailsSet) {
+    if (!(details instanceof HTMLDetailsElement)) {
+      throw TypeError(
+        `'details' is not HTMLDetailsElement\n${getTag(details)}`,
+        { cause: details },
+      );
     }
 
-    const c = d.querySelector('.__content');
+    const content = details.querySelector('.__content');
 
-    if (!(c instanceof HTMLDivElement)) {
-      throw TypeError(`'c' is not HTMLDivElement\n${f(d)}`);
+    if (!(content instanceof HTMLDivElement)) {
+      throw TypeError(`'content' is not HTMLDivElement\n${getTag(content)}`, {
+        cause: content,
+      });
     }
 
-    const openHeight = `${c.scrollHeight + 2}px`;
-    d.style.setProperty('--open-height', openHeight);
+    const openHeight = `${content.scrollHeight + 1}px`;
+    details.style.setProperty('--open-height', openHeight);
   }
 </script>

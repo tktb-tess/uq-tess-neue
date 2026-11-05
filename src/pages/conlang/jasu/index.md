@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/MdLayout.astro
-title: ヤスニエル語
+title: 古典ヤスニエル語
 ---
 
 ### 目次
