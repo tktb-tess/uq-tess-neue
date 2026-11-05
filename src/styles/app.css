@@ -181,12 +181,14 @@
 
   h2,
   h3,
-  h4 {
-    @apply font-normal text-accent font-serif;
+  h4,
+  h5,
+  h6 {
+    @apply font-medium text-accent font-serif;
   }
 
   h2 {
-    @apply text-3xl;
+    @apply text-3xl border-s-3 border-be ps-2 pbe-1;
   }
 
   h3 {
@@ -286,7 +288,8 @@
     }
 
     :where(td, th) {
-      @apply text-base py-1.25 px-2.5;
+      @apply text-base text-start py-1.25 px-2.5;
+      word-break: normal;
     }
   }
 
@@ -333,7 +336,7 @@
   }
 
   :has(> .anchor-link) {
-    @apply relative inline-fit me-auto;
+    @apply relative;
 
     @media (any-hover: hover) {
       &:hover > .anchor-link {
@@ -343,7 +346,7 @@
   }
 
   .anchor-link {
-    @apply max-md:hidden absolute -inset-e-6 inset-bs-[calc(50%-0.5rem)] opacity-0 transition-opacity duration-140 text-text;
+    @apply max-md:hidden absolute -inset-s-6 inset-bs-[calc(50%-0.5rem)] opacity-0 transition-opacity duration-140 text-text;
 
     :where(svg) {
       @apply inline-4 block-auto fill-current;

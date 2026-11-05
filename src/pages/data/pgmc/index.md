@@ -3,9 +3,9 @@ layout: ../../../layouts/MdLayout.astro
 title: ゲルマン祖語 データ
 ---
 
-- [音韻法則](/memo/pgmc/sound_laws/)
-- [名詞](/memo/pgmc/noun/)
-<!-- - [動詞](/memo/pgmc/verb/) -->
+- [音韻法則](/data/pgmc/sound_laws/)
+- [名詞](/data/pgmc/noun/)
+<!-- - [動詞](/data/pgmc/verb/) -->
 
 ## 略記
 
