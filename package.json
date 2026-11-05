@@ -19,6 +19,7 @@
     "@astrojs/svelte": "^9.1.1",
     "@shikijs/transformers": "^4.5.0",
     "@tailwindcss/vite": "^4.3.3",
+    "@tktb-tess/util-fns": "^0.13.7",
     "@types/hast": "^3.0.5",
     "@types/mdast": "^4.0.4",
     "astro": "^7.4.2",

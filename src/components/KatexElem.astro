@@ -1,0 +1,22 @@
+---
+import { renderToString, type KatexOptions } from 'katex';
+
+interface Props {
+  source: string;
+  options?: KatexOptions;
+}
+
+const { source, options } = Astro.props;
+---
+
+<span class='katex-root' set:html={renderToString(source, options)} />
+
+<style lang="postcss">
+  @reference '../styles/global.css';
+
+  @layer components {
+    .katex-root {
+      @apply px-0.5;
+    }
+  }
+</style>

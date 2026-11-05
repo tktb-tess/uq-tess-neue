@@ -1,0 +1,22 @@
+---
+import Layout from '../../../../layouts/ArticleLayout.astro';
+import Calculator from './_components/Calculator.svelte';
+import KatexElem from '../../../../components/KatexElem.astro';
+---
+
+<Layout>
+  <p>
+    <KatexElem source='4n + 1' /> 型素数は2つの平方数の和に分解できる。
+    <KatexElem source='5 = 2^2 + 1^2, 13 = 3^2 + 2^2' />
+    などのように。それを計算するツール。
+  </p>
+  <p>合成数の場合は</p>
+  <KatexElem
+    source='(a^2 + b^2)(c^2 + d^2) = (ac + bd)^2 + (ad - bc)^2'
+    options={{ displayMode: true }}
+  />
+  <p>
+    という恒等式を利用することで、<KatexElem source='4n + 1' /> 型素数の2平方和表示の積から2平方和表示を得られる。
+  </p>
+  <Calculator client:load />
+</Layout>
