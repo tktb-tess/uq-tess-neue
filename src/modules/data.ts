@@ -7,6 +7,7 @@ export type PageDataMap = ReadonlyMap<string, PageData>;
 
 const pageDataMap: PageDataMap = new Map([
   ['/misc/musiken/', { title: '音楽', description: '作曲は楽しいぞ' }],
+  ['/data/math/4n_1_sum_of_sq/', { title: '4n + 1型素数を2平方和に分解' }],
 ]);
 
 export function getPageData(path: string): PageData {

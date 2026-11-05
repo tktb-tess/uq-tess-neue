@@ -84,7 +84,7 @@
 </div>
 
 <style lang="postcss">
-  @reference '../styles/global.css';
+  @reference '../../../../../styles/app.css';
 
   @layer components {
     .__cornacchia {

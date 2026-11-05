@@ -12,7 +12,7 @@ const { source, options } = Astro.props;
 <span class='katex-root' set:html={renderToString(source, options)} />
 
 <style lang="postcss">
-  @reference '../styles/global.css';
+  @reference '../styles/app.css';
 
   @layer components {
     .katex-root {
