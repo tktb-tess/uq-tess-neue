@@ -19,6 +19,7 @@ const linkSvgContent = fromHtmlIsomorphic(linkSvg, { fragment: true })
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  site: 'https://tktb-tess.dev',
   integrations: [svelte()],
   vite: {
     plugins: [tailwindcss()],
