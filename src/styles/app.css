@@ -36,8 +36,8 @@
     'Inter-Variable', 'Arial', 'Helvetica Neue', 'noto-for-title',
     'Noto Sans JP', sans-serif, 'Segoe UI';
   --font-serif:
-    'Charis-Web', 'Times New Roman', 'noto-serif-jp', 'BIZ UDPMincho',
-    'Hiragino Mincho ProN', 'Hiragino Serif', serif, 'Segoe UI';
+    'Charis-Web', 'Times New Roman', 'noto-serif-jp', 'Noto Serif JP',
+    'BIZ UDPMincho', 'Hiragino Mincho ProN', 'Hiragino Serif', serif, 'Segoe UI';
   --font-ipa: var(--font-serif);
   --font-phun-dot: 'PhunDot', var(--font-sans);
 
