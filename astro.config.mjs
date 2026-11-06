@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import svelte from '@astrojs/svelte';
 import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark';
+import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkDirective from 'remark-directive';
@@ -15,7 +16,7 @@ import * as H from './plugins/handlers';
 export default defineConfig({
   output: 'static',
   site: 'https://tktb-tess.dev',
-  integrations: [svelte()],
+  integrations: [svelte(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
