@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/MdLayout.astro
-title: フィンランド語 名詞 格変化
+title: フィンランド語 格変化
 ---
 
 ### 目次

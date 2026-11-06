@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/MdLayout.astro
-title: ゲルマン祖語 データ
+title: ゲルマン祖語
 ---
 
 - [音韻法則](/data/pgmc/sound_laws/)

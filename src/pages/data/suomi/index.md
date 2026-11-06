@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/MdLayout.astro
-title: フィンランド語 データ
+title: フィンランド語
 ---
 
-- [名詞 格変化](/data/suomi/noun_declension/)
+- [格変化](/data/suomi/noun_declension/)

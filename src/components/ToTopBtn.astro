@@ -2,9 +2,7 @@
 interface Props {}
 ---
 
-<button id='to-top-btn' aria-label='ページトップに戻る'>
-  <div></div>
-</button>
+<button id='to-top-btn' aria-label='ページトップに戻る'></button>
 
 <style lang="postcss">
   @reference '../styles/app.css';
@@ -12,7 +10,7 @@ interface Props {}
   @layer components {
     #to-top-btn {
       @apply hidden fixed inset-e-6 inset-be-6 p-4 rounded-sm
-        hover-focus:[&>div]:-translate-y-0.5
+        hover-focus:[&::before]:-translate-y-0.5
         bg-accent hover-focus:bg-accent/70 opacity-0
         transition-[background-color,opacity,display] transition-discrete;
 
@@ -21,7 +19,8 @@ interface Props {}
       }
     }
 
-    #to-top-btn > :where(div) {
+    #to-top-btn::before {
+      content: '';
       @apply size-2 border-l-2 border-t-2 border-textinv
         translate-y-0.5 rotate-45 transition-transform;
     }

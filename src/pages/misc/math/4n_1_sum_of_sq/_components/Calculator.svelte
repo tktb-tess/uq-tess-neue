@@ -34,8 +34,9 @@
         sum: [m, n],
         pyth: a,
       });
-    } catch (cause) {
-      return Failed(new Error('unexpected error', { cause }));
+    } catch (e) {
+      console.error(e);
+      return Failed(new Error('unexpected error', { cause: e }));
     }
   });
 </script>
