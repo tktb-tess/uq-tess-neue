@@ -91,7 +91,7 @@
   --spacing-title-mb: 3rem;
   --spacing-min-side: 14rem;
   --spacing-max-main: 72rem;
-  --spacing-gutter: 1rem;
+  --spacing-gutter: 1.5rem;
 }
 
 /* utilities */
@@ -336,11 +336,21 @@
   }
 
   .auto-link {
-    @apply text-[unset] relative;
+    @apply relative text-[unset] hover-focus:[&::before]:visible hover-focus:[&::before]:opacity-100;
 
-    .anchor {
-      @apply absolute inset-e-4 text-sm;
+    &::before {
+      content: '🔗';
+
+      @apply absolute inset-bs-[calc(50%-.5em)] text-[.6em] leading-none;
     }
+  }
+
+  :not(h2) > .auto-link::before {
+    @apply -inset-s-5;
+  }
+
+  h2 > .auto-link::before {
+    @apply -inset-s-8.5;
   }
 
   .ext-link-icon {

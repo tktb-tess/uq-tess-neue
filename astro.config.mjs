@@ -10,7 +10,6 @@ import remarkToc from 'remark-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { transformerNotationDiff } from '@shikijs/transformers';
 import * as H from './plugins/handlers';
-import { h } from 'hastscript';
 
 // https://astro.build/config
 export default defineConfig({
@@ -49,11 +48,6 @@ export default defineConfig({
             properties: {
               className: ['auto-link'],
             },
-            content: h(
-              'span.anchor',
-              {},
-              { type: 'text', value: '🔗' },
-            ),
           },
         ],
       ],
