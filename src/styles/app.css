@@ -335,21 +335,11 @@
     @apply font-semibold;
   }
 
-  :has(> .anchor-link) {
-    @apply relative;
+  .auto-link {
+    @apply text-[unset] relative;
 
-    @media (any-hover: hover) {
-      &:hover > .anchor-link {
-        @apply opacity-100;
-      }
-    }
-  }
-
-  .anchor-link {
-    @apply max-md:hidden absolute -inset-s-6 inset-bs-[calc(50%-0.5rem)] opacity-0 transition-opacity duration-140 text-text;
-
-    :where(svg) {
-      @apply inline-4 block-auto fill-current;
+    .anchor {
+      @apply absolute inset-e-4 text-sm;
     }
   }
 

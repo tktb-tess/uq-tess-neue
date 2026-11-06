@@ -171,3 +171,5 @@ export const tableHandler: Handler = (_, node: Mdast.Table) => {
 
   return h('div.table-container', table);
 };
+
+

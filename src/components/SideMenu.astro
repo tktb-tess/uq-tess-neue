@@ -20,13 +20,14 @@ const data: readonly Item[] = [
   { text: 'Suomi', href: '/suomi/' },
   { text: 'Türkçe', href: '/turkce/' },
 ];
+
 const miscs: readonly Item[] = [
   { text: '概要', href: '/' },
   { text: 'グレゴリオ聖歌について', href: '/gregorian_chants/' },
   { text: '音楽', href: '/musiken/' },
 ];
 
-const name = 'sm-accordions';
+const name = 'sidemenu-accordion';
 ---
 
 <nav class='__sidemenu-root' aria-label='サイドメニュー'>
@@ -94,7 +95,7 @@ const name = 'sm-accordions';
 
   @layer components {
     .__sidemenu-root {
-      @apply flex flex-col mx-4 my-2 gap-4;
+      @apply flex flex-col mx-4 py-2 gap-4 sticky inset-bs-0 text-start;
       --sidemenu-dur: 260ms;
 
       details {
