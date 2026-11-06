@@ -1,0 +1,64 @@
+---
+type Heading = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+interface Props {
+  readonly h: Heading;
+  readonly text: string;
+}
+
+const { h, text } = Astro.props;
+const id = encodeURIComponent(text);
+const href = `#${id}`;
+---
+
+{
+  () => {
+    switch (h) {
+      case 'h2': {
+        return (
+          <h2 {id}>
+            <a class='auto-link' {href}>
+              {text}
+            </a>
+          </h2>
+        );
+      }
+      case 'h3': {
+        return (
+          <h3 {id}>
+            <a class='auto-link' {href}>
+              {text}
+            </a>
+          </h3>
+        );
+      }
+      case 'h4': {
+        return (
+          <h4 {id}>
+            <a class='auto-link' {href}>
+              {text}
+            </a>
+          </h4>
+        );
+      }
+      case 'h5': {
+        return (
+          <h5 {id}>
+            <a class='auto-link' {href}>
+              {text}
+            </a>
+          </h5>
+        );
+      }
+      case 'h6': {
+        return (
+          <h6 {id}>
+            <a class='auto-link' {href}>
+              {text}
+            </a>
+          </h6>
+        );
+      }
+    }
+  }
+}

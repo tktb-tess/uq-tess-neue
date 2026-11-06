@@ -8,6 +8,7 @@ title: データ
 - [ゲルマン祖語（未完成）](/data/pgmc/)
 - [フィンランド語（未完成）](/data/suomi/)
 - [トルコ語（未完成）](/data/turkce/)
+- [いろんなヨーロッパの言語でラトビア・リトアニア](/data/lv_lt/)
 - :exl[人工言語ガチャ]{h=https://apps.tktb-tess.dev/conlang-gacha}
 
   …日本語圏の人工言語をランダムに1つ表示する。

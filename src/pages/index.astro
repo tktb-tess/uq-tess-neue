@@ -3,8 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TitleHeader from './_components/TitleHeader.astro';
 import XFooter from '../components/XFooter.astro';
 import CardList from './_components/CardList.astro';
-import XTable from '../components/XTable.astro';
+import ExtLink from '../components/ExtLink.astro';
 import ExtLinkList from './_components/ExtLinkList.astro';
+import Heading from './_components/Heading.astro';
 
 interface Props {}
 ---
@@ -25,7 +26,7 @@ interface Props {}
         が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
       </p>
 
-      <h2>メニュー</h2>
+      <Heading h='h2' text='メニュー' />
 
       <CardList
         data={[
@@ -39,45 +40,68 @@ interface Props {}
         ]}
       />
 
-      <h2>頂いた名前</h2>
+      <Heading h='h2' text='頂いた名前' />
 
-      <XTable
-        headColNum={0}
-        data={[
-          ['種類', '作者', '名'],
-          [
-            [
-              '<a href="https://kaeru2193.net/phunlang/name/" target="_blank">雰名</a>',
-              { rawHTML: true },
-            ],
-            'かえる',
-            [
-              '<span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)',
-              { rawHTML: true },
-            ],
-          ],
-        ]}
-      />
-      <h2>相互リンク</h2>
+      <div class='table-container'>
+        <table>
+          <thead>
+            <tr>
+              <th>種類</th>
+              <th>作者</th>
+              <th>名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <ExtLink href='https://kaeru2193.net/phunlang/name/'>
+                  雰名
+                </ExtLink>
+              </td>
+              <td>かえる</td>
+              <td>
+                <span lang='x-v3-karphnpn'>常代 方累</span> (常代 方累, Xûyâo Zùngwíl)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <Heading h='h2' text='相互リンク' />
 
       <p>
         敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。
       </p>
 
-      <div class='__banners'>
-        <a href='https://kaeru2193.net' target='_blank'>
-          <img
-            src='https://kaeru2193.net/banner.png'
-            width='200'
-            height='40'
-            alt='之機堂'
-          />
-        </a>
+      <div class='table-container'>
+        <table class='__mut-links'>
+          <thead>
+            <tr>
+              <th>管理者</th>
+              <th>サイトバナー</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>かえる</td>
+              <td>
+                <a href='https://kaeru2193.net' target='_blank'>
+                  <img
+                    src='https://kaeru2193.net/banner.png'
+                    width='200'
+                    height='40'
+                    alt='之機堂'
+                  />
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <h2>外部リンク</h2>
+      <Heading h='h2' text='外部リンク' />
 
-      <h3>各種SNS</h3>
+      <Heading h='h3' text='各種SNS' />
 
       <ExtLinkList
         links={[
@@ -87,7 +111,7 @@ interface Props {}
         ]}
       />
 
-      <h3>その他</h3>
+      <Heading h='h3' text='その他' />
 
       <ExtLinkList
         links={[
@@ -170,18 +194,14 @@ interface Props {}
       .__rside {
         grid-area: r;
       }
+    }
 
-      .__banners {
-        @apply flex my-figure gap-4;
+    .__youkoso {
+      @apply my-figure text-center p-0 border-none;
+    }
 
-        > a {
-          @apply block;
-        }
-      }
-
-      .__youkoso {
-        @apply my-figure text-center p-0 border-none;
-      }
+    .__mut-links > tbody a {
+      @apply block;
     }
   }
 </style>
