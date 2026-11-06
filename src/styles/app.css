@@ -341,7 +341,7 @@
     &::before {
       content: '🔗';
 
-      @apply absolute inset-bs-[calc(50%-.5em)] text-[.6em] leading-none;
+      @apply absolute inset-bs-[calc(50%-.5em)] text-[.6em] leading-none invisible opacity-0;
     }
   }
 
