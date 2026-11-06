@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'noto-serif-jp';
   font-display: swap;
-  src: local('Noto Serif JP'), local('Noto Serif CJK JP');
+  src: local('Noto Serif JP');
 }
 
 @font-face {

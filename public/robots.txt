@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://www.tktb-tess.dev/sitemap.xml
+Sitemap: https://tktb-tess.dev/sitemap-index.xml
