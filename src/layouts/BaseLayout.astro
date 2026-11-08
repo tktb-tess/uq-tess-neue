@@ -11,7 +11,7 @@ interface Props {
 }
 
 const pathname = Astro.originPathname;
-const { title, description } = Astro.props.pageData ?? getPageData(pathname);
+const { title, description, katex } = Astro.props.pageData ?? getPageData(pathname);
 const isHome = pathname === '/';
 const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
 ---
@@ -23,7 +23,7 @@ const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/svg+xml' href='/icon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <Preloads />
+    <Preloads {katex} />
     <OGP title={fullTitle} {description} path={pathname} />
     <title>{fullTitle}</title>
   </head>

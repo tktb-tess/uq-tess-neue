@@ -12,11 +12,16 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { transformerNotationDiff } from '@shikijs/transformers';
 import * as H from './plugins/handlers';
 
+const lastmod = new Date();
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
   site: 'https://tktb-tess.dev',
-  integrations: [svelte(), sitemap()],
+  integrations: [
+    svelte(),
+    sitemap(),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

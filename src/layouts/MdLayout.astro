@@ -5,9 +5,9 @@ import type { PageData } from '../modules/data';
 
 type Props = MarkdownLayoutProps<PageData>;
 
-const { title, description } = Astro.props.frontmatter;
+const { title, description, katex } = Astro.props.frontmatter;
 ---
 
-<ArticleLayout pageData={{ title, description }}>
+<ArticleLayout pageData={{ title, description, katex }}>
   <slot />
 </ArticleLayout>

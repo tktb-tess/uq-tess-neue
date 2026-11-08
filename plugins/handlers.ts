@@ -65,7 +65,7 @@ function _tdHandler(node: TextDirective): Hast.ElementContent {
       return h('sub', node.children.map(phrasingToHast));
     }
     case 'exl': {
-      const href = node.attributes?.h ?? '';
+      const href = node.attributes?.h || '#';
 
       return h(
         'a',
