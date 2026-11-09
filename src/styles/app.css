@@ -98,12 +98,35 @@
   --spacing-min-side: 14rem;
   --spacing-max-main: 72rem;
   --spacing-gutter: 1.5rem;
+
+  @keyframes --k-up-down {
+    from {
+      translate: 0 -15px;
+    }
+    to {
+      translate: 0 15px;
+    }
+  }
+
+  --animate-up-down: --k-up-down 2.25s cubic-bezier(0.4, 0, 0.6, 1) infinite
+    alternate;
+
+  @keyframes --k-rot {
+    from {
+      rotate: y 0;
+    }
+    to {
+      rotate: y 360deg;
+    }
+  }
+
+  --animate-rot: --k-rot 20s linear infinite;
 }
 
 /* utilities */
 
 @utility font-feature-* {
-  font-feature-settings: --value(--features-*);
+  font-feature-settings: --value(--features-*, [*]);
 }
 
 @utility cols-auto-* {
@@ -149,6 +172,10 @@
   &:focus-visible {
     @slot;
   }
+}
+
+@utility btn-theme-1 {
+  @apply bg-accent hover-focus:bg-accent/70 transition-colors rounded text-textinv px-4 py-2 no-underline leading-none;
 }
 
 /* default styles */

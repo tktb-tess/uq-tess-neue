@@ -6,6 +6,7 @@ import CardList from './_components/CardList.astro';
 import ExtLink from '../components/ExtLink.astro';
 import ExtLinkList from './_components/ExtLinkList.astro';
 import Heading from './_components/Heading.astro';
+import TodayWord from './_components/TodayWord.svelte';
 
 interface Props {}
 ---
@@ -25,6 +26,9 @@ interface Props {}
         わたし、斗琴庭 暁響 (とことば あかね)
         が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
       </p>
+
+      <Heading h='h2' text='今日の単語' />
+      <TodayWord client:load />
 
       <Heading h='h2' text='メニュー' />
 
