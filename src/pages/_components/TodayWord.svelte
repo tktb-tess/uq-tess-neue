@@ -11,7 +11,7 @@
 
   type TodayWordResultAsync = Promise<Result<TodayWord, Error>>;
 
-  async function fetchTodayWord(): Promise<Result<TodayWord, Error>> {
+  async function fetchTodayWord(): TodayWordResultAsync {
     try {
       const url = 'https://api.tktb-tess.dev/today-word/';
       const resp = await fetch(url, { signal: AbortSignal.timeout(30000) });
@@ -25,8 +25,6 @@
       }
 
       const j = await resp.json();
-      console.log(j);
-
       const p = v.safeParse(todayWordSchema, j);
 
       if (p.success) {
@@ -63,12 +61,12 @@
 
 <div class="__today-word-rt">
   {#await result}
-    <p>読み込み中……</p>
+    <p class="__pending">読み込み中……</p>
   {:then res}
     {#if res.status === 'success'}
       {@const { value } = res}
-      <h2>{value.name}</h2>
-      <p>{value.pronunciation}</p>
+      <h2 class="__entry">{value.name}</h2>
+      <p class="__pronunciation">{value.pronunciation}</p>
       <table class="__yaku">
         <caption>訳</caption>
         <thead>
@@ -87,7 +85,7 @@
         </tbody>
       </table>
     {:else if res.status === 'failed'}
-      <h2>読み込みに失敗しました</h2>
+      <h2 class="__fail-h2">読み込みに失敗しました</h2>
       <button
         type="button"
         onclick={(ev) => {
@@ -99,9 +97,21 @@
       </button>
     {/if}
   {:catch}
-    <p>unexpected error</p>
+    <p class="__unexpect">unexpected error</p>
   {/await}
 </div>
 
 <style lang="postcss">
+  @reference '../../styles/app.css';
+
+  @layer components {
+    .__today-word-rt {
+      @apply grid mx-auto inline-[min(960px,100%)] border border-border rounded-sm;
+
+      h2 {
+        font-family: unset;
+        border: unset;
+      }
+    }
+  }
 </style>
