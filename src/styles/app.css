@@ -108,15 +108,15 @@
     }
   }
 
-  --animate-up-down: --k-up-down 1.5s cubic-bezier(0.55, 0, 0.45, 1) infinite
+  --animate-up-down: --k-up-down 2.25s cubic-bezier(0.4, 0, 0.6, 1) infinite
     alternate;
 
   @keyframes --k-rot {
     from {
-      rotate: 0;
+      rotate: y 0;
     }
     to {
-      rotate: 360deg;
+      rotate: y 360deg;
     }
   }
 

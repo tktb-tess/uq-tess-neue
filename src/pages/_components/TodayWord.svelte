@@ -100,7 +100,7 @@
       </button>
     {/if}
   {:catch}
-    <p class="__unexpect">unexpected error</p>
+    <h2 class="__unexpect">unexpected error</h2>
   {/await}
 </div>
 
@@ -128,15 +128,18 @@
         @apply m-[unset] p-[unset] text-center;
       }
 
-      .__fail-h2 {
-        @apply text-caution;
+      .__fail-h2,
+      .__unexpect {
+        @apply text-caution text-xl;
       }
 
       .__refetch-btn {
-        @apply block;
+        @apply block btn-theme-1;
       }
 
       .__entry {
+        @apply font-serif;
+
         &[data-big] {
           @apply text-5xl;
         }
