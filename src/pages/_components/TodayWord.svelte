@@ -24,7 +24,7 @@
         );
       }
 
-      const j = await resp.json();
+      const j: unknown = await resp.json();
       const p = v.safeParse(todayWordSchema, j);
 
       if (p.success) {
@@ -65,7 +65,9 @@
   {:then res}
     {#if res.status === 'success'}
       {@const { value } = res}
-      <h2 class="__entry">{value.name}</h2>
+      <h2 class="__entry" data-big={value.name.length < 10 ? '' : null}>
+        {value.name}
+      </h2>
       <p class="__pronunciation">{value.pronunciation}</p>
       <table class="__yaku">
         <caption>訳</caption>
@@ -88,6 +90,7 @@
       <h2 class="__fail-h2">読み込みに失敗しました</h2>
       <button
         type="button"
+        class="__refetch-btn"
         onclick={(ev) => {
           ev.preventDefault();
           result = fetchTodayWord();
@@ -106,17 +109,53 @@
 
   @layer components {
     .__today-word-rt {
-      @apply grid mx-auto inline-[min(960px,100%)] justify-center-safe
-        border border-border rounded-sm;
+      @apply grid mx-auto inline-[min(720px,100%)] justify-items-center-safe
+        border border-border rounded-sm gap-y-6 py-6 my-figure;
+
+      h2,
+      tr,
+      td,
+      th {
+        border: unset;
+      }
 
       h2 {
-        border: unset;
-        font-family: unset;
+        font: unset;
       }
 
       p,
       h2 {
-        @apply m-[unset] p-[unset];
+        @apply m-[unset] p-[unset] text-center;
+      }
+
+      .__fail-h2 {
+        @apply text-caution;
+      }
+
+      .__refetch-btn {
+        @apply block;
+      }
+
+      .__entry {
+        &[data-big] {
+          @apply text-5xl;
+        }
+
+        &:not([data-big]) {
+          @apply text-4xl;
+        }
+      }
+
+      .__pronunciation {
+        @apply text-text/60;
+      }
+
+      .__yaku {
+        @apply m-[unset];
+
+        :where(td, th):not(:where(tbody td:last-child)) {
+          @apply text-center;
+        }
       }
     }
   }
