@@ -106,11 +106,17 @@
 
   @layer components {
     .__today-word-rt {
-      @apply grid mx-auto inline-[min(960px,100%)] border border-border rounded-sm;
+      @apply grid mx-auto inline-[min(960px,100%)] justify-center-safe
+        border border-border rounded-sm;
 
       h2 {
-        font-family: unset;
         border: unset;
+        font-family: unset;
+      }
+
+      p,
+      h2 {
+        @apply m-[unset] p-[unset];
       }
     }
   }
