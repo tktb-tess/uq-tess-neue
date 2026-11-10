@@ -86,7 +86,7 @@
           {/each}
         </tbody>
       </table>
-      <p>
+      <p class="__zpdic-link">
         <a href={dictUrl} target="_blank">
           ZpDIC Online
           <svg
@@ -175,6 +175,10 @@
         :is(td, th):not(:where(tbody td:last-child)) {
           @apply text-center;
         }
+      }
+
+      .__zpdic-link {
+        @apply justify-self-end-safe me-4;
       }
     }
   }
