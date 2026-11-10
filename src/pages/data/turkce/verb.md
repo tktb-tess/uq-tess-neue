@@ -19,12 +19,45 @@ title: トルコ語 動詞
 
 ## 態
 
-|      | 接辞                         | 例1    | 例2     |
-| ---- | ---------------------------- | ------ | ------- |
-| 使役 | -dIr-<br>-t-<br>-Ir-<br>-It- | iç-ir- | yıka-t- |
-| 受動 | -Il-<br>-(I)n-               | iç-il- | yıka-n- |
-| 再帰 | -(I)n-                       | iç-in- | yıka-n- |
-| 相互 | -(I)ş-                       | iç-iş- | yıka-ş- |
+|      | 接辞                                 | 例1    | 例2     |
+| ---- | ------------------------------------ | ------ | ------- |
+| 受動 | -Il-<br>-(I)n-                       | iç-il- | yıka-n- |
+| 使役 | -dIr-<br>-t-<br>-Ir-<br>-It-<br>-Ar- | iç-ir- | yıka-t- |
+| 再帰 | -(I)n-                               | iç-in- | yıka-n- |
+| 相互 | -(I)ş-                               | iç-iş- | yıka-ş- |
+
+- 受動接辞 -Il-, -(I)n- は動詞によってどれが来るか異なる。以下のルールで決まる。
+
+  - 語幹が母音で終わる場合は -n になる。
+
+    > yıka- → yıka**n**-
+
+  - 語幹が l で終わる場合は -In になる。
+
+    > al- → al**ın**-
+
+  - それ以外の子音で終わる場合は -Il になる。
+
+    > iç → iç**il**-
+
+
+- 使役接辞 -dIr-, -t-, -Ir-, -It-, -Ar- も動詞によってどれが来るか異なる。以下のルールで決まる。
+
+  - 語幹が2音節以上で、かつ母音・l・rのいずれかで終わる場合は -t になる。
+
+    > yıka- → yıka**t**-
+
+  - それ以外のとき、大抵は -dIr になる。
+
+    > yap- → yap**tır**-
+
+  - 一部の動詞は -Ir-, -It-, -Ar- がつく（覚える）。
+
+    > iç → iç**ir**-
+    >
+    > kork- → kork**ut**-
+    >
+    > kop- → kop**ar**-
 
 ## 否定, 不能
 
@@ -64,7 +97,7 @@ title: トルコ語 動詞
 | :e                  | 文語 | -mAktA   | I      | iç-mekte | yıka-makta |
 | :s[過去形]{c=2}     | :e   | -dI      | II     | iç-ti    | yıka-dı    |
 | :s[推量過去形]{c=2} | :e   | -mIş     | I      | iç-miş   | yıka-mış   |
-| :s[未来形]{c=2}     | :e   | -(y)AcAk | I      | iç-ecek  | yıka-yacak |
+| :s[未来形]{c=2}     | :e   | -(y)AcAK | I      | iç-ecek  | yıka-yacak |
 | :s[必要形]{c=2}     | :e   | -mAlI    | I      | iç-meli  | yıka-malı  |
 | :s[条件形]{c=2}     | :e   | -sA      | II     | iç-se    | yıka-sa    |
 
@@ -76,11 +109,11 @@ title: トルコ語 動詞
 
   - 語幹が母音で終わる場合 -r となる。
 
-    > uyu- → uyu**r**
+    > yıka- → yıka**r**
 
   - 語幹が子音で終わり、かつ1音節の動詞は、一部の動詞を除いて -Ar となる。
 
-    > yüz- → yüz**er**
+    > iç- → iç**er**
 
   - 語幹が子音で終わり、かつ2音節以上の動詞と一部の1音節の動詞は -Ir となる。
 
@@ -100,7 +133,7 @@ title: トルコ語 動詞
 
 ## 人称
 
-<div class="contents [&_:where(tr>td:first-child)]:font-features-tnum">
+<div class="contents [&_:where(tr>td:first-child)]:font-feature-tnum">
 
 | :s[人称・数]{c=2} | :e  | タイプI       | タイプII | 願望形     | 命令形      |
 | ----------------- | --- | ------------- | -------- | ---------- | ----------- |
@@ -117,22 +150,22 @@ title: トルコ語 動詞
 
 ### 例
 
-<div class="contents [&_:where(tr>td:first-child)]:font-features-tnum">
+<div class="contents [&_:where(tr>td:first-child)]:font-feature-tnum">
 
-| :s[人称・数]{c=2} | :e  | タイプI (継続形) | タイプII (過去形) | 願望形    | 命令形      |
-| ----------------- | --- | ---------------- | ----------------- | --------- | ----------- |
-| :s[1]{r=2}        | 単  | iç-iyor-um       | iç-ti-m           | iç-eyim   | :s[／]{r=2} |
-| :e                | 複  | iç-iyor-uz       | iç-ti-k           | iç-elim   | :e          |
-| :s[2]{r=2}        | 単  | iç-iyor-sun      | iç-ti-n           | iç-esin   | iç          |
-| :e                | 複  | iç-iyor-sunuz    | iç-ti-niz         | iç-esiniz | iç-in       |
-| :s[3]{r=2}        | 単  | iç-iyor          | iç-ti             | iç-e      | iç-sin      |
-| :e                | 複  | iç-iyor-lar      | iç-ti-ler         | iç-eler   | iç-sinler   |
+| :s[人称・数]{c=2} | :e  | タイプI (例: 継続形) | タイプII (例: 過去形) | 願望形    | 命令形      |
+| ----------------- | --- | -------------------- | --------------------- | --------- | ----------- |
+| :s[1]{r=2}        | 単  | iç-iyor-um           | iç-ti-m               | iç-eyim   | :s[／]{r=2} |
+| :e                | 複  | iç-iyor-uz           | iç-ti-k               | iç-elim   | :e          |
+| :s[2]{r=2}        | 単  | iç-iyor-sun          | iç-ti-n               | iç-esin   | iç          |
+| :e                | 複  | iç-iyor-sunuz        | iç-ti-niz             | iç-esiniz | iç-in       |
+| :s[3]{r=2}        | 単  | iç-iyor              | iç-ti                 | iç-e      | iç-sin      |
+| :e                | 複  | iç-iyor-lar          | iç-ti-ler             | iç-eler   | iç-sinler   |
 
 </div>
 
 ## 不定詞, 分詞
 
-|                     |                 |      | 接辞     | 例1        | 例2           |
+| :s[]{c=3}           | :e              | :e   | 接辞     | 例1        | 例2           |
 | ------------------- | --------------- | ---- | -------- | ---------- | ------------- |
 | :s[不定詞I]{c=3}    | :e              | :e   | -mAk     | iç-mek     | yıka-mak      |
 | :s[不定詞II]{c=3}   | :e              | :e   | -mA      | iç-me      | yıka-ma       |
@@ -142,7 +175,7 @@ title: トルコ語 動詞
 | :e                  | :s[未完了]{c=2} | :e   | -(y)An   | iç-en      | yıka-yan      |
 | :e                  | :s[完了]{c=2}   | :e   | -mIş     | iç-miş     | yıka-mış      |
 | :e                  | :s[未来]{c=2}   | :e   | -(y)AcAk | iç-ecek    | yıka-yacak    |
-| :s[人称分詞]{r=2}   | :s[非未来]{c=2} | :e   | -dIk     | iç-tiğ-im  | yıka-dığ-ım   |
-| :e                  | :s[未来]{c=2}   | :e   | -(y)AcAk | iç-eceğ-im | yıka-yacağ-ım |
+| :s[人称分詞]{r=2}   | :s[非未来]{c=2} | :e   | -dIK     | iç-tiğ-im  | yıka-dığ-ım   |
+| :e                  | :s[未来]{c=2}   | :e   | -(y)AcAK | iç-eceğ-im | yıka-yacağ-ım |
 
 - 非人称中立分詞 -Vr の使い分けは中立形と同様。
