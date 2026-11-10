@@ -30,7 +30,7 @@ interface Props {}
 <script>
   const toTopBtn = document.getElementById('to-top-btn');
   const getTag = (o: unknown) => Object.prototype.toString.call(o);
-  let id: number | undefined;
+  let id: ReturnType<typeof setTimeout> | undefined;
 
   if (!(toTopBtn instanceof HTMLButtonElement)) {
     throw TypeError(`toTopBtn is not HTMLButtonElement\n${getTag(toTopBtn)}`);

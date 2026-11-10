@@ -36,10 +36,10 @@ interface Props {}
     }
     
     .__logo {
-      @apply animate-rot block-full;
+      @apply animate-up-down reduced-motion:animate-none block-full;
 
       > svg {
-        @apply animate-up-down block-[min(90%,90lvw)];
+        @apply animate-rot reduced-motion:animate-none block-[min(90%,90lvw)];
       }
     }
 

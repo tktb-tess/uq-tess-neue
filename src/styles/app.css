@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@layer properties, theme, base, component, utility;
+
 @font-face {
   font-family: 'noto-sans-jp';
   font-display: swap;
@@ -99,16 +101,18 @@
   --spacing-max-main: 72rem;
   --spacing-gutter: 1.5rem;
 
+  --ease-sine: cubic-bezier(.363, 0, .637, 1);
+
   @keyframes --k-up-down {
     from {
-      translate: 0 -15px;
+      translate: 0 -10px;
     }
     to {
-      translate: 0 15px;
+      translate: 0 10px;
     }
   }
 
-  --animate-up-down: --k-up-down 2.25s cubic-bezier(0.4, 0, 0.6, 1) infinite
+  --animate-up-down: --k-up-down 2.25s var(--ease-sine) infinite
     alternate;
 
   @keyframes --k-rot {
@@ -174,8 +178,10 @@
   }
 }
 
-@utility btn-theme-1 {
-  @apply bg-accent hover-focus:bg-accent/70 transition-colors rounded text-textinv px-4 py-2 no-underline leading-none;
+@custom-variant reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @slot;
+  }
 }
 
 /* default styles */
@@ -372,9 +378,9 @@
     @apply relative text-[unset] hover-focus:[&::before]:visible hover-focus:[&::before]:opacity-100;
 
     &::before {
-      content: '🔗';
+      content: url('/ext_link_icon.svg');
 
-      @apply absolute inset-bs-[calc(50%-.5em)] text-[.6em] leading-none invisible opacity-0;
+      @apply absolute inset-bs-[calc(50%-.5em)] inline-[.6em] block-auto leading-none invisible opacity-0;
     }
   }
 
@@ -388,6 +394,13 @@
 
   .ext-link-icon {
     @apply inline-block inline-3 block-auto ms-0.5;
+  }
+}
+
+@layer components {
+  .btn-theme-1 {
+    @apply bg-accent hover-focus:bg-accent/70 transition-colors
+      rounded text-textinv px-4 py-2 no-underline leading-none;
   }
 }
 

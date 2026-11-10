@@ -64,11 +64,11 @@
     <p class="__pending">読み込み中……</p>
   {:then res}
     {#if res.status === 'success'}
-      {@const { value } = res}
-      <h2 class="__entry" data-big={value.name.length < 10 ? '' : null}>
-        {value.name}
+      {@const { name, pronunciation, translations, dictUrl } = res.value}
+      <h2 class="__entry" data-big={name.length < 10 ? '' : null}>
+        {name}
       </h2>
-      <p class="__pronunciation">{value.pronunciation}</p>
+      <p class="__pronunciation">{pronunciation}</p>
       <table class="__yaku">
         <caption>訳</caption>
         <thead>
@@ -78,7 +78,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each value.translations as tra (tra.join('-'))}
+          {#each translations as tra (tra.join('-'))}
             <tr>
               <td>{tra[0]}</td>
               <td>{tra[1]}</td>
@@ -86,11 +86,27 @@
           {/each}
         </tbody>
       </table>
+      <p>
+        <a href={dictUrl} target="_blank">
+          ZpDIC Online
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="ext-link-icon"
+          >
+            <path
+              d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"
+            >
+            </path>
+          </svg>
+        </a>
+      </p>
     {:else if res.status === 'failed'}
       <h2 class="__fail-h2">読み込みに失敗しました</h2>
       <button
         type="button"
-        class="__refetch-btn"
+        class="__refetch-btn btn-theme-1"
         onclick={(ev) => {
           ev.preventDefault();
           result = fetchTodayWord();
@@ -134,7 +150,7 @@
       }
 
       .__refetch-btn {
-        @apply block btn-theme-1;
+        @apply block;
       }
 
       .__entry {
@@ -150,13 +166,13 @@
       }
 
       .__pronunciation {
-        @apply text-text/60;
+        @apply text-text/60 font-ipa text-sm;
       }
 
       .__yaku {
         @apply m-[unset];
 
-        :where(td, th):not(:where(tbody td:last-child)) {
+        :is(td, th):not(:where(tbody td:last-child)) {
           @apply text-center;
         }
       }
