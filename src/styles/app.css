@@ -101,7 +101,7 @@
   --spacing-max-main: 72rem;
   --spacing-gutter: 1.5rem;
 
-  --ease-sine: cubic-bezier(.363, 0, .637, 1);
+  --ease-sine: cubic-bezier(0.363, 0, 0.637, 1);
 
   @keyframes --k-up-down {
     from {
@@ -112,12 +112,11 @@
     }
   }
 
-  --animate-up-down: --k-up-down 2.25s var(--ease-sine) infinite
-    alternate;
+  --animate-up-down: --k-up-down 2.25s var(--ease-sine) infinite alternate;
 
   @keyframes --k-rot {
     from {
-      rotate: y 0;
+      rotate: y 0deg;
     }
     to {
       rotate: y 360deg;
@@ -125,6 +124,17 @@
   }
 
   --animate-rot: --k-rot 20s linear infinite;
+
+  @keyframes --k-happy {
+    from {
+      rotate: z 0deg;
+    }
+    to {
+      rotate: z 360deg;
+    }
+  }
+
+  --animate-happy: --k-happy 500ms linear infinite;
 }
 
 /* utilities */
