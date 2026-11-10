@@ -7,6 +7,10 @@ export interface PageData {
 export type PageDataMap = ReadonlyMap<string, PageData>;
 
 const pageDataMap: PageDataMap = new Map<string, PageData>([
+  [
+    '/404/',
+    { title: '404 Not Found', description: 'そこに無ければ無いですね' },
+  ],
   ['/misc/musiken/', { title: '音楽', description: '作曲は楽しいぞ' }],
   [
     '/misc/math/4n_1_sum_of_sq/',

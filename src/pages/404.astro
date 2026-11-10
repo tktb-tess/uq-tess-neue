@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {}
+---
+
+<BaseLayout>
+  <div class='__404-root'>
+    <h2>Hoppla!</h2>
+    <p>
+      お探しのページは見つかりませんでした。移動あるいは削除された可能性があります。
+    </p>
+    <a class='__btn' href='/.'>トップへ戻る</a>
+  </div>
+</BaseLayout>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    h2, p {
+      @apply m-[unset] p-[unset] text-center text-white;
+    }
+
+    h2 {
+      @apply font-sans font-extralight max-lg:text-4xl lg:text-5xl;
+      border: unset;
+    }
+
+    .__404-root {
+      @apply grid gap-8 block-lvh bg-black place-items-center-safe place-content-center-safe;
+    }
+
+    .__btn {
+      @apply block bg-white hover-focus:bg-white/70 text-black
+      transition-colors rounded px-4 py-2 no-underline leading-none;
+    }
+  }
+</style>
