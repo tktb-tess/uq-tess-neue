@@ -1,5 +1,5 @@
 ---
-import { getPageData, type PageData, type PageDataMap } from '../modules/data';
+import { getPageData, type PageData } from '../modules/data';
 import type { MarkdownLayoutProps } from 'astro';
 import HomeIcon from '../assets/HomeIcon.svg';
 
@@ -13,10 +13,10 @@ const values = Object.values(
   import.meta.glob<MdProps>('../pages/**/*.md', { eager: true }),
 );
 
-const mdPageData: PageDataMap = new Map(
+const mdPageData: ReadonlyMap<string, string> = new Map<string, string>(
   values.map((md) => {
-    const { title, description } = md.frontmatter;
-    return [`${md.url}/`, { title, description }];
+    const { title } = md.frontmatter;
+    return [`${md.url}/`, title];
   }),
 );
 
@@ -25,7 +25,7 @@ function getTitle(path: string) {
     return 'Home';
   }
 
-  return mdPageData.get(path)?.title ?? getPageData(path).title;
+  return mdPageData.get(path) ?? getPageData(path).title;
 }
 
 const { path } = Astro.props;
@@ -82,7 +82,7 @@ const currentTitle = getTitle(path);
 
     a,
     li:not(:first-child)::before {
-      @apply flex-[unset] inline-max min-inline-0 leading-none;
+      @apply block flex-[initial] inline-max min-inline-0 leading-none;
     }
 
     a[aria-current="page"] {

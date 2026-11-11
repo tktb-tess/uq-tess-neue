@@ -6,6 +6,12 @@ interface Item {
   readonly href: string;
 }
 
+interface List {
+  readonly summaryText: string;
+  readonly prefixPath: string;
+  readonly items: readonly Item[];
+}
+
 const conlangs: readonly Item[] = [
   { text: '概要', href: '/' },
   { text: 'Venzlendisç', href: '/venz/' },
@@ -28,67 +34,39 @@ const miscs: readonly Item[] = [
   { text: '音楽', href: '/musiken/' },
 ];
 
+const categories: readonly List[] = [
+  { summaryText: 'CONLANG', prefixPath: '/conlang', items: conlangs },
+  { summaryText: 'DATA', prefixPath: '/data', items: data },
+  { summaryText: 'MISC', prefixPath: '/misc', items: miscs },
+];
+
 const name = 'sidemenu-accordion';
 ---
 
 <nav class='__sidemenu-root' aria-label='サイドメニュー'>
-  <details {name}>
-    <summary>
-      <p>CONLANG</p>
-    </summary>
-    <div class='__content'>
-      <ul>
-        {
-          conlangs.map(({ text, href: h_ }) => {
-            const href = `/conlang${h_}`;
-            return (
-              <li>
-                <a {href}>{text}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-  </details>
-  <details {name}>
-    <summary>
-      <p>DATA</p>
-    </summary>
-    <div class='__content'>
-      <ul>
-        {
-          data.map(({ text, href: h_ }) => {
-            const href = `/data${h_}`;
-            return (
-              <li>
-                <a {href}>{text}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-  </details>
-  <details {name}>
-    <summary>
-      <p>MISC</p>
-    </summary>
-    <div class='__content'>
-      <ul>
-        {
-          miscs.map(({ text, href: h_ }) => {
-            const href = `/misc${h_}`;
-            return (
-              <li>
-                <a {href}>{text}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-  </details>
+  {
+    categories.map(({ summaryText, prefixPath, items }) => {
+      return (
+        <details {name}>
+          <summary>
+            <p>{summaryText}</p>
+          </summary>
+          <div class='__content'>
+            <ul>
+              {items.map(({ text, href: h_ }) => {
+                const href = prefixPath + h_;
+                return (
+                  <li>
+                    <a {href}>{text}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </details>
+      );
+    })
+  }
 </nav>
 
 <style lang="postcss">
@@ -98,79 +76,74 @@ const name = 'sidemenu-accordion';
     .__sidemenu-root {
       @apply flex flex-col mx-4 py-2 gap-4 sticky inset-bs-0 text-start;
       --sidemenu-dur: 260ms;
+    }
 
-      details {
-        @apply flow-root;
+    details {
+      @apply flow-root;
 
-        summary {
-          @apply block cursor-pointer px-2 py-1
-            text-3xl font-extralight
-            hover-focus:bg-accent hover-focus:text-textinv
-            select-none;
-        }
-
-        summary,
-        a {
-          @apply transition-colors;
-        }
-
-        /* for Safari */
-        summary::-webkit-details-marker {
-          @apply hidden;
-        }
-
-        &[open] :where(summary),
-        a {
-          @apply bg-accent text-textinv hover-focus:bg-accent-lighter;
-        }
-
-        &::details-content {
-          @apply transition-[height,content-visibility] transition-discrete
-            duration-(--sidemenu-dur) overflow-y-clip;
-        }
-
-        &:not([open])::details-content {
-          @apply block-0;
-        }
-
-        &[open]::details-content {
-          @apply block-(--open-height,max-content);
-        }
-
-        ul {
-          @apply flex flex-col list-none m-0;
-        }
-
-        li {
-          @apply block m-0;
-        }
-
-        a {
-          @apply block px-3 py-1 no-underline;
-        }
+      &[open] :where(summary),
+      a {
+        @apply bg-accent text-textinv hover-focus:bg-accent-lighter;
       }
+
+      &::details-content {
+        @apply transition-[height,content-visibility] transition-discrete
+          duration-(--sidemenu-dur) overflow-y-clip;
+      }
+
+      &:not([open])::details-content {
+        @apply block-0;
+      }
+
+      &[open]::details-content {
+        @apply block-(--open-height,max-content);
+      }
+    }
+
+    summary {
+      @apply block cursor-pointer px-2 py-1
+        text-3xl font-extralight
+        hover-focus:bg-accent hover-focus:text-textinv
+        select-none;
+    }
+
+    summary, a {
+      @apply transition-colors;
+    }
+
+    /* for Safari */
+    summary::-webkit-details-marker {
+      @apply hidden;
+    }
+
+    ul {
+      @apply flex flex-col list-none m-0;
+    }
+
+    li {
+      @apply block m-0;
+    }
+
+    a {
+      @apply block px-3 py-1 no-underline;
     }
   }
 </style>
 
 <script>
-  const getTag = (o: unknown) => Object.prototype.toString.call(o);
+  import { cannotGetHandler } from '../modules/helpers';
+
   const detailsSet = document.querySelectorAll('.__sidemenu-root > details');
 
   for (const details of detailsSet) {
     if (!(details instanceof HTMLDetailsElement)) {
-      throw TypeError(
-        `'details' is not HTMLDetailsElement\n${getTag(details)}`,
-        { cause: details },
-      );
+      cannotGetHandler('details', HTMLDetailsElement.prototype, details);
     }
 
     const content = details.querySelector('.__content');
 
     if (!(content instanceof HTMLDivElement)) {
-      throw TypeError(`'content' is not HTMLDivElement\n${getTag(content)}`, {
-        cause: content,
-      });
+      cannotGetHandler('content', HTMLDivElement.prototype, content);
     }
 
     const openHeight = `${content.scrollHeight + 1}px`;

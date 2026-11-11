@@ -65,7 +65,7 @@
   {:then res}
     {#if res.status === 'success'}
       {@const { name, pronunciation, translations, dictUrl } = res.value}
-      <h2 class="__entry" data-big={name.length < 10 ? '' : null}>
+      <h2 class="__entry" data-big={[...name].length < 10 ? '' : null}>
         {name}
       </h2>
       <p class="__pronunciation">{pronunciation}</p>
@@ -127,59 +127,59 @@
     .__today-word-rt {
       @apply grid mx-auto inline-[min(720px,100%)] justify-items-center-safe
         border border-border rounded-sm gap-y-6 py-6 my-figure;
+    }
 
-      h2,
-      tr,
-      td,
-      th {
-        border: unset;
+    h2,
+    tr,
+    td,
+    th {
+      border: unset;
+    }
+
+    h2 {
+      font: unset;
+    }
+
+    p,
+    h2 {
+      @apply m-[unset] p-[unset] text-center;
+    }
+
+    .__fail-h2,
+    .__unexpect {
+      @apply text-caution text-xl;
+    }
+
+    .__refetch-btn {
+      @apply block;
+    }
+
+    .__entry {
+      @apply font-serif;
+
+      &[data-big] {
+        @apply text-5xl;
       }
 
-      h2 {
-        font: unset;
+      &:not([data-big]) {
+        @apply text-4xl;
       }
+    }
 
-      p,
-      h2 {
-        @apply m-[unset] p-[unset] text-center;
+    .__pronunciation {
+      @apply text-text/60 font-ipa text-sm;
+    }
+
+    .__yaku {
+      @apply m-[unset];
+
+      :is(td, th):not(:where(tbody td:last-child)) {
+        @apply text-center;
       }
+    }
 
-      .__fail-h2,
-      .__unexpect {
-        @apply text-caution text-xl;
-      }
-
-      .__refetch-btn {
-        @apply block;
-      }
-
-      .__entry {
-        @apply font-serif;
-
-        &[data-big] {
-          @apply text-5xl;
-        }
-
-        &:not([data-big]) {
-          @apply text-4xl;
-        }
-      }
-
-      .__pronunciation {
-        @apply text-text/60 font-ipa text-sm;
-      }
-
-      .__yaku {
-        @apply m-[unset];
-
-        :is(td, th):not(:where(tbody td:last-child)) {
-          @apply text-center;
-        }
-      }
-
-      .__zpdic-link {
-        @apply justify-self-end-safe me-4;
-      }
+    .__zpdic-link {
+      @apply justify-self-end-safe me-4;
     }
   }
 </style>

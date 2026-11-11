@@ -2,7 +2,7 @@
 interface Props {}
 ---
 
-<button id='to-top-btn' aria-label='ページトップに戻る'></button>
+<button type='button' id='to-top-btn' aria-label='ページトップに戻る'></button>
 
 <style lang="postcss">
   @reference '../styles/app.css';
@@ -28,12 +28,13 @@ interface Props {}
 </style>
 
 <script>
+  import { cannotGetHandler } from '../modules/helpers';
+
   const toTopBtn = document.getElementById('to-top-btn');
-  const getTag = (o: unknown) => Object.prototype.toString.call(o);
   let id: ReturnType<typeof setTimeout> | undefined;
 
   if (!(toTopBtn instanceof HTMLButtonElement)) {
-    throw TypeError(`toTopBtn is not HTMLButtonElement\n${getTag(toTopBtn)}`);
+    cannotGetHandler('toTopBtn', HTMLButtonElement.prototype, toTopBtn);
   }
 
   toTopBtn.addEventListener('click', (ev) => {
@@ -42,9 +43,7 @@ interface Props {}
   });
 
   document.addEventListener('scroll', () => {
-    if (id != null) {
-      clearTimeout(id);
-    }
+    clearTimeout(id);
 
     id = setTimeout(() => {
       if (scrollY > 400) {
