@@ -48,13 +48,15 @@ interface Props {}
 <script>
   import { cannotGetHandler } from '../../modules/helpers';
 
+  const url = new URL(document.URL);
+  const happy = url.searchParams.get('happy');
   const siteLogo = document.getElementById('site-logo');
 
   if (!(siteLogo instanceof HTMLDivElement)) {
     cannotGetHandler('siteLogo', HTMLDivElement.prototype, siteLogo);
   }
 
-  if (Math.random() < 0.1) {
+  if (happy === 'true' || Math.random() < 0.1) {
     siteLogo.setAttribute('data-happy', '');
   }
 </script>
