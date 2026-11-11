@@ -44,37 +44,35 @@ const name = 'sidemenu-accordion';
 ---
 
 <nav class='__sidemenu-root' aria-label='サイドメニュー'>
-  {
-    categories.map(({ summaryText, prefixPath, items }) => {
-      return (
-        <details {name}>
-          <summary>
-            <p>{summaryText}</p>
-          </summary>
-          <div class='__content'>
-            <ul>
-              {items.map(({ text, href: h_ }) => {
-                const href = prefixPath + h_;
-                return (
-                  <li>
-                    <a {href}>{text}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </details>
-      );
-    })
-  }
+  {categories.map(({ summaryText, prefixPath, items }) => {
+    return (
+      <details {name}>
+        <summary>
+          <p>{summaryText}</p>
+        </summary>
+        <div class='__content'>
+          <ul>
+            {items.map(({ text, href: h_ }) => {
+              const href = prefixPath + h_;
+              return (
+                <li>
+                  <a {href}>{text}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </details>
+    );
+  })}
 </nav>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {
     .__sidemenu-root {
-      @apply flex flex-col mx-4 py-2 gap-4 sticky inset-bs-0 text-start;
+      @apply flex flex-col mx-4 my-2 gap-4 sticky inset-bs-2 text-start;
       --sidemenu-dur: 260ms;
     }
 
@@ -133,9 +131,9 @@ const name = 'sidemenu-accordion';
 <script>
   import { cannotGetHandler } from '../modules/helpers';
 
-  const detailsSet = document.querySelectorAll('.__sidemenu-root > details');
+  const d_ = document.querySelectorAll('.__sidemenu-root > details');
 
-  for (const details of detailsSet) {
+  const dAndCSet = Array.from(d_, (details) => {
     if (!(details instanceof HTMLDetailsElement)) {
       cannotGetHandler('details', HTMLDetailsElement.prototype, details);
     }
@@ -146,7 +144,26 @@ const name = 'sidemenu-accordion';
       cannotGetHandler('content', HTMLDivElement.prototype, content);
     }
 
-    const openHeight = `${content.scrollHeight + 1}px`;
-    details.style.setProperty('--open-height', openHeight);
-  }
+    return [details, content] as const;
+  });
+
+  const setOpenHeight = () => {
+    dAndCSet.forEach(([details, content]) => {
+      const openHeight = `${content.scrollHeight + 1}px`;
+      details.style.setProperty('--open-height', openHeight);
+    });
+  };
+
+  setOpenHeight();
+
+  let id: ReturnType<typeof setTimeout> | undefined;
+
+  window.addEventListener('resize', () => {
+    clearTimeout(id);
+
+    id = setTimeout(() => {
+      setOpenHeight();
+      id = undefined;
+    }, 100);
+  });
 </script>
