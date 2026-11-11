@@ -122,18 +122,37 @@
     }
   }
 
-  --animate-rot: --k-rot 20s linear infinite;
+  --animate-rot: --k-rot 30s linear infinite;
+  --animate-rot-fast-y: --k-rot 3.5s linear infinite;
 
   @keyframes --k-happy {
     from {
       rotate: z 0deg;
     }
+    50% {
+      rotate: z -180deg;
+    }
     to {
-      rotate: z 360deg;
+      rotate: z -360deg;
     }
   }
 
   --animate-happy: --k-happy 500ms linear infinite;
+  --animate-rot-fast-z: --k-happy 2.5s linear infinite;
+
+  @keyframes --k-fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  --animate-fadein: --k-fadein 5s linear;
+
+  --animate-rot-fadein: var(--animate-rot), var(--animate-fadein);
+  --animate-happy-fadein: var(--animate-happy), var(--animate-fadein);
 }
 
 /* utilities */

@@ -8,7 +8,6 @@ interface Props {}
   <div class='__logo' id='site-logo'>
     <img src='/site_logo_weiss.svg' alt='サイトロゴ' />
   </div>
-
   <h1 class='__name'>{SITE_NAME}</h1>
 </div>
 
@@ -26,14 +25,14 @@ interface Props {}
       @apply animate-up-down reduced-motion:animate-none block-full;
 
       > img {
-        @apply animate-rot reduced-motion:animate-none block-[min(90%,90lvw)];
+        @apply animate-rot-fadein reduced-motion:animate-none block-[min(90%,90lvw)];
       }
 
       &[data-happy] {
         @apply animate-none;
 
         > img {
-          @apply animate-happy reduced-motion:animate-none;
+          @apply animate-happy-fadein reduced-motion:animate-none;
         }
       }
     }

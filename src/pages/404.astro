@@ -7,7 +7,12 @@ interface Props {}
 <BaseLayout>
   <div class='__404-root'>
     <div class='__logo-wrapper'>
-      <img src='/site_logo_weiss.svg' alt='高速回転するサイトロゴ' />
+      <img
+        height='240'
+        width='240'
+        src='/site_logo_weiss.svg'
+        alt='高速回転するサイトロゴ'
+      />
     </div>
     <h2>Hoppla!</h2>
     <p>
@@ -31,7 +36,8 @@ interface Props {}
     }
 
     .__404-root {
-      @apply grid gap-8 block-lvh bg-black place-items-center-safe place-content-center-safe;
+      @apply grid grid-rows-[repeat(4,auto)] py-6
+        gap-6 min-block-lvh bg-black place-items-center-safe place-content-center-safe;
     }
 
     .__btn {
@@ -40,7 +46,11 @@ interface Props {}
     }
 
     .__logo-wrapper {
-      @apply animate-spin reduced-motion:animate-none;
+      @apply animate-rot-fast-y reduced-motion:animate-none block-full;
+
+      > img {
+        @apply animate-rot-fast-z reduced-motion:animate-none;
+      }
     }
   }
 </style>
