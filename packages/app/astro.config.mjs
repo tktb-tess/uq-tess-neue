@@ -5,7 +5,7 @@ import svelte from '@astrojs/svelte';
 import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { transformerNotationDiff } from '@shikijs/transformers';
-import * as H from '@uq-tess/plugin';
+import * as P from '@uq-tess/plugin';
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,21 +35,21 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [
-        H.remarkMath,
-        H.remarkDirective,
-        [H.remarkToc, { heading: '目次' }],
+        P.remarkMath,
+        P.remarkDirective,
+        [P.remarkToc, { heading: '目次' }],
       ],
       remarkRehype: {
         handlers: {
-          table: H.tableHandler,
-          textDirective: H.tdHandler,
+          table: P.tableHandler,
+          textDirective: P.tdHandler,
         },
       },
       rehypePlugins: [
-        H.rehypeKatex,
+        P.rehypeKatex,
         rehypeHeadingIds,
         [
-          H.rehypeAutolinkHeadings,
+          P.rehypeAutolinkHeadings,
           {
             behavior: 'wrap',
             properties: {

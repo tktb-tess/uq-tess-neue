@@ -87,10 +87,10 @@ function _tdHandler(node: TextDirective): Hast.ElementContent {
 }
 
 /**
- * Hej!
- * @param _
- * @param node
- * @returns
+ * Text directive handler
+ * @param _ 
+ * @param node text directive
+ * @returns 
  */
 export const tdHandler: Handler = (_, node: TextDirective) => {
   return _tdHandler(node);
@@ -129,6 +129,12 @@ function tcHandler(tc: Mdast.TableCell, tag: 'td' | 'th') {
   }
 }
 
+/**
+ * Table handler
+ * @param _ 
+ * @param node table
+ * @returns 
+ */
 export const tableHandler: Handler = (_, node: Mdast.Table) => {
   const [head, ...body] = node.children;
 

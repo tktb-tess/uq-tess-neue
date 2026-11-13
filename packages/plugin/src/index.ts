@@ -1,15 +1,6 @@
+export { default as remarkMath } from 'remark-math';
+export { default as rehypeKatex } from 'rehype-katex';
+export { default as remarkDirective } from 'remark-directive';
+export { default as remarkToc } from 'remark-toc';
+export { default as rehypeAutolinkHeadings } from 'rehype-autolink-headings';
 export * from './handlers';
-
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import remarkDirective from 'remark-directive';
-import remarkToc from 'remark-toc';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-
-export {
-  remarkMath,
-  rehypeKatex,
-  remarkDirective,
-  remarkToc,
-  rehypeAutolinkHeadings,
-};

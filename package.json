@@ -1,16 +1,16 @@
 {
   "name": "monorepo-root",
   "version": "0.1.0-alpha.0",
-  "types": "module",
+  "type": "module",
   "private": true,
   "scripts": {
     "app": "pnpm -F @uq-tess/app",
     "plugin": "pnpm -F @uq-tess/plugin",
-    "build": "pnpm run app astro build",
-    "preview": "pnpm run app astro preview",
+    "build": "pnpm -F @uq-tess/app astro build",
+    "preview": "pnpm -F @uq-tess/app astro preview",
     "build-preview": "pnpm run build && pnpm run preview",
     "pack-doc": "pnpm run build && pnpm pack -F @uq-tess/app --out ./arch/%s.tgz",
-    "dev": "pnpm run app dev"
+    "dev": "pnpm -F @uq-tess/app astro dev"
   },
   "devEngines": {
     "packageManager": {
@@ -18,7 +18,5 @@
       "version": "12.18.0",
       "onFail": "download"
     }
-  },
-  "packageManager": "pnpm@12.18.0",
-  "type": "module"
+  }
 }
