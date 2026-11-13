@@ -6,13 +6,7 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "build-preview": "astro build && astro preview",
-    "pack-doc": "astro build && pnpm pack --out ./pkg/%s.tgz"
-  },
+  "scripts": {},
   "devDependencies": {
     "@uq-tess/plugin": "workspace:*",
     "@astrojs/markdown-remark": "^7.3.6",

@@ -25,4 +25,5 @@ pnpm-debug.log*
 
 .rxv/
 pkg/
+arch/
 

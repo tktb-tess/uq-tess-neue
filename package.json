@@ -6,11 +6,11 @@
   "scripts": {
     "app": "pnpm -F @uq-tess/app",
     "plugin": "pnpm -F @uq-tess/plugin",
-    "build": "pnpm app build",
-    "preview": "pnpm app preview",
-    "build-preview": "pnpm app build-preview",
-    "pack-doc": "pnpm app pack-doc",
-    "dev": "pnpm app dev"
+    "build": "pnpm run app astro build",
+    "preview": "pnpm run app astro preview",
+    "build-preview": "pnpm run build && pnpm run preview",
+    "pack-doc": "pnpm run build && pnpm pack -F @uq-tess/app --out ./arch/%s.tgz",
+    "dev": "pnpm run app dev"
   },
   "devEngines": {
     "packageManager": {
