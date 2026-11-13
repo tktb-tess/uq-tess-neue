@@ -3,3 +3,6 @@ minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - '@tktb-tess/'
 
+packages:
+  - 'packages/*'
+
