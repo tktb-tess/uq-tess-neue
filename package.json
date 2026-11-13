@@ -4,7 +4,8 @@
   "types": "module",
   "private": true,
   "scripts": {
-    "page": "pnpm -F "
+    "app": "pnpm -F @uq-tess/app",
+    "plugin": "pnpm -F @uq-tess/plugin"
   },
   "devEngines": {
     "packageManager": {

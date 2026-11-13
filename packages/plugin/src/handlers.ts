@@ -65,7 +65,7 @@ function _tdHandler(node: TextDirective): Hast.ElementContent {
       return h('sub', node.children.map(phrasingToHast));
     }
     case 'exl': {
-      const href = node.attributes?.h || '#';
+      const href = node.attributes?.['h'] || '#';
 
       return h(
         'a',
@@ -77,7 +77,7 @@ function _tdHandler(node: TextDirective): Hast.ElementContent {
       );
     }
     case 'lng': {
-      const lang = node.attributes?.l || undefined;
+      const lang = node.attributes?.['l'] || undefined;
       return h('span', { lang }, node.children.map(phrasingToHast));
     }
     default: {
@@ -105,8 +105,8 @@ function tcHandler(tc: Mdast.TableCell, tag: 'td' | 'th') {
         return Number.isFinite(n) && n >= 0 ? n : 1;
       };
 
-      const rowspan = parse(ph.attributes?.r ?? '1');
-      const colspan = parse(ph.attributes?.c ?? '1');
+      const rowspan = parse(ph.attributes?.['r'] ?? '1');
+      const colspan = parse(ph.attributes?.['c'] ?? '1');
 
       if (rowspan === 0 || colspan === 0) {
         return null;
@@ -171,5 +171,3 @@ export const tableHandler: Handler = (_, node: Mdast.Table) => {
 
   return h('div.table-container', table);
 };
-
-

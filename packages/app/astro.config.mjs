@@ -10,7 +10,7 @@ import remarkDirective from 'remark-directive';
 import remarkToc from 'remark-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { transformerNotationDiff } from '@shikijs/transformers';
-import * as H from './plugins/handlers';
+import * as H from '@uq-tess/plugin';
 
 // https://astro.build/config
 export default defineConfig({
