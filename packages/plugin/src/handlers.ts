@@ -86,6 +86,12 @@ function _tdHandler(node: TextDirective): Hast.ElementContent {
   }
 }
 
+/**
+ * Hej!
+ * @param _
+ * @param node
+ * @returns
+ */
 export const tdHandler: Handler = (_, node: TextDirective) => {
   return _tdHandler(node);
 };

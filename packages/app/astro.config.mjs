@@ -4,11 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 import svelte from '@astrojs/svelte';
 import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import remarkDirective from 'remark-directive';
-import remarkToc from 'remark-toc';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { transformerNotationDiff } from '@shikijs/transformers';
 import * as H from '@uq-tess/plugin';
 
@@ -40,9 +35,9 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [
-        remarkMath,
-        remarkDirective,
-        [remarkToc, { heading: '目次' }],
+        H.remarkMath,
+        H.remarkDirective,
+        [H.remarkToc, { heading: '目次' }],
       ],
       remarkRehype: {
         handlers: {
@@ -51,10 +46,10 @@ export default defineConfig({
         },
       },
       rehypePlugins: [
-        rehypeKatex,
+        H.rehypeKatex,
         rehypeHeadingIds,
         [
-          rehypeAutolinkHeadings,
+          H.rehypeAutolinkHeadings,
           {
             behavior: 'wrap',
             properties: {

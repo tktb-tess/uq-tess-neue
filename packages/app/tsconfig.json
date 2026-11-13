@@ -4,6 +4,7 @@
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]

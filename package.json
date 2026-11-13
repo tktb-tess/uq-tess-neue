@@ -5,7 +5,12 @@
   "private": true,
   "scripts": {
     "app": "pnpm -F @uq-tess/app",
-    "plugin": "pnpm -F @uq-tess/plugin"
+    "plugin": "pnpm -F @uq-tess/plugin",
+    "build": "pnpm app build",
+    "preview": "pnpm app preview",
+    "build-preview": "pnpm app build-preview",
+    "pack-doc": "pnpm app pack-doc",
+    "dev": "pnpm app dev"
   },
   "devEngines": {
     "packageManager": {
