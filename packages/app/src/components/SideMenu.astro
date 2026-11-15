@@ -129,21 +129,16 @@ const name = 'sidemenu-accordion';
 </style>
 
 <script>
-  import { cannotGetHandler } from '../modules/helpers';
+  import { querySelector, querySelectorAll } from '../modules/helpers';
 
-  const d_ = document.querySelectorAll('.__sidemenu-root > details');
+  const d_ = querySelectorAll(
+    document,
+    '.__sidemenu-root > details',
+    HTMLDetailsElement,
+  );
 
   const dAndCSet = Array.from(d_, (details) => {
-    if (!(details instanceof HTMLDetailsElement)) {
-      cannotGetHandler('details', HTMLDetailsElement.prototype, details);
-    }
-
-    const content = details.querySelector('.__content');
-
-    if (!(content instanceof HTMLDivElement)) {
-      cannotGetHandler('content', HTMLDivElement.prototype, content);
-    }
-
+    const content = querySelector(details, '.__content', HTMLDivElement);
     return [details, content] as const;
   });
 

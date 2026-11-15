@@ -4,7 +4,7 @@ interface Props {}
 
 <button type='button' id='to-top-btn' aria-label='ページトップに戻る'></button>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {
@@ -28,14 +28,10 @@ interface Props {}
 </style>
 
 <script>
-  import { cannotGetHandler } from '../modules/helpers';
+  import { getElementById } from '../modules/helpers';
 
-  const toTopBtn = document.getElementById('to-top-btn');
+  const toTopBtn = getElementById('to-top-btn', HTMLButtonElement);
   let id: ReturnType<typeof setTimeout> | undefined;
-
-  if (!(toTopBtn instanceof HTMLButtonElement)) {
-    cannotGetHandler('toTopBtn', HTMLButtonElement.prototype, toTopBtn);
-  }
 
   toTopBtn.addEventListener('click', (ev) => {
     ev.preventDefault();

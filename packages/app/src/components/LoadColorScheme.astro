@@ -2,15 +2,13 @@
 ---
 
 <script>
+  import { isColorScheme } from '../modules/consts';
+
   const key = 'color-scheme';
   const colorScheme = localStorage.getItem(key);
   const root = document.documentElement;
 
-  if (
-    colorScheme === 'light dark' ||
-    colorScheme === 'light' ||
-    colorScheme === 'dark'
-  ) {
+  if (isColorScheme(colorScheme)) {
     root.setAttribute('data-color-scheme', colorScheme);
   } else {
     console.log(

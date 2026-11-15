@@ -1,0 +1,23 @@
+---
+import SideMenu from './SideMenu.astro';
+---
+
+<dialog id='sidemenu-drawer'>
+  <SideMenu />
+</dialog>
+
+<button type='button' id='sidemenu-drawer-btn'>
+  Hej!
+</button>
+
+<script>
+  import { getElementById } from '../modules/helpers';
+
+  const drawer = getElementById('sidemenu-drawer', HTMLDialogElement);
+  const drawerBtn = getElementById('sidemenu-drawer-btn', HTMLButtonElement);
+
+  drawerBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    drawer.showModal();
+  });
+</script>
