@@ -1,23 +1,46 @@
 ---
 import SideMenu from './SideMenu.astro';
+
 ---
 
 <dialog id='sidemenu-drawer'>
+  <button type='button' id='sidemenu-drawer-close-btn'>
+    Close
+  </button>
   <SideMenu />
 </dialog>
 
-<button type='button' id='sidemenu-drawer-btn'>
-  Hej!
+<button type='button' id='sidemenu-drawer-open-btn'>
+  Open
 </button>
+
+<style lang="postcss">
+  @reference '../styles/app.css';
+
+  @layer components {
+    #sidemenu-drawer {
+      @apply flow-root fixed inset-0;
+    }
+  }
+</style>
 
 <script>
   import { getElementById } from '../modules/helpers';
 
   const drawer = getElementById('sidemenu-drawer', HTMLDialogElement);
-  const drawerBtn = getElementById('sidemenu-drawer-btn', HTMLButtonElement);
+  const openBtn = getElementById('sidemenu-drawer-open-btn', HTMLButtonElement);
+  const closeBtn = getElementById(
+    'sidemenu-drawer-close-btn',
+    HTMLButtonElement,
+  );
 
-  drawerBtn.addEventListener('click', (ev) => {
+  openBtn.addEventListener('click', (ev) => {
     ev.preventDefault();
     drawer.showModal();
+  });
+
+  closeBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    drawer.close();
   });
 </script>
