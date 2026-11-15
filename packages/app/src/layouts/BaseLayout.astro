@@ -3,6 +3,7 @@ import '../styles/app.css';
 import OGP from '../components/OGP.astro';
 import Preloads from '../components/Preloads.astro';
 import ToTopBtn from '../components/ToTopBtn.astro';
+import LoadColorScheme from '../components/LoadColorScheme.astro';
 import { getPageData, type PageData } from '../modules/data';
 import { SITE_NAME } from '../modules/consts';
 
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const pathname = Astro.originPathname;
-const { title, description, katex } =
+const { title, description, katex, fonts } =
   Astro.props.pageData ?? getPageData(pathname);
 const isHome = pathname === '/';
 const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
@@ -25,8 +26,9 @@ const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
     <link rel='icon' type='image/svg+xml' href='/icon.svg' />
     <meta name='generator' content={Astro.generator} />
     <link rel='sitemap' href='/sitemap-index.xml' />
-    <Preloads {katex} />
+    <Preloads {katex} {fonts} />
     <OGP title={fullTitle} {description} path={pathname} />
+    <LoadColorScheme />
     <title>{fullTitle}</title>
   </head>
   <body>
@@ -35,7 +37,7 @@ const fullTitle = isHome ? SITE_NAME : `${title} | ${SITE_NAME}`;
   </body>
 </html>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {

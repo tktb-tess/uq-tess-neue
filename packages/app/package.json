@@ -6,7 +6,13 @@
   "files": [
     "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "build-preview": "astro build && astro preview",
+    "pack-doc": "pnpm run build && pnpm pack --out ./arch/%s.tgz"
+  },
   "devDependencies": {
     "@astrojs/markdown-remark": "^7.3.6",
     "@astrojs/sitemap": "^3.7.4",

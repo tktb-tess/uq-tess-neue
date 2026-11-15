@@ -2,6 +2,7 @@ export interface PageData {
   readonly title: string;
   readonly description?: string;
   readonly katex?: boolean;
+  readonly fonts?: string;
 }
 
 export type PageDataMap = ReadonlyMap<string, PageData>;

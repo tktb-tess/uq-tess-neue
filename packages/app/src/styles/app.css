@@ -227,6 +227,14 @@
     scrollbar-gutter: stable;
     text-spacing-trim: trim-start;
     text-autospace: normal;
+
+    &[data-color-scheme='light'] {
+      @apply scheme-light;
+    }
+
+    &[data-color-scheme='dark'] {
+      @apply scheme-dark;
+    }
   }
 
   [lang] {

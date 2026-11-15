@@ -25,7 +25,9 @@ const h1Title = isHome ? SITE_NAME : title;
       <XHeader title={h1Title} />
     </header>
     <aside class='__lside'>
-      <SideMenu />
+      <div class='__sticky'>
+        <SideMenu />
+      </div>
     </aside>
     <main>
       <BreadCrumb path={pathname} />
@@ -40,7 +42,7 @@ const h1Title = isHome ? SITE_NAME : title;
   </div>
 </BaseLayout>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {
@@ -58,42 +60,49 @@ const h1Title = isHome ? SITE_NAME : title;
         minmax(min(var(--spacing-min-side), 50%), 1fr);
 
       grid-template-rows: auto 1fr auto;
+    }
 
-      header,
-      main,
-      footer {
-        @apply flow-root;
-      }
+    header,
+    main,
+    footer {
+      @apply flow-root;
+    }
 
-      aside {
-        @apply max-xl:hidden xl:flow-root;
-      }
+    aside {
+      @apply max-xl:hidden xl:flow-root;
+    }
 
-      header,
-      footer {
-        @apply bg-side;
-      }
+    header {
+      grid-area: h;
+    }
 
-      header {
-        grid-area: h;
-      }
+    main {
+      grid-area: m;
+    }
 
-      main {
-        @apply px-gutter pbe-36 bg-main min-block-lvh border-x border-border;
-        grid-area: m;
-      }
+    footer {
+      grid-area: f;
+    }
 
-      footer {
-        grid-area: f;
-      }
+    .__lside {
+      grid-area: l;
+    }
 
-      .__lside {
-        grid-area: l;
-      }
+    .__rside {
+      grid-area: r;
+    }
 
-      .__rside {
-        grid-area: r;
-      }
+    header,
+    footer {
+      @apply bg-side;
+    }
+
+    main {
+      @apply px-gutter pbe-36 bg-main min-block-lvh border-x border-border;
+    }
+
+    .__sticky {
+      @apply sticky inset-bs-2;
     }
   }
 </style>

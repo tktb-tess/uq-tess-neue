@@ -15,8 +15,7 @@ const values = Object.values(
 
 const mdPageData: ReadonlyMap<string, string> = new Map<string, string>(
   values.map((md) => {
-    const { title } = md.frontmatter;
-    return [`${md.url}/`, title];
+    return [`${md.url}/`, md.frontmatter.title];
   }),
 );
 
@@ -43,28 +42,28 @@ const currentTitle = getTitle(path);
 
 <nav class='__breadcrumb' aria-label='パンくずリスト'>
   <ol>
-    {
-      ancestorPages.map(({ href, title }) => {
-        return (
-          <li>
-            <a {href} {title}>
-              {title !== 'Home' ? (
-                title
-              ) : (
-                <HomeIcon class='inline-4 block-auto' />
-              )}
-            </a>
-          </li>
-        );
-      })
-    }
+    {ancestorPages.map(({ href, title }) => {
+      return (
+        <li>
+          <a {href} {title}>
+            {title !== 'Home' ? (
+              title
+            ) : (
+              <HomeIcon class='inline-4 block-auto' />
+            )}
+          </a>
+        </li>
+      );
+    })}
     <li>
-      <a href='./' aria-current='page' tabindex='-1'>{currentTitle}</a>
+      <a href='./' aria-current='page' tabindex='-1'>
+        {currentTitle}
+      </a>
     </li>
   </ol>
 </nav>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {

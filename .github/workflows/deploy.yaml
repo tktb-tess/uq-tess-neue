@@ -36,7 +36,7 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Build Astro
-        run: pnpm run build
+        run: pnpm run app build
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0

@@ -1,9 +1,15 @@
 ---
 interface Props {
   readonly katex?: boolean;
+  readonly fonts?: string;
 }
 
-const { katex = false } = Astro.props;
+const { katex = false, fonts = '' } = Astro.props;
+
+const fontArray = fonts
+  .split(',')
+  .map((f) => f.trim())
+  .filter((f) => f !== '');
 ---
 
 <!-- fonts -->
@@ -26,22 +32,45 @@ const { katex = false } = Astro.props;
   crossorigin='anonymous'
 />
 <link
-  href='https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&family=Noto+Serif+Tibetan:wght@100..900&display=swap'
+  href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&display=swap'
   rel='stylesheet'
 />
 
-<!-- KaTeX CSS (optional) -->
-{
-  () => {
-    if (katex) {
-      return (
-        <link
-          rel='stylesheet'
-          href='https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css'
-          integrity='sha384-Pu5+C18nP5dwykLJOhd2U4Xen7rjScHN/qusop27hdd2drI+lL5KvX7YntvT8yew'
-          crossorigin='anonymous'
-        />
-      );
+{() => {
+  return fontArray.map((f) => {
+    switch (f) {
+      case 'serif-tibetan': {
+        return (
+          <link
+            href='https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@100..900&display=swap'
+            rel='stylesheet'
+          />
+        );
+      }
+      case 'sans-canadian-aboriginal': {
+        return (
+          <link
+            href='https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@100..900&display=swap'
+            rel='stylesheet'
+          />
+        );
+      }
+      default:
+        return;
     }
+  });
+}}
+
+<!-- KaTeX CSS (optional) -->
+{() => {
+  if (katex) {
+    return (
+      <link
+        rel='stylesheet'
+        href='https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css'
+        integrity='sha384-Pu5+C18nP5dwykLJOhd2U4Xen7rjScHN/qusop27hdd2drI+lL5KvX7YntvT8yew'
+        crossorigin='anonymous'
+      />
+    );
   }
-}
+}}

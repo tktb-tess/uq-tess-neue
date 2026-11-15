@@ -1,0 +1,22 @@
+---
+---
+
+<script>
+  const key = 'color-scheme';
+  const colorScheme = localStorage.getItem(key);
+  const root = document.documentElement;
+
+  if (
+    colorScheme === 'light dark' ||
+    colorScheme === 'light' ||
+    colorScheme === 'dark'
+  ) {
+    root.setAttribute('data-color-scheme', colorScheme);
+  } else {
+    console.log(
+      "value of 'color-scheme' is invalid. default value is used instead",
+    );
+    localStorage.setItem(key, 'light dark');
+    root.setAttribute('data-color-scheme', 'light dark');
+  }
+</script>
