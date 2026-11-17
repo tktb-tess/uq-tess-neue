@@ -1,13 +1,7 @@
 <script lang="ts">
-  import {
-    Success,
-    Failed,
-    Indefinite,
-    type Result,
-  } from '../../modules/result';
+  import { Success, Failed, type Result } from '../../modules/result';
   import { todayWordSchema, type TodayWord } from '../../modules/schema';
   import * as v from 'valibot';
-  import { onMount } from 'svelte';
 
   type TodayWordResultAsync = Promise<Result<TodayWord, Error>>;
 
@@ -41,21 +35,16 @@
     }
   }
 
-  let result: TodayWordResultAsync = $state(Promise.resolve(Indefinite()));
-
-  onMount(() => {
-    result = fetchTodayWord();
-  });
+  let result: TodayWordResultAsync = $state(fetchTodayWord());
 
   $effect(() => {
-    result.then(
-      (res) => {
+    result
+      .then((res) => {
         if (res.status === 'failed') {
           console.error(res.error);
         }
-      },
-      (e) => console.error(e),
-    );
+      })
+      .catch((e) => console.error(e));
   });
 </script>
 
@@ -151,7 +140,7 @@
     }
 
     .__refetch-btn {
-      @apply block;
+      @apply block px-2 py-1;
     }
 
     .__entry {

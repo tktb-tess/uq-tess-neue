@@ -426,8 +426,6 @@
   }
 
   dialog {
-    @apply inset-0;
-
     &[open] {
       @apply flow-root;
     }
@@ -438,7 +436,7 @@
   }
 
   summary {
-    @apply block list-[""] cursor-pointer;
+    @apply block list-[''] cursor-pointer;
 
     /* for Safari */
     &::-webkit-details-marker {

@@ -7,6 +7,7 @@ import ExtLink from '../components/ExtLink.astro';
 import ExtLinkList from './_components/ExtLinkList.astro';
 import Heading from './_components/Heading.astro';
 import TodayWord from './_components/TodayWord.svelte';
+import ToggleColorSchemeBtn from '../components/ToggleColorSchemeBtn.svelte';
 
 interface Props {}
 ---
@@ -18,6 +19,9 @@ interface Props {}
     </header>
     <aside class='__lside'></aside>
     <main>
+      <div class='__color-scheme-btn'>
+        <ToggleColorSchemeBtn client:load />
+      </div>
       <h2 class='__youkoso'>〜ようこそ〜</h2>
       <p>
         ※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
@@ -28,7 +32,7 @@ interface Props {}
       </p>
 
       <Heading h='h2' text='今日の単語' />
-      <TodayWord client:load />
+      <TodayWord client:idle />
 
       <Heading h='h2' text='メニュー' />
 
@@ -64,7 +68,8 @@ interface Props {}
               </td>
               <td>かえる</td>
               <td>
-                <span lang='x-v3-karphnpn'>常代 方累</span> (常代 方累, Xûyâo Zùngwíl)
+                <span lang='x-v3-karphnpn'>常代 方累</span>(常代 方累, Xûyâo
+                Zùngwíl)
               </td>
             </tr>
           </tbody>
@@ -143,7 +148,7 @@ interface Props {}
   </div>
 </BaseLayout>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {
@@ -206,6 +211,10 @@ interface Props {}
 
     .__mut-links > tbody a {
       @apply block;
+    }
+
+    .__color-scheme-btn {
+      @apply flex justify-end-safe;
     }
   }
 </style>

@@ -28,7 +28,7 @@ import SideMenu from './SideMenu.astro';
 
   @layer components {
     #sidemenu-drawer {
-      @apply flex flex-col gap-2 py-2 max-inline-90 me-auto bg-main;
+      @apply flex flex-col inset-0 gap-2 py-2 max-inline-90 me-auto bg-main;
 
       &::backdrop {
         @apply bg-black/40;
@@ -57,7 +57,7 @@ import SideMenu from './SideMenu.astro';
     }
 
     #sidemenu-drawer-open-btn {
-      @apply max-lg:flex lg:hidden flex-col fixed inset-s-2 inset-bs-2 gap-2 p-2;
+      @apply max-xl:flex xl:hidden flex-col fixed inset-s-2 inset-bs-2 gap-2 p-2;
 
       > span {
         @apply border-bs inline-4.75;
@@ -97,10 +97,7 @@ import SideMenu from './SideMenu.astro';
   openBtn.addEventListener('click', (ev) => {
     ev.preventDefault();
     drawer.showModal();
-
-    requestAnimationFrame(() => {
-      setOpenHeight();
-    });
+    setTimeout(setOpenHeight, 0);
   });
 
   closeBtn.addEventListener('click', (ev) => {

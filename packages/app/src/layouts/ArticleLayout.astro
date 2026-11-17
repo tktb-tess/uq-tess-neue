@@ -5,6 +5,7 @@ import XFooter from '../components/XFooter.astro';
 import XHeader from '../components/XHeader.astro';
 import SideMenu from '../components/SideMenu.astro';
 import DrawerMenu from '../components/DrawerMenu.astro';
+import ToggleColorSchemeBtn from '../components/ToggleColorSchemeBtn.svelte';
 import { getPageData, type PageData } from '../modules/data';
 import { SITE_NAME } from '../modules/consts';
 
@@ -33,6 +34,9 @@ const h1Title = isHome ? SITE_NAME : title;
     <DrawerMenu />
     <main>
       <BreadCrumb path={pathname} />
+      <div class="__color-scheme-btn">
+        <ToggleColorSchemeBtn client:load />
+      </div>
       <div class='__main-contents'>
         <slot />
       </div>
@@ -105,6 +109,10 @@ const h1Title = isHome ? SITE_NAME : title;
 
     .__sticky {
       @apply sticky inset-bs-2;
+    }
+
+    .__color-scheme-btn {
+      @apply flex justify-end-safe;
     }
   }
 </style>
