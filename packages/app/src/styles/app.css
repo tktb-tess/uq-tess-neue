@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @layer properties, theme, base, component, utility;
+@import 'tailwindcss';
 
 @font-face {
   font-family: 'noto-sans-jp';
@@ -414,14 +414,19 @@
     @apply font-semibold;
   }
 
-  dialog {
-    @apply fixed inset-0 size-[unset] max-w-[unset] max-h-[unset] text-[unset];
+  dialog,
+  [popover] {
+    @apply fixed size-[unset] max-w-[unset] max-h-[unset] text-[unset];
     background: unset;
-    border: unset;
+  }
 
-    &:not([open]) {
-      @apply hidden!;
-    }
+  dialog:where(:not([open], [popover])),
+  [popover]:where(:not(:popover-open)) {
+    @apply hidden!;
+  }
+
+  dialog {
+    @apply inset-0;
 
     &[open] {
       @apply flow-root;
@@ -431,12 +436,21 @@
       @apply bg-[unset];
     }
   }
+
+  summary {
+    @apply block list-[""] cursor-pointer;
+
+    /* for Safari */
+    &::-webkit-details-marker {
+      @apply hidden;
+    }
+  }
 }
 
 @layer components {
   .btn-theme-1 {
     @apply bg-accent hover-focus:bg-accent/70 transition-colors
-      rounded text-textinv px-4 py-2 no-underline leading-none;
+      rounded text-textinv no-underline leading-none;
   }
 
   .ext-link-icon {
@@ -448,7 +462,8 @@
 
     &::before {
       content: url('/ext_link_icon.svg');
-      @apply absolute inset-bs-[calc(50%-.5em)] inline-[.6em] block-auto leading-none invisible opacity-0;
+      @apply absolute inset-bs-[calc(50%-.5em)] inline-[.6em]
+        block-auto leading-none invisible opacity-0;
     }
 
     @media (any-hover: hover) {

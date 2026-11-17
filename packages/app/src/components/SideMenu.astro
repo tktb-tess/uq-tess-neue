@@ -99,19 +99,14 @@ const name = 'sidemenu-accordion';
     }
 
     summary {
-      @apply block cursor-pointer px-2 py-1
-        text-3xl font-extralight
+      @apply px-2 py-1 text-3xl font-extralight
         hover-focus:bg-accent hover-focus:text-textinv
         select-none;
     }
 
-    summary, a {
+    summary,
+    a {
       @apply transition-colors;
-    }
-
-    /* for Safari */
-    summary::-webkit-details-marker {
-      @apply hidden;
     }
 
     ul {
@@ -131,9 +126,9 @@ const name = 'sidemenu-accordion';
 <script>
   import { setOpenHeight } from '../modules/sidemenu_helpers';
 
-  setOpenHeight();
-
   let id: ReturnType<typeof setTimeout> | undefined;
+
+  setOpenHeight();
 
   window.addEventListener('resize', () => {
     clearTimeout(id);

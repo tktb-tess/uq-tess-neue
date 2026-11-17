@@ -1,8 +1,10 @@
 import { querySelectorAll, querySelector } from './helpers';
 
-let dAndCSet: (readonly [HTMLDetailsElement, HTMLDivElement])[] | undefined;
+let dAndCSet:
+  | readonly (readonly [HTMLDetailsElement, HTMLDivElement])[]
+  | undefined;
 
-const getDAndCSet = () => {
+function getDAndCSet() {
   if (!dAndCSet) {
     const d_ = querySelectorAll(
       document,
@@ -17,13 +19,13 @@ const getDAndCSet = () => {
   }
 
   return dAndCSet;
-};
+}
 
-export const setOpenHeight = () => {
+export function setOpenHeight() {
   const dAndCSet = getDAndCSet();
 
   dAndCSet.forEach(([details, content]) => {
     const openHeight = `${content.scrollHeight + 1}px`;
     details.style.setProperty('--open-height', openHeight);
   });
-};
+}

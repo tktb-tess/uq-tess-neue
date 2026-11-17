@@ -2,15 +2,25 @@
 import SideMenu from './SideMenu.astro';
 ---
 
-<dialog id='sidemenu-drawer'>
-  <button type='button' id='sidemenu-drawer-close-btn' class='btn-theme-1'>
-    close
-  </button>
+<dialog id='sidemenu-drawer' closedby='any'>
+  <button
+    type='button'
+    id='sidemenu-drawer-close-btn'
+    class='btn-theme-1'
+    aria-label='サイドメニューを閉じる'
+  ></button>
   <SideMenu />
 </dialog>
 
-<button type='button' id='sidemenu-drawer-open-btn' class='btn-theme-1'>
-  open
+<button
+  type='button'
+  id='sidemenu-drawer-open-btn'
+  class='btn-theme-1'
+  aria-label='サイドメニューを開く'
+>
+  <span></span>
+  <span></span>
+  <span></span>
 </button>
 
 <style lang='postcss'>
@@ -21,7 +31,7 @@ import SideMenu from './SideMenu.astro';
       @apply flex flex-col gap-2 py-2 max-inline-90 me-auto bg-main;
 
       &::backdrop {
-        @apply bg-black/30;
+        @apply bg-black/40;
       }
 
       &:not([open]) {
@@ -47,11 +57,28 @@ import SideMenu from './SideMenu.astro';
     }
 
     #sidemenu-drawer-open-btn {
-      @apply max-lg:grid lg:hidden fixed inset-s-2 inset-bs-2;
+      @apply max-lg:flex lg:hidden flex-col fixed inset-s-2 inset-bs-2 gap-2 p-2;
+
+      > span {
+        @apply border-bs inline-4.75;
+      }
     }
 
     #sidemenu-drawer-close-btn {
-      @apply self-start ms-4;
+      @apply self-start ms-4 grid px-2 py-4.25 place-content-center-safe;
+
+      &::before, &::after {
+        content: '';
+        @apply col-span-full row-span-full border-bs inline-4.75;
+      }
+
+      &::before {
+        @apply rotate-45;
+      }
+
+      &::after {
+        @apply -rotate-45;
+      }
     }
   }
 </style>
