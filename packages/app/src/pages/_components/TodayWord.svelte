@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Success, Failed, type Result } from '../../modules/result';
-  import { todayWordSchema, type TodayWord } from '../../modules/schema';
+  import { Success, Failed, type Result } from '@modules/result';
+  import { todayWordSchema, type TodayWord } from '@modules/schema';
   import * as v from 'valibot';
 
   type TodayWordResultAsync = Promise<Result<TodayWord, Error>>;
