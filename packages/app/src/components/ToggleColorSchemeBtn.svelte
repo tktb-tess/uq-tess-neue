@@ -22,6 +22,7 @@
 <button
   type="button"
   class="btn-theme-1"
+  aria-label="カラースキームを切り替える"
   onclick={(ev) => {
     ev.preventDefault();
     switch (mode) {

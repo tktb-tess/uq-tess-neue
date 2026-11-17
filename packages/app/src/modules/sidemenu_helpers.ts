@@ -12,9 +12,9 @@ function getDAndCSet() {
       HTMLDetailsElement,
     );
 
-    dAndCSet = Array.from(d_, (details) => {
+    dAndCSet = d_.map((details) => {
       const content = querySelector(details, '.__content', HTMLDivElement);
-      return [details, content] as const;
+      return [details, content];
     });
   }
 
