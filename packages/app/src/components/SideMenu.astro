@@ -129,25 +129,7 @@ const name = 'sidemenu-accordion';
 </style>
 
 <script>
-  import { querySelector, querySelectorAll } from '../modules/helpers';
-
-  const d_ = querySelectorAll(
-    document,
-    '.__sidemenu-root > details',
-    HTMLDetailsElement,
-  );
-
-  const dAndCSet = Array.from(d_, (details) => {
-    const content = querySelector(details, '.__content', HTMLDivElement);
-    return [details, content] as const;
-  });
-
-  const setOpenHeight = () => {
-    dAndCSet.forEach(([details, content]) => {
-      const openHeight = `${content.scrollHeight + 1}px`;
-      details.style.setProperty('--open-height', openHeight);
-    });
-  };
+  import { setOpenHeight } from '../modules/sidemenu_helpers';
 
   setOpenHeight();
 

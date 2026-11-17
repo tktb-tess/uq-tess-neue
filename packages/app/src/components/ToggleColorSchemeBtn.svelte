@@ -40,14 +40,21 @@
     }
   }}
 >
-  toggle
+  {#if mode === 'light dark'}
+    Device default
+  {:else if mode === 'light'}
+    Light
+  {:else}
+    Dark
+  {/if}
 </button>
 
 <style lang="postcss">
   @reference '../styles/app.css';
 
   @layer components {
-    button {
+    button > :global(svg) {
+      @apply inline-4 block-auto;
     }
   }
 </style>

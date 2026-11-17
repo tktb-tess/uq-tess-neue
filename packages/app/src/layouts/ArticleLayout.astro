@@ -4,6 +4,7 @@ import BreadCrumb from '../components/BreadCrumb.astro';
 import XFooter from '../components/XFooter.astro';
 import XHeader from '../components/XHeader.astro';
 import SideMenu from '../components/SideMenu.astro';
+import DrawerMenu from '../components/DrawerMenu.astro';
 import { getPageData, type PageData } from '../modules/data';
 import { SITE_NAME } from '../modules/consts';
 
@@ -29,6 +30,7 @@ const h1Title = isHome ? SITE_NAME : title;
         <SideMenu />
       </div>
     </aside>
+    <DrawerMenu />
     <main>
       <BreadCrumb path={pathname} />
       <div class='__main-contents'>

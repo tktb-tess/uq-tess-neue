@@ -4,12 +4,13 @@ interface Props {
   readonly fonts?: string;
 }
 
-const { katex = false, fonts = '' } = Astro.props;
+const { katex = false, fonts } = Astro.props;
 
-const fontArray = fonts
-  .split(',')
-  .map((f) => f.trim())
-  .filter((f) => f !== '');
+const fontArray =
+  fonts
+    ?.split(',')
+    .map((f) => f.trim())
+    .filter((f) => f !== '') ?? [];
 ---
 
 <!-- fonts -->
@@ -39,7 +40,7 @@ const fontArray = fonts
 {() => {
   return fontArray.map((f) => {
     switch (f) {
-      case 'serif-tibetan': {
+      case 'tibetan': {
         return (
           <link
             href='https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@100..900&display=swap'
@@ -47,7 +48,7 @@ const fontArray = fonts
           />
         );
       }
-      case 'sans-canadian-aboriginal': {
+      case 'canadian-aboriginal': {
         return (
           <link
             href='https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@100..900&display=swap'

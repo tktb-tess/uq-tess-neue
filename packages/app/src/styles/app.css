@@ -220,18 +220,13 @@
 
 @layer base {
   :root {
-    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
+    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans scheme-light-dark;
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
     text-spacing-trim: trim-start;
     text-autospace: normal;
-
-    &[data-color-scheme='light dark'],
-    &:not([data-color-scheme]) {
-      @apply scheme-light-dark;
-    }
 
     &[data-color-scheme='light'] {
       @apply scheme-light;
@@ -260,7 +255,7 @@
   }
 
   :where(:disabled, [aria-disabled='true'], [inert]) {
-    @apply opacity-60! pointer-events-none! cursor-default!;
+    @apply pointer-events-none! cursor-default! opacity-60;
   }
 
   h2,
@@ -351,6 +346,34 @@
     @apply bg-code-bg rounded px-1 dark:border dark:border-border-2;
   }
 
+  .astro-code {
+    @apply p-4 rounded-lg my-figure;
+
+    .line {
+      @apply inline-block;
+    }
+  }
+
+  .astro-code.has-diff .line.diff {
+    &.add {
+      @apply bg-lime-400/15;
+
+      &::before {
+        content: ' + ';
+        @apply text-lime-400;
+      }
+    }
+
+    &.remove {
+      @apply bg-red-600/15;
+
+      &::before {
+        content: ' - ';
+        @apply text-red-600;
+      }
+    }
+  }
+
   table {
     @apply inline-max max-inline-full me-auto whitespace-nowrap wrap-normal;
 
@@ -382,35 +405,7 @@
   }
 
   hr {
-    @apply my-figure mx-auto inline-full max-inline-160 border-border-2;
-  }
-
-  .astro-code {
-    @apply p-4 rounded-lg my-figure;
-
-    .line {
-      @apply inline-block;
-    }
-  }
-
-  .astro-code.has-diff .line.diff {
-    &.add {
-      @apply bg-lime-400/15;
-
-      &::before {
-        content: ' + ';
-        @apply text-lime-400;
-      }
-    }
-
-    &.remove {
-      @apply bg-red-600/15;
-
-      &::before {
-        content: ' - ';
-        @apply text-red-600;
-      }
-    }
+    @apply block my-figure mx-auto inline-[unset] max-inline-160 border-border-2;
   }
 
   strong,
@@ -419,13 +414,51 @@
     @apply font-semibold;
   }
 
+  dialog {
+    @apply fixed inset-0 size-[unset] max-w-[unset] max-h-[unset] text-[unset];
+    background: unset;
+    border: unset;
+
+    &:not([open]) {
+      @apply hidden!;
+    }
+
+    &[open] {
+      @apply flow-root;
+    }
+
+    &::backdrop {
+      @apply bg-[unset];
+    }
+  }
+}
+
+@layer components {
+  .btn-theme-1 {
+    @apply bg-accent hover-focus:bg-accent/70 transition-colors
+      rounded text-textinv px-4 py-2 no-underline leading-none;
+  }
+
+  .ext-link-icon {
+    @apply inline-block inline-3 block-auto ms-0.5;
+  }
+
   .auto-link {
-    @apply relative text-[unset] hover-focus:[&::before]:visible hover-focus:[&::before]:opacity-100;
+    @apply relative text-[unset];
 
     &::before {
       content: url('/ext_link_icon.svg');
-
       @apply absolute inset-bs-[calc(50%-.5em)] inline-[.6em] block-auto leading-none invisible opacity-0;
+    }
+
+    @media (any-hover: hover) {
+      &:hover::before {
+        @apply visible opacity-100;
+      }
+    }
+
+    &:focus-visible::before {
+      @apply visible opacity-100;
     }
   }
 
@@ -435,17 +468,6 @@
 
   h2 > .auto-link::before {
     @apply -inset-s-8.5;
-  }
-
-  .ext-link-icon {
-    @apply inline-block inline-3 block-auto ms-0.5;
-  }
-}
-
-@layer components {
-  .btn-theme-1 {
-    @apply bg-accent hover-focus:bg-accent/70 transition-colors
-      rounded text-textinv px-4 py-2 no-underline leading-none;
   }
 }
 

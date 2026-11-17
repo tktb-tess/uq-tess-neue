@@ -1,31 +1,64 @@
 ---
 import SideMenu from './SideMenu.astro';
-
 ---
 
 <dialog id='sidemenu-drawer'>
-  <button type='button' id='sidemenu-drawer-close-btn'>
-    Close
+  <button type='button' id='sidemenu-drawer-close-btn' class='btn-theme-1'>
+    close
   </button>
   <SideMenu />
 </dialog>
 
-<button type='button' id='sidemenu-drawer-open-btn'>
-  Open
+<button type='button' id='sidemenu-drawer-open-btn' class='btn-theme-1'>
+  open
 </button>
 
-<style lang="postcss">
+<style lang='postcss'>
   @reference '../styles/app.css';
 
   @layer components {
     #sidemenu-drawer {
-      @apply flow-root fixed inset-0;
+      @apply flex flex-col gap-2 py-2 max-inline-90 me-auto bg-main;
+
+      &::backdrop {
+        @apply bg-black/30;
+      }
+
+      &:not([open]) {
+        @apply -translate-x-full;
+      }
+
+      &[open] {
+        @apply translate-x-0 starting:-translate-x-full;
+      }
+
+      &:not([open])::backdrop {
+        @apply opacity-0;
+      }
+
+      &[open]::backdrop {
+        @apply opacity-100 starting:opacity-0;
+      }
+
+      &,
+      &::backdrop {
+        @apply transition-[opacity,translate,display,overlay] transition-discrete duration-200;
+      }
+    }
+
+    #sidemenu-drawer-open-btn {
+      @apply max-lg:grid lg:hidden fixed inset-s-2 inset-bs-2;
+    }
+
+    #sidemenu-drawer-close-btn {
+      @apply self-start ms-4;
     }
   }
 </style>
 
 <script>
   import { getElementById } from '../modules/helpers';
+  import { setOpenHeight } from '../modules/sidemenu_helpers';
 
   const drawer = getElementById('sidemenu-drawer', HTMLDialogElement);
   const openBtn = getElementById('sidemenu-drawer-open-btn', HTMLButtonElement);
@@ -37,6 +70,10 @@ import SideMenu from './SideMenu.astro';
   openBtn.addEventListener('click', (ev) => {
     ev.preventDefault();
     drawer.showModal();
+
+    requestAnimationFrame(() => {
+      setOpenHeight();
+    });
   });
 
   closeBtn.addEventListener('click', (ev) => {

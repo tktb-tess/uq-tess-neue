@@ -1,37 +1,12 @@
-import * as v from 'valibot';
-import type { ReadonlyDeep } from 'type-fest';
-
-export const todayWordSchema = v.object({
-  name: v.string(),
-  translations: v.array(v.tuple([v.string(), v.string()])),
-  pronunciation: v.string(),
-  dictUrl: v.string(),
-});
-
-export type TodayWord = ReadonlyDeep<v.InferOutput<typeof todayWordSchema>>;
+import type { Constructor } from './decl';
 
 export function getTag(o: unknown): string {
   return Object.prototype.toString.call(o);
 }
 
-export function cannotGetHandler<T extends Element>(
-  name: string,
-  expected: T,
-  elem: unknown,
-): never {
-  throw TypeError(`'${name}' is not ${getTag(expected)}, but ${getTag(elem)}`, {
-    cause: elem,
-  });
-}
-
-export type Constructor<T, Arg extends unknown[] = unknown[]> = {
-  new (...args: Arg): T;
-  readonly prototype: T;
-};
-
-export function getElementById<T extends Element, U extends unknown[]>(
+export function getElementById<T extends Element>(
   id: string,
-  Kind: Constructor<T, U>,
+  Kind: Constructor<T>,
 ) {
   const elem: Element | null = document.getElementById(id);
 
@@ -45,10 +20,10 @@ export function getElementById<T extends Element, U extends unknown[]>(
   return elem;
 }
 
-export function querySelector<T extends Element, U extends unknown[]>(
+export function querySelector<T extends Element>(
   parent: ParentNode,
   query: string,
-  Kind: Constructor<T, U>,
+  Kind: Constructor<T>,
 ) {
   const elem = parent.querySelector(query);
 
@@ -62,10 +37,10 @@ export function querySelector<T extends Element, U extends unknown[]>(
   return elem;
 }
 
-export function querySelectorAll<T extends Element, U extends unknown[]>(
+export function querySelectorAll<T extends Element>(
   parent: ParentNode,
   query: string,
-  Kind: Constructor<T, U>,
+  Kind: Constructor<T>,
 ) {
   const elems = parent.querySelectorAll(query);
 

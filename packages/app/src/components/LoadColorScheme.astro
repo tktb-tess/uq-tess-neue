@@ -12,7 +12,7 @@
     root.setAttribute('data-color-scheme', colorScheme);
   } else {
     console.log(
-      "value of 'color-scheme' is invalid. default value is used instead",
+      "value of 'color-scheme' is empty or invalid. default value is used instead",
     );
     localStorage.setItem(key, 'light dark');
     root.setAttribute('data-color-scheme', 'light dark');

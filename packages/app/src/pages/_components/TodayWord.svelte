@@ -5,7 +5,7 @@
     Indefinite,
     type Result,
   } from '../../modules/result';
-  import { todayWordSchema, type TodayWord } from '../../modules/helpers';
+  import { todayWordSchema, type TodayWord } from '../../modules/schema';
   import * as v from 'valibot';
   import { onMount } from 'svelte';
 
