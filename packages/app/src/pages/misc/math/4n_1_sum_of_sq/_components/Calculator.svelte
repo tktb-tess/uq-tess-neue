@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cornacchia, bailliePSW } from '@tktb-tess/util-fns/baillie_psw';
-  import { Failed, Success, type Result } from '../../../../../modules/result';
+  import { Failed, Success, type Result } from '@modules/result';
   import { renderToString } from 'katex';
 
   let n: bigint = $state(0n);

@@ -313,7 +313,7 @@
   }
 
   ul {
-    @apply list-["\25b8__"];
+    @apply list-['\25b8__'];
   }
 
   ol {
@@ -416,7 +416,7 @@
 
   dialog,
   [popover] {
-    @apply fixed size-[unset] max-w-[unset] max-h-[unset] text-[unset];
+    @apply fixed size-[unset] max-w-[unset] max-h-[unset] text-[unset] overscroll-contain overflow-auto;
     background: unset;
   }
 

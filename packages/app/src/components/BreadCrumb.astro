@@ -1,7 +1,7 @@
 ---
-import { getPageData, type PageData } from '../modules/data';
+import { getPageData, type PageData } from '@modules/data';
 import type { MarkdownLayoutProps } from 'astro';
-import HomeIcon from '../assets/HomeIcon.svg';
+import HomeIcon from '@assets/HomeIcon.svg';
 
 interface Props {
   readonly path: string;
@@ -64,7 +64,7 @@ const currentTitle = getTitle(path);
 </nav>
 
 <style lang='postcss'>
-  @reference '../styles/app.css';
+  @reference '@styles/app.css';
 
   @layer components {
     .__breadcrumb {
