@@ -30,8 +30,7 @@ const data: readonly Item[] = [
 const miscs: readonly Item[] = [
   { text: '概要', href: '/' },
   { text: 'グレゴリオ聖歌について', href: '/gregorian_chants/' },
-  { text: '数学', href: '/math/' },
-  { text: '音楽', href: '/musiken/' },
+  { text: '数学', href: '/math/' }
 ];
 
 const categories: readonly List[] = [
@@ -68,7 +67,7 @@ const name = 'sidemenu-accordion';
 </nav>
 
 <style lang='postcss'>
-  @reference '../styles/app.css';
+  @reference '@styles/app.css';
 
   @layer components {
     .__sidemenu-root {
@@ -124,7 +123,7 @@ const name = 'sidemenu-accordion';
 </style>
 
 <script>
-  import { setOpenHeight } from '../modules/sidemenu_helpers';
+  import { setOpenHeight } from '@modules/sidemenu_helpers';
 
   let id: ReturnType<typeof setTimeout> | undefined;
 

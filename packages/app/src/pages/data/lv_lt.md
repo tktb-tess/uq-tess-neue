@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MdLayout.astro
+layout: '@layouts/MdLayout.astro'
 title: いろんなヨーロッパの言語でラトビア・リトアニア
 ---
 

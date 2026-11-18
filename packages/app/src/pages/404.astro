@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 interface Props {}
 ---
@@ -23,7 +23,7 @@ interface Props {}
 </BaseLayout>
 
 <style lang="postcss">
-  @reference '../styles/app.css';
+  @reference '@styles/app.css';
 
   @layer components {
     h2, p {

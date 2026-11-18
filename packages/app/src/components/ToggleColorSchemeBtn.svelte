@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { isColorScheme, type ColorScheme } from '../modules/consts';
+  import { isColorScheme, type ColorScheme } from '@modules/consts';
 
   let mode: ColorScheme = $state('light dark');
 
@@ -82,7 +82,7 @@
 </button>
 
 <style lang="postcss">
-  @reference '../styles/app.css';
+  @reference '@styles/app.css';
 
   @layer components {
     button {

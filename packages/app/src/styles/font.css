@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'noto-sans-jp';
+  font-display: swap;
+  src: local('Noto Sans JP'), local('Noto Sans CJK JP');
+}
+
+@font-face {
+  font-family: 'noto-serif-jp';
+  font-display: swap;
+  src: local('Noto Serif JP');
+}
+
+@font-face {
+  font-family: 'noto-for-title';
+  font-display: swap;
+  src: local('Noto Sans JP');
+}
+
+@font-face {
+  font-family: 'PhunDot';
+  font-display: swap;
+  src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff')
+    format('woff');
+}

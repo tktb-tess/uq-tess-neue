@@ -1,0 +1,60 @@
+/* utilities */
+
+@utility font-feature-* {
+  font-feature-settings: --value(--features-*, [*]);
+}
+
+@utility cols-auto-* {
+  grid-template-columns: repeat(--value(integer), auto);
+}
+
+@utility rows-auto-* {
+  grid-template-rows: repeat(--value(integer), auto);
+}
+
+@utility cols-auto-fill-* {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
+  );
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(--value([*]), 100%), 1fr)
+  );
+}
+
+@utility cols-auto-fit-* {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
+  );
+
+  grid-template-columns: repeat(auto-fit, minmax(min(--value([*]), 100%), 1fr));
+}
+
+@custom-variant any-hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
+@custom-variant hover-focus {
+  @media (any-hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+
+  &:focus-visible {
+    @slot;
+  }
+}
+
+@custom-variant reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @slot;
+  }
+}
