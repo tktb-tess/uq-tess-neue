@@ -9,10 +9,11 @@ interface Props {}
 
   @layer components {
     #to-top-btn {
-      @apply hidden fixed inset-e-6 inset-be-6 p-4 rounded-sm
-        hover-focus:[&::before]:-translate-y-0.5
-        bg-accent hover-focus:bg-accent/70 opacity-0
+      @apply hidden fixed inset-e-6 inset-be-6
+        p-4 rounded-sm bg-accent opacity-0
         transition-[background-color,opacity,display] transition-discrete;
+
+      @apply hover-focus:bg-accent/70;
 
       &[data-visible] {
         @apply grid opacity-100 starting:opacity-0;
@@ -23,6 +24,16 @@ interface Props {}
       content: '';
       @apply size-2 border-l-2 border-t-2 border-textinv
         translate-y-0.5 rotate-45 transition-transform;
+    }
+
+    @media (any-hover: hover) {
+      #to-top-btn:hover::before {
+        @apply -translate-px;
+      }
+    }
+
+    #to-top-btn:focus-visible::before {
+      @apply -translate-px;
     }
   }
 </style>

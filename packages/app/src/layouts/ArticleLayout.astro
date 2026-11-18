@@ -74,7 +74,8 @@ const h1Title = isHome ? SITE_NAME : title;
       @apply flow-root;
     }
 
-    aside {
+    .__lside,
+    .__rside {
       @apply max-xl:hidden xl:flow-root;
     }
 
@@ -84,6 +85,7 @@ const h1Title = isHome ? SITE_NAME : title;
 
     main {
       grid-area: m;
+      @apply px-gutter pbe-36 bg-main min-block-lvh border-x border-border;
     }
 
     footer {
@@ -103,12 +105,9 @@ const h1Title = isHome ? SITE_NAME : title;
       @apply bg-side;
     }
 
-    main {
-      @apply px-gutter pbe-36 bg-main min-block-lvh border-x border-border;
-    }
-
     .__sticky {
-      @apply sticky inset-bs-2;
+      @apply sticky inset-bs-2 overflow-y-auto scrollbar-thin;
+      max-block-size: calc(100lvh - var(--spacing) * 2);
     }
 
     .__color-scheme-btn {
