@@ -233,7 +233,7 @@
 @layer components {
   .btn-theme-1 {
     @apply bg-accent transition-colors rounded
-      text-textinv no-underline leading-none hover-focus:bg-accent/70;
+      text-textinv no-underline leading-none hover-focus:bg-accent-lighter;
   }
 
   .ext-link-icon {
