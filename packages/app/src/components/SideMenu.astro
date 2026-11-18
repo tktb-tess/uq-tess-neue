@@ -30,7 +30,7 @@ const data: readonly Item[] = [
 const miscs: readonly Item[] = [
   { text: '概要', href: '/' },
   { text: 'グレゴリオ聖歌について', href: '/gregorian_chants/' },
-  { text: '数学', href: '/math/' }
+  { text: '数学', href: '/math/' },
 ];
 
 const categories: readonly List[] = [
@@ -72,7 +72,6 @@ const name = 'sidemenu-accordion';
   @layer components {
     .__sidemenu-root {
       @apply flex flex-col mx-4 my-2 gap-4 text-start;
-      --sidemenu-dur: 260ms;
     }
 
     details {
@@ -85,7 +84,7 @@ const name = 'sidemenu-accordion';
 
       &::details-content {
         @apply transition-[height,content-visibility] transition-discrete
-          duration-(--sidemenu-dur) overflow-y-clip;
+          duration-260 overflow-y-clip;
       }
 
       &:not([open])::details-content {
@@ -98,9 +97,8 @@ const name = 'sidemenu-accordion';
     }
 
     summary {
-      @apply px-2 py-1 text-3xl font-extralight
-        hover-focus:bg-accent hover-focus:text-textinv
-        select-none;
+      @apply px-2 py-1 text-3xl font-extralight select-none
+        hover-focus:bg-accent hover-focus:text-textinv;
     }
 
     summary,

@@ -6,16 +6,14 @@
 /* default styles */
 
 @layer base {
-  :root {
-    @apply wrap-anywhere hyphens-auto scheme-light-dark;
+  html {
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
     text-spacing-trim: trim-start;
     text-autospace: normal;
-
-    @apply max-sm:text-sm;
+    @apply wrap-anywhere hyphens-auto scheme-light-dark max-sm:text-sm;
 
     &[data-color-scheme='light'] {
       @apply scheme-light;
@@ -143,8 +141,8 @@
     }
   }
 
-  .astro-code.has-diff .line.diff {
-    &.add {
+  .astro-code:where(.has-diff) {
+    :where(.line.diff.add) {
       @apply bg-lime-400/15;
 
       &::before {
@@ -153,7 +151,7 @@
       }
     }
 
-    &.remove {
+    :where(.line.diff.remove) {
       @apply bg-red-600/15;
 
       &::before {
@@ -189,7 +187,7 @@
     }
   }
 
-  .table-container:has(> table) {
+  .table-container:where(:has(> table)) {
     @apply overflow-auto max-inline-full my-figure;
   }
 
@@ -205,7 +203,7 @@
 
   dialog,
   [popover] {
-    @apply fixed size-[unset] max-w-[unset] max-h-[unset] text-[unset] overscroll-contain overflow-auto;
+    @apply fixed size-[unset] max-w-[unset] max-h-[unset] text-[unset] overscroll-y-contain overflow-y-auto;
     background: unset;
   }
 
@@ -214,14 +212,12 @@
     @apply hidden!;
   }
 
-  dialog {
-    &[open] {
-      @apply flow-root;
-    }
+  dialog:where([open]) {
+    @apply flow-root;
+  }
 
-    &::backdrop {
-      @apply bg-[unset];
-    }
+  dialog::backdrop {
+    @apply bg-[unset];
   }
 
   summary {
@@ -236,8 +232,8 @@
 
 @layer components {
   .btn-theme-1 {
-    @apply bg-accent hover-focus:bg-accent/70 transition-colors
-      rounded text-textinv no-underline leading-none;
+    @apply bg-accent transition-colors rounded
+      text-textinv no-underline leading-none hover-focus:bg-accent-lighter;
   }
 
   .ext-link-icon {
@@ -264,11 +260,11 @@
     }
   }
 
-  :not(h2) > .auto-link::before {
+  :where(:not(h2)) > .auto-link::before {
     @apply -inset-s-5;
   }
 
-  h2 > .auto-link::before {
+  :where(h2) > .auto-link::before {
     @apply -inset-s-8.5;
   }
 }
