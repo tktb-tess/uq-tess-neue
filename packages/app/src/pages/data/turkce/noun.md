@@ -21,7 +21,7 @@ title: トルコ語 名詞
 
 ## 所有接辞
 
-<div class="contents [&_:where(tr>td:first-child)]:font-feature-tnum">
+<div class="contents [&_:where(tr:nth-child(odd)>td:first-child)]:font-feature-tnum [&_:where(tr:nth-child(odd)>td:first-child)]:text-end">
 
 | :s[人称・数]{c=2} | :e  | 接辞    | 例1      | 例2        |
 | ----------------- | --- | ------- | -------- | ---------- |

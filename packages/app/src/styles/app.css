@@ -1,3 +1,5 @@
+@import 'https://api.tktb-tess.dev/fonts/Inter/font-face.css';
+@import 'https://api.tktb-tess.dev/fonts/Charis/font-face.css';
 @import 'tailwindcss';
 @import './util.css';
 @import './font.css';

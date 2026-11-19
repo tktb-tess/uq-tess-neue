@@ -133,7 +133,7 @@ title: トルコ語 動詞
 
 ## 人称
 
-<div class="contents [&_:where(tr>td:first-child)]:font-feature-tnum">
+<div class="contents [&_:where(tr:nth-child(odd)>td:first-child)]:font-feature-tnum [&_:where(tr:nth-child(odd)>td:first-child)]:text-end">
 
 | :s[人称・数]{c=2} | :e  | タイプI       | タイプII | 願望形     | 命令形      |
 | ----------------- | --- | ------------- | -------- | ---------- | ----------- |
@@ -150,7 +150,7 @@ title: トルコ語 動詞
 
 ### 例
 
-<div class="contents [&_:where(tr>td:first-child)]:font-feature-tnum">
+<div class="contents [&_:where(tr:nth-child(odd)>td:first-child)]:font-feature-tnum [&_:where(tr:nth-child(odd)>td:first-child)]:text-end">
 
 | :s[人称・数]{c=2} | :e  | タイプI (例: 継続形) | タイプII (例: 過去形) | 願望形    | 命令形      |
 | ----------------- | --- | -------------------- | --------------------- | --------- | ----------- |
