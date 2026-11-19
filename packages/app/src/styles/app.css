@@ -190,7 +190,7 @@
   }
 
   .table-container:where(:has(> table)) {
-    @apply overflow-auto max-inline-full my-figure;
+    @apply overflow-auto max-inline-full my-figure scrollbar-thin;
   }
 
   hr {
