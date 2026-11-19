@@ -9,7 +9,19 @@ title: トルコ語 動詞
 
 トルコ語の動詞の接辞は概ね以下の順番になる。
 
-> \[語幹\](-\[態\])(-\[否定, 不能\])(-\[可能・推量\])-\[相\](\-\[繋辞相\])\-\[人称\]
+> \[語幹\]
+> 
+> (-\[態\])
+> 
+> (-\[否定, 不能\])
+> 
+> (-\[可能・推量\])
+> 
+> -\[相\]
+> 
+> (\-\[繋辞相\])
+> 
+> \-\[人称\]
 
 その他動詞に関する事項は以下の通り。
 
@@ -140,7 +152,7 @@ title: トルコ語 動詞
 | :s[1]{r=2}        | 単  | -(y)Im        | -m       | -(y)AyIm   | :s[／]{r=2} |
 | :e                | 複  | -(y)Iz        | -k       | -(y)AlIm   | :e          |
 | :s[2]{r=2}        | 単  | -sIn          | -n       | -(y)AsIn   | -∅          |
-| :e                | 複  | -sInIz        | -nIz     | -(y)AsInIz | -In         |
+| :e                | 複  | -sInIz        | -nIz     | -(y)AsInIz | -(y)In      |
 | :s[3]{r=2}        | 単  | :s[-∅]{c=2}   | :e       | -(y)A      | -sIn        |
 | :e                | 複  | :s[-lAr]{c=2} | :e       | -(y)AlAr   | -sInlAr     |
 
@@ -160,6 +172,15 @@ title: トルコ語 動詞
 | :e                | 複  | iç-iyor-sunuz        | iç-ti-niz             | iç-esiniz | iç-in       |
 | :s[3]{r=2}        | 単  | iç-iyor              | iç-ti                 | iç-e      | iç-sin      |
 | :e                | 複  | iç-iyor-lar          | iç-ti-ler             | iç-eler   | iç-sinler   |
+
+| :s[人称・数]{c=2} | :e  | タイプI (例: 継続形) | タイプII (例: 過去形) | 願望形      | 命令形      |
+| ----------------- | --- | -------------------- | --------------------- | ----------- | ----------- |
+| :s[1]{r=2}        | 単  | yık-ıyor-um          | yıka-dı-m             | yıka-yayım  | :s[／]{r=2} |
+| :e                | 複  | yık-ıyor-uz          | yıka-dı-k             | yıka-yalım  | :e          |
+| :s[2]{r=2}        | 単  | yık-ıyor-sun         | yıka-dı-n             | yıka-asın   | yıka        |
+| :e                | 複  | yık-ıyor-sunuz       | yıka-dı-nız           | yıka-asınız | yıka-yın    |
+| :s[3]{r=2}        | 単  | yık-ıyor             | yıka-dı               | yıka-a      | yıka-sın    |
+| :e                | 複  | yık-ıyor-lar         | yıka-dı-lar           | yıka-alar   | yıka-sınlar |
 
 </div>
 
