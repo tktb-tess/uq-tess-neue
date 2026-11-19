@@ -17,6 +17,7 @@ const pageDataMap: PageDataMap = new Map<string, PageData>([
     '/misc/math/4n_1_sum_of_sq/',
     { title: '4n + 1型素数を2平方和に分解', katex: true },
   ],
+  ['/xprmnt/', { title: 'Experiment' }],
 ]);
 
 export function getPageData(path: string): PageData {

@@ -20,6 +20,7 @@
     "@shikijs/transformers": "^4.6.0",
     "@tailwindcss/vite": "^4.3.4",
     "@tktb-tess/util-fns": "^0.13.7",
+    "@tktb-tess/xenharmonic-tool": "^0.6.1",
     "@uq-tess/plugin": "workspace:*",
     "astro": "^7.4.7",
     "katex": "~0.16.47",

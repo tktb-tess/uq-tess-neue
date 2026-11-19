@@ -1,0 +1,42 @@
+---
+import ArticleLayout from '@layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout>
+  <p lang='de'>Bitte drücken Sie die Taste F12.</p>
+</ArticleLayout>
+
+<script>
+  import * as U from '@tktb-tess/util-fns';
+  import * as X from '@tktb-tess/xenharmonic-tool';
+  import { getTag } from '@modules/helpers';
+
+  const nameU = 'UtilFns';
+  const nameX = 'XenTool';
+
+  const U2 = Object.freeze({
+    ...U,
+    [Symbol.toStringTag]: nameU,
+    __proto__: null,
+  });
+
+  const X2 = Object.freeze({
+    ...X,
+    [Symbol.toStringTag]: nameX,
+    __proto__: null,
+  });
+
+  Object.defineProperties(window, {
+    [nameU]: {
+      value: U2,
+      enumerable: true,
+    },
+    [nameX]: {
+      value: X2,
+      enumerable: true,
+    },
+  });
+
+  console.log(`${getTag(U2)}:\n`, U2);
+  console.log(`${getTag(X2)}:\n`, X2);
+</script>

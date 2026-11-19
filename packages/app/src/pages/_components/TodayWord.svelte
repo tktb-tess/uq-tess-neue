@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { Success, Failed, type Result } from '@modules/result';
-  import { todayWordSchema, type TodayWord } from '@modules/schema';
-  import * as v from 'valibot';
+  import { Failed, type Result } from '@modules/result';
+  import { type TodayWord, parseTodayWord } from '@modules/schema';
 
   type TodayWordResultAsync = Promise<Result<TodayWord, Error>>;
 
@@ -19,13 +18,8 @@
       }
 
       const j: unknown = await resp.json();
-      const p = v.safeParse(todayWordSchema, j);
 
-      if (p.success) {
-        return Success(p.output);
-      } else {
-        return Failed(new v.ValiError(p.issues));
-      }
+      return parseTodayWord(j);
     } catch (e) {
       if (e instanceof Error) {
         return Failed(e);

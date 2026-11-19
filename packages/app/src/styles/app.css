@@ -233,7 +233,8 @@
 @layer components {
   .btn-theme-1 {
     @apply bg-accent transition-colors rounded
-      text-textinv no-underline leading-none hover-focus:bg-accent-lighter;
+      text-textinv no-underline leading-none
+      hover-focus:bg-accent-lighter;
   }
 
   .ext-link-icon {
@@ -270,6 +271,5 @@
 }
 
 .katex-display .katex-html {
-  @apply my-figure overflow-x-auto py-2;
-  scrollbar-width: thin;
+  @apply my-figure overflow-x-auto py-2 scrollbar-thin;
 }
