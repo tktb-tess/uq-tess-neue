@@ -24,7 +24,7 @@ import SideMenu from './SideMenu.astro';
 </button>
 
 <style lang='postcss'>
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     #sidemenu-drawer {
@@ -86,8 +86,8 @@ import SideMenu from './SideMenu.astro';
 </style>
 
 <script>
-  import { getElementById } from '../modules/helpers';
-  import { setOpenHeight } from '../modules/sidemenu_helpers';
+  import { getElementById } from '$/modules/helpers';
+  import { setOpenHeight } from '$/modules/sidemenu_helpers';
 
   const drawer = getElementById('sidemenu-drawer', HTMLDialogElement);
   const openBtn = getElementById('sidemenu-drawer-open-btn', HTMLButtonElement);

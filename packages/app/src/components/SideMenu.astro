@@ -67,7 +67,7 @@ const name = 'sidemenu-accordion';
 </nav>
 
 <style lang='postcss'>
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     .__sidemenu-root {
@@ -121,7 +121,7 @@ const name = 'sidemenu-accordion';
 </style>
 
 <script>
-  import { setOpenHeight } from '@modules/sidemenu_helpers';
+  import { setOpenHeight } from '$/modules/sidemenu_helpers';
 
   let id: ReturnType<typeof setTimeout> | undefined;
 

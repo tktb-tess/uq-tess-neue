@@ -1,21 +1,20 @@
 <script lang="ts">
+  import { isColorScheme, type ColorScheme } from '$/modules/consts';
   import { onMount } from 'svelte';
-  import { isColorScheme, type ColorScheme } from '@modules/consts';
 
-  let mode: ColorScheme = $state('light dark');
+  let mode: ColorScheme | undefined = $state();
 
   onMount(() => {
     const colorScheme = localStorage.getItem('color-scheme');
-
-    if (isColorScheme(colorScheme)) {
-      mode = colorScheme;
-    }
+    mode = isColorScheme(colorScheme) ? colorScheme : 'light dark';
   });
 
   $effect(() => {
-    const root = document.documentElement;
-    root.setAttribute('data-color-scheme', mode);
-    localStorage.setItem('color-scheme', mode);
+    if (mode) {
+      const root = document.documentElement;
+      root.setAttribute('data-color-scheme', mode);
+      localStorage.setItem('color-scheme', mode);
+    }
   });
 </script>
 
@@ -82,17 +81,17 @@
     }
   }}
 >
-  {#if mode === 'light dark'}
-    {@render DeviceIcon()}
-  {:else if mode === 'light'}
+  {#if mode === 'light'}
     {@render SunIcon()}
-  {:else}
+  {:else if mode === 'dark'}
     {@render MoonIcon()}
+  {:else}
+    {@render DeviceIcon()}
   {/if}
 </button>
 
 <style lang="postcss">
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     button {

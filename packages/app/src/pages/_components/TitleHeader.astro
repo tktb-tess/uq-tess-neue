@@ -1,5 +1,5 @@
 ---
-import { SITE_NAME } from '@modules/consts';
+import { SITE_NAME } from '$/modules/consts';
 
 interface Props {}
 ---
@@ -12,7 +12,7 @@ interface Props {}
 </div>
 
 <style lang='postcss'>
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     .__title-header-root {
@@ -46,7 +46,7 @@ interface Props {}
 </style>
 
 <script>
-  import { getElementById } from '@modules/helpers';
+  import { getElementById } from '$/modules/helpers';
 
   const url = new URL(document.URL);
   const happy = url.searchParams.get('happy');

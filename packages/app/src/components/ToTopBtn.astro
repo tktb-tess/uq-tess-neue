@@ -5,7 +5,7 @@ interface Props {}
 <button type='button' id='to-top-btn' aria-label='ページトップに戻る'></button>
 
 <style lang='postcss'>
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     #to-top-btn {
@@ -39,7 +39,7 @@ interface Props {}
 </style>
 
 <script>
-  import { getElementById } from '../modules/helpers';
+  import { getElementById } from '$/modules/helpers';
 
   const toTopBtn = getElementById('to-top-btn', HTMLButtonElement);
   let id: ReturnType<typeof setTimeout> | undefined;

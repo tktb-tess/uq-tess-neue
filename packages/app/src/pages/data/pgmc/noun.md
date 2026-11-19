@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/MdLayout.astro'
+layout: '$/layouts/MdLayout.astro'
 title: ゲルマン祖語 名詞
 ---
 

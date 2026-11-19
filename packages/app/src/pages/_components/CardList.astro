@@ -11,22 +11,20 @@ const { data } = Astro.props;
 ---
 
 <ul class='__card-list'>
-  {
-    data.map(({ title, desc, href }) => {
-      return (
-        <li>
-          <a {href}>
-            <h3>{title}</h3>
-            <p>{desc}</p>
-          </a>
-        </li>
-      );
-    })
-  }
+  {data.map(({ title, desc, href }) => {
+    return (
+      <li>
+        <a {href}>
+          <h3>{title}</h3>
+          <p>{desc}</p>
+        </a>
+      </li>
+    );
+  })}
 </ul>
 
-<style lang="postcss">
-  @reference '@styles/app.css';
+<style lang='postcss'>
+  @reference '$/styles/app.css';
 
   @layer components {
     .__card-list {
@@ -41,7 +39,8 @@ const { data } = Astro.props;
           rounded-sm hover-focus:bg-accent/80 transition-colors;
       }
 
-      h3, p {
+      h3,
+      p {
         @apply text-textinv m-0 self-center-safe;
       }
 

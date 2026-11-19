@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/MdLayout.astro'
+layout: '$/layouts/MdLayout.astro'
 title: n次方程式の解法まとめ
 description: よくクソ長い解みたいな感じで話題になる 3, 4 次方程式の解ですけど、一つ一つ順を追っていけば別にそこまで難しいものでもなくないですか?
 katex: true

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Failed, type Result } from '@modules/result';
-  import { type TodayWord, parseTodayWord } from '@modules/schema';
+  import { Failed, type Result } from '$/modules/result';
+  import { type TodayWord, parseTodayWord } from '$/modules/schema';
 
   type TodayWordResultAsync = Promise<Result<TodayWord, Error>>;
 
@@ -104,7 +104,7 @@
 </div>
 
 <style lang="postcss">
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     .__today-word-rt {

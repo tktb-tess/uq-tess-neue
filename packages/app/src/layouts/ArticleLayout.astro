@@ -1,13 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import BreadCrumb from '@components/BreadCrumb.astro';
-import XFooter from '@components/XFooter.astro';
-import XHeader from '@components/XHeader.astro';
-import SideMenu from '@components/SideMenu.astro';
-import DrawerMenu from '@components/DrawerMenu.astro';
-import ToggleColorSchemeBtn from '@components/ToggleColorSchemeBtn.svelte';
-import { getPageData, type PageData } from '@modules/data';
-import { SITE_NAME } from '@modules/consts';
+import BreadCrumb from '$/components/BreadCrumb.astro';
+import XFooter from '$/components/XFooter.astro';
+import XHeader from '$/components/XHeader.astro';
+import SideMenu from '$/components/SideMenu.astro';
+import DrawerMenu from '$/components/DrawerMenu.astro';
+import ToggleColorSchemeBtn from '$/components/ToggleColorSchemeBtn.svelte';
+import { getPageData, type PageData } from '$/modules/data';
+import { SITE_NAME } from '$/modules/consts';
 
 interface Props {
   readonly pageData?: PageData;
@@ -49,7 +49,7 @@ const h1Title = isHome ? SITE_NAME : title;
 </BaseLayout>
 
 <style lang='postcss'>
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     .__container {
