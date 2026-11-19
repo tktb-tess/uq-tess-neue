@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/MdLayout.astro'
+layout: '$/layouts/MdLayout.astro'
 title: S₅ → S₆ exotic map
 katex: true
 ---

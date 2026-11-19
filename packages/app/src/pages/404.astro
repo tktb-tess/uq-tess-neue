@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from '$/layouts/BaseLayout.astro';
 
 interface Props {}
 ---
@@ -18,15 +18,18 @@ interface Props {}
     <p>
       お探しのページは見つかりませんでした。移動あるいは削除された可能性があります。
     </p>
-    <a class='__btn' href='/.'>トップへ戻る</a>
+    <a class='__btn' href='/.'>
+      トップへ戻る
+    </a>
   </div>
 </BaseLayout>
 
-<style lang="postcss">
-  @reference '@styles/app.css';
+<style lang='postcss'>
+  @reference '$/styles/app.css';
 
   @layer components {
-    h2, p {
+    h2,
+    p {
       @apply m-[unset] p-[unset] text-center text-white;
     }
 

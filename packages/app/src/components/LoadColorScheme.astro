@@ -1,20 +1,10 @@
 ---
 ---
 
-<script>
-  import { isColorScheme } from '@modules/consts';
-
-  const key = 'color-scheme';
-  const colorScheme = localStorage.getItem(key);
-  const root = document.documentElement;
-
-  if (isColorScheme(colorScheme)) {
-    root.setAttribute('data-color-scheme', colorScheme);
-  } else {
-    console.log(
-      "value of 'color-scheme' is empty or invalid. default value is used instead",
-    );
-    localStorage.setItem(key, 'light dark');
-    root.setAttribute('data-color-scheme', 'light dark');
-  }
+<script is:inline>
+  const cs = localStorage.getItem('color-scheme');
+  document.documentElement.setAttribute(
+    'data-color-scheme',
+    cs === 'light dark' || cs === 'light' || cs === 'dark' ? cs : 'light dark',
+  );
 </script>

@@ -7,11 +7,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "erasableSyntaxOnly": true,
     "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@modules/*": ["./src/modules/*"],
-      "@styles/*": ["./src/styles/*"]
+      "$/*": ["./src/*"]
     }
   },
 

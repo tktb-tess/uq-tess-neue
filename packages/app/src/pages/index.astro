@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from '$/layouts/BaseLayout.astro';
 import TitleHeader from './_components/TitleHeader.astro';
-import XFooter from '@components/XFooter.astro';
+import XFooter from '$/components/XFooter.astro';
 import CardList from './_components/CardList.astro';
-import ExtLink from '@components/ExtLink.astro';
+import ExtLink from '$/components/ExtLink.astro';
 import ExtLinkList from './_components/ExtLinkList.astro';
 import Heading from './_components/Heading.astro';
 import TodayWord from './_components/TodayWord.svelte';
-import ToggleColorSchemeBtn from '@components/ToggleColorSchemeBtn.svelte';
+import ToggleColorSchemeBtn from '$/components/ToggleColorSchemeBtn.svelte';
 
 interface Props {}
 ---
@@ -149,7 +149,7 @@ interface Props {}
 </BaseLayout>
 
 <style lang='postcss'>
-  @reference '@styles/app.css';
+  @reference '$/styles/app.css';
 
   @layer components {
     .__container {
