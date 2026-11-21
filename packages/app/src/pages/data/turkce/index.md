@@ -1,6 +1,7 @@
 ---
 layout: '$/layouts/MdLayout.astro'
-title: トルコ語
+title: Türkçe
+description: トルコ語
 ---
 
 - [基本ルール](/data/turkce/rules/)

@@ -1,6 +1,7 @@
 ---
 layout: '$/layouts/MdLayout.astro'
-title: 古英語 動詞活用まとめ
+title: Ænglisċ 動詞活用まとめ
+description: 古英語 動詞活用まとめ
 ---
 
 ### 目次

@@ -1,6 +1,7 @@
 ---
 layout: '$/layouts/MdLayout.astro'
-title: ゲルマン祖語 音韻法則
+title: Proto-Germanic 音韻法則
+description: ゲルマン祖語 音韻法則
 ---
 
 ゲルマン祖語の形態論を理解する際に重要となるいくつかの法則についてまとめる。

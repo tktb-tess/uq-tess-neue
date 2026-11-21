@@ -1,6 +1,7 @@
 ---
 layout: '$/layouts/MdLayout.astro'
-title: トルコ語 動詞
+title: Türkçe 動詞
+description: トルコ語 動詞
 ---
 
 ### 目次

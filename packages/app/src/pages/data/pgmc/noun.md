@@ -1,6 +1,7 @@
 ---
 layout: '$/layouts/MdLayout.astro'
-title: ゲルマン祖語 名詞
+title: Proto-Germanic 名詞
+description: ゲルマン祖語 名詞
 ---
 
 ### 目次

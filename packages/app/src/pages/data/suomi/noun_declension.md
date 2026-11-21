@@ -1,6 +1,7 @@
 ---
 layout: '$/layouts/MdLayout.astro'
-title: フィンランド語 格変化
+title: Suomi 格変化
+description: フィンランド語 格変化
 ---
 
 ### 目次
