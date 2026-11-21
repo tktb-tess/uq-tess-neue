@@ -2,7 +2,7 @@
   import { isColorScheme, type ColorScheme } from '$/modules/consts';
   import { onMount } from 'svelte';
 
-  let mode: ColorScheme | undefined = $state();
+  let mode: ColorScheme = $state('light dark');
 
   onMount(() => {
     const colorScheme = localStorage.getItem('color-scheme');
@@ -10,11 +10,9 @@
   });
 
   $effect(() => {
-    if (mode) {
-      const root = document.documentElement;
-      root.setAttribute('data-color-scheme', mode);
-      localStorage.setItem('color-scheme', mode);
-    }
+    const root = document.documentElement;
+    root.setAttribute('data-color-scheme', mode);
+    localStorage.setItem('color-scheme', mode);
   });
 </script>
 
@@ -65,6 +63,7 @@
   aria-label="カラースキームを切り替える"
   onclick={(ev) => {
     ev.preventDefault();
+
     switch (mode) {
       case 'light dark': {
         mode = 'light';

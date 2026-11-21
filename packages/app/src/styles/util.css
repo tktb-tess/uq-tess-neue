@@ -33,6 +33,24 @@
   grid-template-columns: repeat(auto-fit, minmax(min(--value([*]), 100%), 1fr));
 }
 
+@utility rows-auto-fill-* {
+  grid-template-rows: repeat(
+    auto-fill,
+    minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
+  );
+
+  grid-template-rows: repeat(auto-fill, minmax(min(--value([*]), 100%), 1fr));
+}
+
+@utility rows-auto-fit-* {
+  grid-template-rows: repeat(
+    auto-fit,
+    minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
+  );
+
+  grid-template-rows: repeat(auto-fit, minmax(min(--value([*]), 100%), 1fr));
+}
+
 @custom-variant any-hover {
   @media (any-hover: hover) {
     &:hover {

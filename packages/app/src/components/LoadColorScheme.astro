@@ -2,9 +2,8 @@
 ---
 
 <script is:inline>
-  const cs = localStorage.getItem('color-scheme');
-  document.documentElement.setAttribute(
-    'data-color-scheme',
-    cs === 'light dark' || cs === 'light' || cs === 'dark' ? cs : 'light dark',
-  );
+  const s = localStorage.getItem('color-scheme');
+  const v =
+    s === 'light dark' || s === 'light' || s === 'dark' ? s : 'light dark';
+  document.documentElement.setAttribute('data-color-scheme', v);
 </script>
