@@ -43,7 +43,7 @@
   --color-textpale: oklch(from canvasText l c h / 60%);
   --color-textinv: canvas;
   --color-accent: light-dark(var(--color-violet-950), var(--color-violet-100));
-  --color-accent-lighter: color-mix(in oklab, var(--color-accent) 60%, Canvas);
+  --color-accent-lighter: color-mix(in oklab, var(--color-accent) 80%, Canvas);
   --color-quote-bg: light-dark(
     oklch(from var(--color-violet-600) l c h / 8%),
     oklch(from var(--color-violet-600) l c h / 12%)

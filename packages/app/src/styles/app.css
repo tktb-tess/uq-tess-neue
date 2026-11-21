@@ -1,6 +1,6 @@
+@import './font.css';
 @import 'tailwindcss';
 @import './util.css';
-@import './font.css';
 @import './theme.css';
 
 /* default styles */
